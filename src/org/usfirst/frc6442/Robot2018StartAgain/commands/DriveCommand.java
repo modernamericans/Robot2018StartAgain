@@ -40,27 +40,24 @@ public class DriveCommand extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+    
     }
+    
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     //THIS IS THE ROBOT2018STARTAGAIN CODE//////////////////////////////////////////////////////
     protected void execute() {
     	
-    	System.out.println("Yes, I work");
+    	//System.out.println("Yes, I work");
     	double right = Robot.oi.joystick.getRawAxis(1);
     	double left = Robot.oi.joystick.getRawAxis(3);
     	
-    	if(right > 0.1 || right < -0.1){
-			RobotMap.driveTrainDrive1.set(-right);
-		}else {
-			RobotMap.driveTrainDrive1.set(0);
-		}
-		if (left > 0.1 || left < -0.1){
-			RobotMap.driveTrainDrive2.set(-left);
-		}else{
-			RobotMap.driveTrainDrive2.set(0);
-		}
+//    	if(right > 0.1 || left > 0.1){
+//			RobotMap.driveTrainDrive1.set(-right);
+    		Robot.driveTrain.joyDrive(right, left);
+    		
+//		}
 		System.out.println(right + ", " + left);
     }
 

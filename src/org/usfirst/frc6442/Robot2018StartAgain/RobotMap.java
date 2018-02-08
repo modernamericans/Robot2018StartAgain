@@ -64,7 +64,7 @@ public class RobotMap {
         driveTrainDrive1.setInverted(false);
         driveTrainDrive2 = new Spark(1);
         LiveWindow.addActuator("DriveTrain", "Drive 2", (Spark) driveTrainDrive2);
-        driveTrainDrive2.setInverted(false);
+        driveTrainDrive2.setInverted(true);
         driveTrainSpeedControllerGroup1 = new SpeedControllerGroup(driveTrainDrive1, driveTrainDrive2  );
         LiveWindow.addActuator("DriveTrain", "Speed Controller Group 1", driveTrainSpeedControllerGroup1);
         
