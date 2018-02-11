@@ -47,22 +47,22 @@ public class AutonomousCommand extends Command {
     	//start location stuff?
     	//if not set, pick opposite of game info
     	
-    	if right side == our side
-    	  	go to right start
-    	  		left start/center start
+    	if right side == our side;
+    	  	go to right start;
+    	  		left start/center start;
     	  			Robot.DriveTrain.autoDriveforward(time[seconds, revolution of wheels, something else?])
-    	  			Robot.DriveTrain.autoLeftTurn(time)
-    	  			Robot.DriveTrain.autoDriveForward(time)
-    	  			Robot.DriveTrain.autoRightTurn(time)
-    	  		right start
-    	  			Robot.DriveTrain.autoDriveForward(time)
-    	  		Robot.DriveTrain.autoDriveForward(time)
-    	  		Robot.DriveTrain.autoTurnLeft(time)
-    	  		eject block
-    	  		Robot.DriveTrain.autoRightTurn(time)
-    	 		Stop
-    	 if left side == our side
-    	 	invert right's and left's under right side.
+    	  			Robot.DriveTrain.autoLeftTurn(time);
+    	  			Robot.DriveTrain.autoDriveForward(time);
+    	  			Robot.DriveTrain.autoRightTurn(time);
+    	  		right start;
+    	  			Robot.DriveTrain.autoDriveForward(time);
+    	  		Robot.DriveTrain.autoDriveForward(time);
+    	  		Robot.DriveTrain.autoTurnLeft(time);
+    	  		eject block;
+    	  		Robot.DriveTrain.autoRightTurn(time);
+    	 		Stop;
+    	 if left side == our side;
+    	 	invert right's and left's under right side;
     	
     	
     	
