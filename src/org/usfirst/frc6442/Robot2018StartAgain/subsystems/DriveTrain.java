@@ -54,13 +54,29 @@ public class DriveTrain extends Subsystem {
     	drive2.set(leftMagnitude);
     	System.out.println("joyDrive output:" + rightMagnitude + " " + leftMagnitude);
     }
+    /*Stanton's idea of Autonomous
+    public void autoDriveForward() {
+    	drive1.set(.5);
+    	drive2.set(.5);
+    }
+    public void autoRightTurn() {
+    	drive1.set(-.5);
+    	drive2.set(.5);
+    }
+    public void autoLeftTurn() {
+    	drive1.set(.5);
+    	drive2.set(-.5);
+    }
+    public void autoDriveReverse() {
+    	drive1.set(-.5);
+    	drive2.set(-.5);
+    }
     
     public void stop() {
     	drive1.set(0);
     	drive2.set(0);
     	
-    }
-    @Override
+    }*/
     public void periodic() {
         // Put code here to be run every loop
     

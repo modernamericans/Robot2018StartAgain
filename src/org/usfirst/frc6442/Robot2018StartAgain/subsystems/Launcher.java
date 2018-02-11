@@ -55,6 +55,9 @@ public class Launcher extends Subsystem {
     @Override
     public void periodic() {
         // Put code here to be run every loop
+    	
+    	//when button pressed, launch?
+    	//when button pressed, intake?
 
     }
 
