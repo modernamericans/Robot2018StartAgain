@@ -28,7 +28,10 @@ public class LaunchCube extends CommandGroup {
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-
+    	addSequential(new PrepLaunch());
+    	addSequential(new Feed());
+    	addSequential(new LaunchDone());
+    	
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());

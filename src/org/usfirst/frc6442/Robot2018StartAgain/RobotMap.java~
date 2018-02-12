@@ -38,11 +38,11 @@ public class RobotMap {
     public static SpeedController driveTrainDrive2;
     public static SpeedControllerGroup driveTrainSpeedControllerGroup1;
     public static PowerDistributionPanel distributionPanelPowerDistributionPanel1;
-    public static SpeedController launcherLaunchStage1-1;
-    public static SpeedController launcherLaunchStage1-2;
+    public static SpeedController launcherLaunchStage1R;
+    public static SpeedController launcherLaunchStage1L;
     public static SpeedControllerGroup launcherLauncherStage1Group;
-    public static SpeedController launcherLauncherStage2-1;
-    public static SpeedController launcherLauncherStage2-2;
+    public static SpeedController launcherLauncherStage2R;
+    public static SpeedController launcherLauncherStage2L;
     public static SpeedControllerGroup launcherLauncherStage2Group;
     public static Ultrasonic distanceSensorUltrasonic1;
 
@@ -71,22 +71,22 @@ public class RobotMap {
         distributionPanelPowerDistributionPanel1 = new PowerDistributionPanel(0);
         LiveWindow.addSensor("DistributionPanel", "PowerDistributionPanel 1", distributionPanelPowerDistributionPanel1);
         
-        launcherLaunchStage1-1 = new Spark(2);
-        LiveWindow.addActuator("Launcher", "Launch Stage 1-1", (Spark) launcherLaunchStage1-1);
-        launcherLaunchStage1-1.setInverted(false);
-        launcherLaunchStage1-2 = new Spark(3);
-        LiveWindow.addActuator("Launcher", "Launch Stage 1-2", (Spark) launcherLaunchStage1-2);
-        launcherLaunchStage1-2.setInverted(false);
-        launcherLauncherStage1Group = new SpeedControllerGroup(launcherLaunchStage1-1, launcherLaunchStage1-2  );
+        launcherLaunchStage1R = new Spark(2);
+        LiveWindow.addActuator("Launcher", "Launch Stage 1R", (Spark) launcherLaunchStage1R);
+        launcherLaunchStage1R.setInverted(false);
+        launcherLaunchStage1L = new Spark(3);
+        LiveWindow.addActuator("Launcher", "Launch Stage 1L", (Spark) launcherLaunchStage1L);
+        launcherLaunchStage1L.setInverted(false);
+        launcherLauncherStage1Group = new SpeedControllerGroup(launcherLaunchStage1R, launcherLaunchStage1L  );
         LiveWindow.addActuator("Launcher", "Launcher Stage 1 Group ", launcherLauncherStage1Group);
         
-        launcherLauncherStage2-1 = new Spark(5);
-        LiveWindow.addActuator("Launcher", "Launcher Stage 2-1", (Spark) launcherLauncherStage2-1);
-        launcherLauncherStage2-1.setInverted(false);
-        launcherLauncherStage2-2 = new Spark(4);
-        LiveWindow.addActuator("Launcher", "Launcher Stage 2-2", (Spark) launcherLauncherStage2-2);
-        launcherLauncherStage2-2.setInverted(false);
-        launcherLauncherStage2Group = new SpeedControllerGroup(launcherLauncherStage2-1, launcherLauncherStage2-2  );
+        launcherLauncherStage2R = new Spark(5);
+        LiveWindow.addActuator("Launcher", "Launcher Stage 2R", (Spark) launcherLauncherStage2R);
+        launcherLauncherStage2R.setInverted(false);
+        launcherLauncherStage2L = new Spark(4);
+        LiveWindow.addActuator("Launcher", "Launcher Stage 2L", (Spark) launcherLauncherStage2L);
+        launcherLauncherStage2L.setInverted(false);
+        launcherLauncherStage2Group = new SpeedControllerGroup(launcherLauncherStage2R, launcherLauncherStage2L  );
         LiveWindow.addActuator("Launcher", "Launcher Stage 2 Group", launcherLauncherStage2Group);
         
         distanceSensorUltrasonic1 = new Ultrasonic(0, 1);

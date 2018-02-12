@@ -47,7 +47,7 @@ public class AutonomousCommand extends Command {
     	//start location stuff?
     	//if not set, pick opposite of game info
     	
-    	if right side == our side;
+    /*	if right side == our side;
     	  	go to right start;
     	  		left start/center start;
     	  			Robot.DriveTrain.autoDriveforward(time[seconds, revolution of wheels, something else?])
@@ -63,7 +63,7 @@ public class AutonomousCommand extends Command {
     	 		Stop;
     	 if left side == our side;
     	 	invert right's and left's under right side;
-    	
+    	*/
     	
     	
     }
