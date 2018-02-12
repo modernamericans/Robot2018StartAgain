@@ -35,7 +35,11 @@ public class Launcher extends Subsystem {
     private final SpeedController launchStage1R = RobotMap.launcherLaunchStage1R;
     private final SpeedController launchStage1L = RobotMap.launcherLaunchStage1L;
     private final SpeedControllerGroup launcherStage1Group = RobotMap.launcherLauncherStage1Group;
+<<<<<<< HEAD
     private final SpeedController launcherStage2R = RobotMap.launcherLauncherStage2R;
+=======
+    private final SpeedController launcherStage2-1 = RobotMap.launcherLauncherStage2-1;
+>>>>>>> master
     private final SpeedController launcherStage2L = RobotMap.launcherLauncherStage2L;
     private final SpeedControllerGroup launcherStage2Group = RobotMap.launcherLauncherStage2Group;
 

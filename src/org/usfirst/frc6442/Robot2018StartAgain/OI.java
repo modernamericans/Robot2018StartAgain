@@ -90,7 +90,10 @@ public class OI {
         // SmartDashboard Buttons
         SmartDashboard.putData("LaunchCube", new LaunchCube());
         SmartDashboard.putData("Secure", new Secure());
+<<<<<<< HEAD
         SmartDashboard.putData("Teleop Command", new TeleopCommand());
+=======
+>>>>>>> master
         SmartDashboard.putData("DriveCommand", new DriveCommand());
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         SmartDashboard.putData("Grab", new Grab());

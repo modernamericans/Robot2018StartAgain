@@ -41,7 +41,11 @@ public class RobotMap {
     public static SpeedController launcherLaunchStage1R;
     public static SpeedController launcherLaunchStage1L;
     public static SpeedControllerGroup launcherLauncherStage1Group;
+<<<<<<< HEAD
     public static SpeedController launcherLauncherStage2R;
+=======
+    public static SpeedController launcherLauncherStage2-1;
+>>>>>>> master
     public static SpeedController launcherLauncherStage2L;
     public static SpeedControllerGroup launcherLauncherStage2Group;
     public static Ultrasonic distanceSensorUltrasonic1;
@@ -80,6 +84,7 @@ public class RobotMap {
         launcherLauncherStage1Group = new SpeedControllerGroup(launcherLaunchStage1R, launcherLaunchStage1L  );
         LiveWindow.addActuator("Launcher", "Launcher Stage 1 Group ", launcherLauncherStage1Group);
         
+<<<<<<< HEAD
         launcherLauncherStage2R = new Spark(5);
         LiveWindow.addActuator("Launcher", "Launcher Stage 2R", (Spark) launcherLauncherStage2R);
         launcherLauncherStage2R.setInverted(false);
@@ -87,6 +92,15 @@ public class RobotMap {
         LiveWindow.addActuator("Launcher", "Launcher Stage 2L", (Spark) launcherLauncherStage2L);
         launcherLauncherStage2L.setInverted(false);
         launcherLauncherStage2Group = new SpeedControllerGroup(launcherLauncherStage2R, launcherLauncherStage2L  );
+=======
+        launcherLauncherStage2-1 = new Spark(5);
+        LiveWindow.addActuator("Launcher", "Launcher Stage 2-1", (Spark) launcherLauncherStage2-1);
+        launcherLauncherStage2-1.setInverted(false);
+        launcherLauncherStage2L = new Spark(4);
+        LiveWindow.addActuator("Launcher", "Launcher Stage 2L", (Spark) launcherLauncherStage2L);
+        launcherLauncherStage2L.setInverted(false);
+        launcherLauncherStage2Group = new SpeedControllerGroup(launcherLauncherStage2-1, launcherLauncherStage2L  );
+>>>>>>> master
         LiveWindow.addActuator("Launcher", "Launcher Stage 2 Group", launcherLauncherStage2Group);
         
         distanceSensorUltrasonic1 = new Ultrasonic(0, 1);

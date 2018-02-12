@@ -47,6 +47,7 @@ public class DriveTrain extends Subsystem {
 
         //Set the default command for a subsystem here.
        setDefaultCommand(new DriveCommand());
+<<<<<<< HEAD
     }
     
     public void joyDrive(double rightMagnitude, double leftMagnitude) {
@@ -77,6 +78,22 @@ public class DriveTrain extends Subsystem {
     	drive2.set(0);
     	
     }*/
+=======
+    }
+    
+    public void joyDrive(double rightMagnitude, double leftMagnitude) {
+    	drive1.set(rightMagnitude);
+    	drive2.set(leftMagnitude);
+    	System.out.println("joyDrive output:" + rightMagnitude + " " + leftMagnitude);
+    }
+    
+    public void stop() {
+    	drive1.set(0);
+    	drive2.set(0);
+    	
+    }
+    @Override
+>>>>>>> master
     public void periodic() {
         // Put code here to be run every loop
     
