@@ -37,11 +37,32 @@ public class AutonomousCommand extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+    	//Game info stuff
+    	//start location stuff?
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+    	//start location stuff?
+    	//if not set, pick opposite of game info
+    	
+    	if right side == our side;
+    	  	go to right start;
+    	  		left start/center start;
+    	  			Robot.DriveTrain.autoDriveforward(time[seconds, revolution of wheels, something else?])
+    	  			Robot.DriveTrain.autoLeftTurn(time);
+    	  			Robot.DriveTrain.autoDriveForward(time);
+    	  			Robot.DriveTrain.autoRightTurn(time);
+    	  		right start;
+    	  			Robot.DriveTrain.autoDriveForward(time);
+    	  		Robot.DriveTrain.autoDriveForward(time);
+    	  		Robot.DriveTrain.autoTurnLeft(time);
+    	  		eject block;
+    	  		Robot.DriveTrain.autoRightTurn(time);
+    	 		Stop;
+    	 if left side == our side;
+    	 	invert right's and left's under right side;
     	
     	
     	
