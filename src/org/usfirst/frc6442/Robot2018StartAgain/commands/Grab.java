@@ -42,6 +42,12 @@ public class Grab extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+    	double triggerLeft = Robot.oi.joystick.getRawAxis(4);
+    	double triggerRight = Robot.oi.joystick.getRawAxis(5);
+    	double speed = triggerLeft-triggerRight;
+    	Robot.grabber.grab(speed);
+    	System.out.println(speed);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
