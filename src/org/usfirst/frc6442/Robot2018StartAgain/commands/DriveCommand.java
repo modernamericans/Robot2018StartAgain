@@ -10,6 +10,7 @@
 
 
 package org.usfirst.frc6442.Robot2018StartAgain.commands;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
@@ -40,6 +41,7 @@ public class DriveCommand extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+
     
     }
     

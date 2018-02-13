@@ -62,22 +62,22 @@ public class RobotMap {
         pneumaticsSolenoid2 = new Solenoid(0, 3);
         LiveWindow.addActuator("Pneumatics", "Solenoid 2", pneumaticsSolenoid2);
         
-        driveTrainDrive1 = new Spark(0);
+        driveTrainDrive1 = new Spark(1);
         LiveWindow.addActuator("DriveTrain", "Drive 1", (Spark) driveTrainDrive1);
         driveTrainDrive1.setInverted(false);
-        driveTrainDrive2 = new Spark(1);
+        driveTrainDrive2 = new Spark(2);
         LiveWindow.addActuator("DriveTrain", "Drive 2", (Spark) driveTrainDrive2);
-        driveTrainDrive2.setInverted(false);
+        driveTrainDrive2.setInverted(true);
         driveTrainSpeedControllerGroup1 = new SpeedControllerGroup(driveTrainDrive1, driveTrainDrive2  );
         LiveWindow.addActuator("DriveTrain", "Speed Controller Group 1", driveTrainSpeedControllerGroup1);
         
         distributionPanelPowerDistributionPanel1 = new PowerDistributionPanel(0);
         LiveWindow.addSensor("DistributionPanel", "PowerDistributionPanel 1", distributionPanelPowerDistributionPanel1);
         
-        launcherLaunchStage1R = new Spark(2);
+        launcherLaunchStage1R = new Spark(3);
         LiveWindow.addActuator("Launcher", "Launch Stage 1R", (Spark) launcherLaunchStage1R);
         launcherLaunchStage1R.setInverted(false);
-        launcherLaunchStage1L = new Spark(3);
+        launcherLaunchStage1L = new Spark(4);
         LiveWindow.addActuator("Launcher", "Launch Stage 1L", (Spark) launcherLaunchStage1L);
         launcherLaunchStage1L.setInverted(false);
         launcherLauncherStage1Group = new SpeedControllerGroup(launcherLaunchStage1R, launcherLaunchStage1L  );
@@ -86,7 +86,7 @@ public class RobotMap {
         launcherLauncherStage2R = new Spark(5);
         LiveWindow.addActuator("Launcher", "Launcher Stage 2R", (Spark) launcherLauncherStage2R);
         launcherLauncherStage2R.setInverted(false);
-        launcherLauncherStage2L = new Spark(4);
+        launcherLauncherStage2L = new Spark(6);
         LiveWindow.addActuator("Launcher", "Launcher Stage 2L", (Spark) launcherLauncherStage2L);
         launcherLauncherStage2L.setInverted(false);
         launcherLauncherStage2Group = new SpeedControllerGroup(launcherLauncherStage2R, launcherLauncherStage2L  );
@@ -95,10 +95,10 @@ public class RobotMap {
         distanceSensorUltrasonic1 = new Ultrasonic(0, 1);
         LiveWindow.addSensor("DistanceSensor", "Ultrasonic 1", distanceSensorUltrasonic1);
         
-        grabberGrabberR = new Spark(6);
+        grabberGrabberR = new Spark(7);
         LiveWindow.addActuator("Grabber", "GrabberR", (Spark) grabberGrabberR);
         grabberGrabberR.setInverted(true);
-        grabberGrabberL = new Spark(7);
+        grabberGrabberL = new Spark(8);
         LiveWindow.addActuator("Grabber", "GrabberL", (Spark) grabberGrabberL);
         grabberGrabberL.setInverted(false);
         grabberGrabbingGroup = new SpeedControllerGroup(grabberGrabberR, grabberGrabberL  );

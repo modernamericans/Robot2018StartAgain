@@ -50,8 +50,12 @@ public class DriveTrain extends Subsystem {
     }
     
     public void joyDrive(double rightMagnitude, double leftMagnitude) {
-    	drive1.set(rightMagnitude);
-    	drive2.set(leftMagnitude);
+//    	drive1.set(1);
+//    	drive2.set(1);
+    	 
+    	
+    	drive1.set(-rightMagnitude);
+    	drive2.set(-leftMagnitude);
     	System.out.println("joyDrive output:" + rightMagnitude + " " + leftMagnitude);
     }
     /*Stanton's idea of Autonomous
