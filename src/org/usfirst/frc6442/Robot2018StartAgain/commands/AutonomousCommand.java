@@ -74,7 +74,7 @@ public class AutonomousCommand extends Command {
     @Override
     protected void execute() {
     	StartLocation = Preferences.getInstance();
-        
+        boo;
         if (StartRight == false && StartLeft == false && StartCenter == false)
         	System.out.println("Please Enter a Start Location");
         else if(StartRight == true)
