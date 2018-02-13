@@ -10,6 +10,7 @@
 
 
 package org.usfirst.frc6442.Robot2018StartAgain.commands;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 
@@ -37,8 +38,30 @@ public class AutonomousCommand extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	//Game info stuff
-    	//start location stuff?
+    	
+    	String GameData;
+    	int near;
+    	int scale;
+    	
+    	Preferences StartLocation;
+        boolean StartLeft = false;
+        boolean StartCenter = false;
+        boolean StartRight = false;
+        
+        StartLocation = Preferences.getInstance();
+        StartLeft = false;
+        StartCenter = false;
+        StartRight = false;
+        
+        if (StartRight == false && StartLeft == false && StartCenter == false)
+        	System.out.println("Please Enter a Start Location");
+        else if(StartRight == true)
+        	System.out.println("Auto Right Start");
+        else if (StartLeft == true)
+        	System.out.println("Auto Left Start");
+        else if(StartCenter == true)
+        	System.out.println("Auto Center Start");
+        else {}
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -46,10 +69,11 @@ public class AutonomousCommand extends Command {
     protected void execute() {
     	//start location stuff?
     	//if not set, pick opposite of game info
-    	
-    /*	if right side == our side;
+    	/*
+    	if right side == our side;
     	  	go to right start;
-    	  		left start/center start;
+    	  		left
+    	  		 start/center start;
     	  			Robot.DriveTrain.autoDriveforward(time[seconds, revolution of wheels, something else?])
     	  			Robot.DriveTrain.autoLeftTurn(time);
     	  			Robot.DriveTrain.autoDriveForward(time);
@@ -63,9 +87,9 @@ public class AutonomousCommand extends Command {
     	 		Stop;
     	 if left side == our side;
     	 	invert right's and left's under right side;
-    	*/
     	
     	
+    */
     }
 
     // Make this return true when this Command no longer needs to run execute()
