@@ -10,6 +10,7 @@
 
 
 package org.usfirst.frc6442.Robot2018StartAgain.commands;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
@@ -39,10 +40,15 @@ public class AutonomousCommand extends Command {
     @Override
     protected void initialize() {
     	
-    	String GameData;
+    	String gameData = DriverStation.getInstance().getGameSpecificMessage();
     	int near;
-    	int scale;
-    	
+    	if(gameData.charAt(0) == 'L') {
+    		near = 0;
+    	}
+    	else {
+    		near = 1;
+    	}
+    	    	
     	Preferences StartLocation;
         boolean StartLeft = false;
         boolean StartCenter = false;
@@ -67,6 +73,17 @@ public class AutonomousCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+    	StartLocation = Preferences.getInstance();
+        
+        if (StartRight == false && StartLeft == false && StartCenter == false)
+        	System.out.println("Please Enter a Start Location");
+        else if(StartRight == true)
+        	System.out.println("Auto Right Start");
+        else if (StartLeft == true)
+        	System.out.println("Auto Left Start");
+        else if(StartCenter == true)
+        	System.out.println("Auto Center Start");
+        else {}
     	//start location stuff?
     	//if not set, pick opposite of game info
     	/*
