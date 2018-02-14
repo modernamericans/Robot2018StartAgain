@@ -55,17 +55,17 @@ public class DriveTrain extends Subsystem {
     	System.out.println("joyDrive output:" + rightMagnitude + " " + leftMagnitude);
     }
     
-    public void autoDriveForward() {
-    	drive1.set(.5);
-    	drive2.set(.5);
+    public void autoDriveForward(double speed) {//idealy these are times, but for now, this works.
+    	drive1.set(speed);
+    	drive2.set(speed);
     }
-    public void autoRightTurn() {
-    	drive1.set(-.5);
-    	drive2.set(.5);
+    public void autoRightTurn(double speed) {
+    	drive1.set(-speed);
+    	drive2.set(speed);
     }
-    public void autoLeftTurn() {
-    	drive1.set(.5);
-    	drive2.set(-.5);
+    public void autoLeftTurn(double speed) {
+    	drive1.set(speed);
+    	drive2.set(-speed);
     }
     public void autoDriveReverse() {
     	drive1.set(-.5);
