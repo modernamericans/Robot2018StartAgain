@@ -51,6 +51,10 @@ public class Grabber extends Subsystem {
     public void grab(double speed) {
     	grabbingGroup.set(speed);
     }
+    public void grabAD(double speedR, double speedL) {
+    	grabberR.set(speedR);
+    	grabberL.set(speedL);
+    }
     //public void push(double speed) {
     	//grabbingGroup.set(-speed);
     //}

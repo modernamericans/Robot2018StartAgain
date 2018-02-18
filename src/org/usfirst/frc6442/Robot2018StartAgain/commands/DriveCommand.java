@@ -51,16 +51,28 @@ public class DriveCommand extends Command {
     //THIS IS THE ROBOT2018STARTAGAIN CODE//////////////////////////////////////////////////////
     protected void execute() {
     	
-    	//System.out.println("Yes, I work");
-    	double right = Robot.oi.joystick.getRawAxis(1);
-    	double left = Robot.oi.joystick.getRawAxis(3);
+    	int mode = Robot.controllerMode;
     	
-//    	if(right > 0.1 || left > 0.1){
-//			RobotMap.driveTrainDrive1.set(-right);
-    		Robot.driveTrain.joyDrive(right, left);
+    	System.out.println(mode);
+    	
+    	if(mode == 0) {
+        	double right = Robot.oi.joystick.getRawAxis(5);
+        	double left = Robot.oi.joystick.getRawAxis(1);
+        	Robot.driveTrain.joyDrive(right, left);	
+    	}else if(mode == 1) {
+        	double triggerLeft = Robot.oi.joystick.getRawAxis(2);
+        	double triggerRight = Robot.oi.joystick.getRawAxis(3);
+        	Robot.driveTrain.joyDrive(triggerRight, triggerLeft);
+    	}
+    	
+    	
+
+    		
+    		
+    	
     		
 //		}
-		System.out.println(right + ", " + left);
+//		System.out.println(right + ", " + left);
     }
 
     // Make this return true when this Command no longer needs to run execute()

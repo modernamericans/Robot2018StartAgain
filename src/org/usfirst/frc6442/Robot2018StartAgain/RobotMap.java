@@ -64,10 +64,10 @@ public class RobotMap {
         
         driveTrainDrive1 = new Spark(1);
         LiveWindow.addActuator("DriveTrain", "Drive 1", (Spark) driveTrainDrive1);
-        driveTrainDrive1.setInverted(false);
+        driveTrainDrive1.setInverted(true);
         driveTrainDrive2 = new Spark(2);
         LiveWindow.addActuator("DriveTrain", "Drive 2", (Spark) driveTrainDrive2);
-        driveTrainDrive2.setInverted(true);
+        driveTrainDrive2.setInverted(false);
         driveTrainSpeedControllerGroup1 = new SpeedControllerGroup(driveTrainDrive1, driveTrainDrive2  );
         LiveWindow.addActuator("DriveTrain", "Speed Controller Group 1", driveTrainSpeedControllerGroup1);
         
@@ -97,10 +97,10 @@ public class RobotMap {
         
         grabberGrabberR = new Spark(7);
         LiveWindow.addActuator("Grabber", "GrabberR", (Spark) grabberGrabberR);
-        grabberGrabberR.setInverted(true);
+        grabberGrabberR.setInverted(false);
         grabberGrabberL = new Spark(8);
         LiveWindow.addActuator("Grabber", "GrabberL", (Spark) grabberGrabberL);
-        grabberGrabberL.setInverted(false);
+        grabberGrabberL.setInverted(true);
         grabberGrabbingGroup = new SpeedControllerGroup(grabberGrabberR, grabberGrabberL  );
         LiveWindow.addActuator("Grabber", "Grabbing Group", grabberGrabbingGroup);
         
