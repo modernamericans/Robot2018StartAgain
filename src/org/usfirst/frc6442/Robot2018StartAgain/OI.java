@@ -60,6 +60,8 @@ public class OI {
     public JoystickButton buttonLB;
     public JoystickButton buttonStart;
     public JoystickButton buttonBack;
+    public JoystickButton buttonLS;
+    public JoystickButton buttonRS;
     public Joystick joystick;
    
     
@@ -72,22 +74,26 @@ public class OI {
         
         //created individual joystick names for testing because robot won't move. -Kenzie
         
-       buttonBack = new JoystickButton(joystick, 12);
-        buttonBack.whenPressed(new AutonomousCommand());
-        //buttonStart = new JoystickButton(joystick, 13);
-        //buttonStart.whenPressed(new AutonomousCommand());
-        buttonLB = new JoystickButton(joystick, 10);
-        buttonLB.whenPressed(new AutonomousCommand());
-        buttonRB = new JoystickButton(joystick, 11);
-        buttonRB.whenPressed(new AutonomousCommand());
-        buttonY = new JoystickButton(joystick, 9);
-        buttonY.whenPressed(new AutonomousCommand());
-        buttonX = new JoystickButton(joystick, 8);
-        buttonX.whenPressed(new AutonomousCommand());
-        buttonB = new JoystickButton(joystick, 7);
-        buttonB.whenPressed(new AutonomousCommand());
-        buttonA = new JoystickButton(joystick, 6);
-       buttonA.whenPressed(new AutonomousCommand());
+       buttonBack = new JoystickButton(joystick, 7);
+        
+        //buttonStart = new JoystickButton(joystick, 8);
+       
+        buttonLB = new JoystickButton(joystick, 5);
+        
+        buttonRB = new JoystickButton(joystick, 6);
+        
+        buttonY = new JoystickButton(joystick, 4);
+        
+        buttonX = new JoystickButton(joystick, 3);
+        
+        buttonB = new JoystickButton(joystick, 2);
+        
+        buttonA = new JoystickButton(joystick, 1);
+       //buttonA.whenPressed(new AutonomousCommand());
+       buttonLS = new JoystickButton(joystick, 9);
+       
+       buttonRS = new JoystickButton(joystick, 10);
+       
 
 
         // SmartDashboard Buttons

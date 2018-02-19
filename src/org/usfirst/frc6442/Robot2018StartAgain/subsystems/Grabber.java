@@ -11,6 +11,7 @@
 
 package org.usfirst.frc6442.Robot2018StartAgain.subsystems;
 
+import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
 import org.usfirst.frc6442.Robot2018StartAgain.commands.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -49,11 +50,19 @@ public class Grabber extends Subsystem {
          setDefaultCommand(new Grab());//We have Grab and Push one and the same, when they should be seperated
     }
     public void grab(double speed) {
-    	grabbingGroup.set(speed);
+    	grabbingGroup.set(fracSpeed(speed));
     }
     public void grabAD(double speedR, double speedL) {
-    	grabberR.set(speedR);
-    	grabberL.set(speedL);
+    	grabberR.set(fracSpeed(speedR));
+    	grabberL.set(fracSpeed(speedL));
+    }
+   
+    public double fracSpeed(double speed) {
+    	double speedFrac = Robot.prefs.getDouble("speedFrac", 1);
+//    	return speedFrac * speed;
+    	return speed;
+    	
+    	
     }
     //public void push(double speed) {
     	//grabbingGroup.set(-speed);

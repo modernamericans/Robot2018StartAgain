@@ -12,6 +12,7 @@
 
 package org.usfirst.frc6442.Robot2018StartAgain;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -24,6 +25,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc6442.Robot2018StartAgain.commands.*;
 import org.usfirst.frc6442.Robot2018StartAgain.subsystems.*;
 import edu.wpi.first.wpilibj.Preferences;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -47,6 +49,8 @@ public class Robot extends TimedRobot {
     public static DistanceSensor distanceSensor;
     public static Grabber grabber;
     
+    public static Preferences prefs;
+    
     public static int controllerMode = 0;
     
 
@@ -66,6 +70,9 @@ public class Robot extends TimedRobot {
         launcher = new Launcher();
         distanceSensor = new DistanceSensor();
         grabber = new Grabber();
+        prefs = Preferences.getInstance();
+        CameraServer.getInstance().startAutomaticCapture();
+        
         
        
         
@@ -97,6 +104,28 @@ public class Robot extends TimedRobot {
 
     }
 
+    public void controllerPeriodic() {
+    	
+    	boolean finesse = Robot.oi.buttonLB.get();
+    	boolean tankDrive = Robot.oi.buttonRB.get();
+    	boolean steerDrive = Robot.oi.buttonY.get();    
+    	
+    	if(finesse) {
+    		controllerMode = 1;
+    		System.out.println("finesse change");	
+    		}
+    	
+    	if(tankDrive) {
+    		controllerMode = 0;
+    		System.out.println("tankDrive change");
+	
+    	}
+        if(steerDrive) {
+        	controllerMode = 2;
+        	System.out.println("steerDrive change");
+        }
+    }
+    
     @Override
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
@@ -158,7 +187,8 @@ String gameData;
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
+
+    	if (autonomousCommand != null) autonomousCommand.cancel();
         driveCommand = chooser.getSelected();//?
         if(driveCommand != null) driveCommand.start();//?
         System.out.println("I am working");
@@ -170,6 +200,9 @@ String gameData;
      */
     @Override
     public void teleopPeriodic() {
-        Scheduler.getInstance().run();
+    	
+    	controllerPeriodic();
+    	
+    	Scheduler.getInstance().run();
     }
 }

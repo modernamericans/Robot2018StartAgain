@@ -63,8 +63,28 @@ public class DriveCommand extends Command {
         	double triggerLeft = Robot.oi.joystick.getRawAxis(2);
         	double triggerRight = Robot.oi.joystick.getRawAxis(3);
         	Robot.driveTrain.joyDrive(triggerRight, triggerLeft);
-    	}
+    	}else if(mode == 2) {
+        	double joySpeed = Robot.oi.joystick.getRawAxis(1);
+        	double joySteer = Robot.oi.joystick.getRawAxis(4);
+        	
+        	double b = joySteer * joySteer / 2;
+        	double r = 1;
+        	double l = 1;
+        	
+        if(joySteer > 0) {
+        r = r - b;	
+        }
+        if(joySteer < 0) {
+            l = l - b;	
+        }
+        r = r * joySpeed;
+        l = l * joySpeed; 
+       
     	
+    	Robot.driveTrain.joyDrive(r, l);
+    	
+    	}
+    	//4axis left is -, right is +. (steer)
     	
 
     		

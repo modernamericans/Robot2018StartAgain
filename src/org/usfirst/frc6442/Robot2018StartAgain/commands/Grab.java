@@ -50,25 +50,15 @@ public class Grab extends Command {
     protected void execute() {
     	
     	int mode = Robot.controllerMode;
-    	boolean modeShift = Robot.oi.buttonY.get();
-    	
-    	if(modeShift) {
-    		Robot.controllerMode = mode +1;
-    		mode = Robot.controllerMode;
-    		
-    	if(mode > 1) {
-    		Robot.controllerMode = 0;
-    		mode = Robot.controllerMode;
-    		
-    	}
-    	}
+
     	
     	
-    	if(mode == 0) { 
+    	if(mode == 0 || mode == 2) { 
     	double triggerLeft = Robot.oi.joystick.getRawAxis(2);
     	double triggerRight = Robot.oi.joystick.getRawAxis(3);
-    	double speed = triggerLeft-triggerRight;
+    	double speed = triggerRight-triggerLeft;
     	Robot.grabber.grab(speed);
+    	
     	
     	
     }else if(mode == 1){
