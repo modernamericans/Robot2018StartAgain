@@ -99,65 +99,85 @@ public class AutonomousCommand extends Command {
         //System Grab block, however that is done      
         //System.out.println("Got Block");
         
+        
     	if (near == 1){
     	  	System.out.println("Go to Right Start");
     	  	if(StartLeft == true || StartCenter == true) {
+    	  		//driveForward(.5)
     	  			Robot.driveTrain.autonomousForward(.5);
     	  			Timer.delay(1);//need to time things out
+    	  			//turnRight(90)
     	  			Robot.driveTrain.autonomousRightTurn(.5);
     	  			Timer.delay(1);
+    	  			//driveForward(.5)
     	  			Robot.driveTrain.autonomousForward(.5);
     	  			Timer.delay(1);
-    	  			if(StartLeft == true){
+    	  			if(StartLeft == true) {
+    	  				//driveForward(.5)
     	  				Robot.driveTrain.autonomousForward(.5);
     	  				Timer.delay(1);
     	  			}
+    	  			//turnLeft(90)
     	  			Robot.driveTrain.autonomousLeftTurn(.5);
     	  			}
     	  		if(StartRight == true) {
+    	  			//driveForward(.5)
     	  			Robot.driveTrain.autonomousForward(.5);
     	  			Timer.delay(1);
     	  		}
+    	  		//driveForward(.5)
     	  	Robot.driveTrain.autonomousForward(.5);
     	  	Timer.delay(1);
+    	  //turnLeft(90)
     	  	Robot.driveTrain.autonomousLeftTurn(.5);
     	  	Timer.delay(1);
     	  	//eject block;
-    	  	//timer.delay(1);
+    	  	//driveReverse(.5);
+    	  //turnRight(90)
     	  	Robot.driveTrain.autonomousRightTurn(.5);
     	  	Timer.delay(1);
-    	 	Robot.driveTrain.autonomousForward(0);
+    	  //driveForward(0)
+    	  	Robot.driveTrain.autonomousForward(0);
     	  	}
     	if (near == 0) {
 	  	System.out.println("Go to Left Start");
 	  	if(StartRight == true || StartCenter == true) {
+	  	//driveForward(.5)
 	  		Robot.driveTrain.autonomousForward(.5);
 	  		Timer.delay(1);//need to time things out
+	  	//turnLeft(90)
 	  		Robot.driveTrain.autonomousLeftTurn(.5);
 	  		Timer.delay(1);
+	  	//driveForward(.5)
 	  		Robot.driveTrain.autonomousForward(.5);
 	  		Timer.delay(1);
 	  		if(StartLeft == true){
+	  		//driveForward(.5)
 	  			Robot.driveTrain.autonomousForward(.5);
 	  			Timer.delay(1);
 	  		}
+	  	//turnRight(90)
 	  		Robot.driveTrain.autonomousRightTurn(.5);
 	  		}
 	  	if(StartRight == true) {
+	  	//driveForward(.5)
 	  		Robot.driveTrain.autonomousForward(.5);
 	  		Timer.delay(1);
 	  	}
+	  //driveForward(.5)
 	  	Robot.driveTrain.autonomousForward(.5);
 	  	Timer.delay(1);
+	  //turnRight(90)
 	  	Robot.driveTrain.autonomousRightTurn(.5);
 	  	Timer.delay(1);
 	  	//eject block;
-	  	//timer.delay(1);
+	  	//driveReverse(.5);
+	  //turnLeft(90)
 	  	Robot.driveTrain.autonomousLeftTurn(.5);
 	  	Timer.delay(1);
+	  //driveForward(0)
 	 	Robot.driveTrain.autonomousForward(0);
 	  	}
-
         //  time++;
     }
 

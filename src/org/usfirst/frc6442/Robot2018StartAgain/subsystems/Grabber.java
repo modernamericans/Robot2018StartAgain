@@ -49,7 +49,8 @@ public class Grabber extends Subsystem {
          setDefaultCommand(new Grab());//We have Grab and Push one and the same, when they should be seperated
     }
     public void grab(double speed) {
-    	grabbingGroup.set(speed);
+    	grabberR.set(speed);
+    	grabberL.set(speed);
     }
     //public void push(double speed) {
     	//grabbingGroup.set(-speed);
