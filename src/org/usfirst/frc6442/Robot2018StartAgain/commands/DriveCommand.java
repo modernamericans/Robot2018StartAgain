@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 
+
 /**
  *
  */
@@ -55,33 +56,44 @@ public class DriveCommand extends Command {
     	
     	System.out.println(mode);
     	
-    	if(mode == 0) {
-        	double right = Robot.oi.joystick.getRawAxis(5);
-        	double left = Robot.oi.joystick.getRawAxis(1);
-        	Robot.driveTrain.joyDrive(right, left);	
-    	}else if(mode == 1) {
-        	double triggerLeft = Robot.oi.joystick.getRawAxis(2);
-        	double triggerRight = Robot.oi.joystick.getRawAxis(3);
-        	Robot.driveTrain.joyDrive(triggerRight, triggerLeft);
-    	}else if(mode == 2) {
-        	double joySpeed = Robot.oi.joystick.getRawAxis(1);
-        	double joySteer = Robot.oi.joystick.getRawAxis(4);
+		double left = Robot.oi.leftStickVertical(1);
+		double right = Robot.oi.rightStickVertical(1);
+		
+
+    	if(mode == Robot.tankMode) {
+//        	double right = Robot.oi.joystick.getRawAxis(5);
+//        	double left = Robot.oi.joystick.getRawAxis(1);
+
+    		Robot.driveTrain.joyDrive(right, left);	
+//    	}else if(mode == Robot.t) {
+//        	double triggerLeft = Robot.oi.joystick.getRawAxis(2);
+//        	double triggerRight = Robot.oi.joystick.getRawAxis(3);
+//        	Robot.driveTrain.joyDrive(triggerRight, triggerLeft);
+    	}else if(mode == Robot.arcadeMode) {
+
+//        	double joySpeed = Robot.oi.joystick.getRawAxis(1);
+//        	double joySteer = Robot.oi.joystick.getRawAxis(4);
+    		double joySpeed = left;
+    		double joySteer = right;
+    		
+        	double steerStrength = joySteer * joySteer / 2;
+        	double rightValue = 1;
+        	double leftValue = 1;
         	
-        	double b = joySteer * joySteer / 2;
-        	double r = 1;
-        	double l = 1;
+        	boolean steerRight = joySteer > 0;
+        	boolean steerLeft = joySteer < 0;
         	
-        if(joySteer > 0) {
-        r = r - b;	
+        if(steerRight) {
+        rightValue = rightValue - steerStrength;	
         }
-        if(joySteer < 0) {
-            l = l - b;	
+        if(steerLeft) {
+        	leftValue = leftValue - steerStrength;	
         }
-        r = r * joySpeed;
-        l = l * joySpeed; 
+        rightValue = rightValue * joySpeed;
+        leftValue = leftValue * joySpeed; 
        
     	
-    	Robot.driveTrain.joyDrive(r, l);
+    	Robot.driveTrain.joyDrive(rightValue, leftValue);
     	
     	}
     	//4axis left is -, right is +. (steer)

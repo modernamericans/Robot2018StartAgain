@@ -53,20 +53,22 @@ public class Grab extends Command {
 
     	
     	
-    	if(mode == 0 || mode == 2) { 
-    	double triggerLeft = Robot.oi.joystick.getRawAxis(2);
-    	double triggerRight = Robot.oi.joystick.getRawAxis(3);
+//    	if(mode == Robot.tankMode || mode == Robot.arcadeMode) { 
+//    	double triggerLeft = Robot.oi.joystick.getRawAxis(2);
+//    	double triggerRight = Robot.oi.joystick.getRawAxis(3);
+    	double triggerLeft = Robot.oi.leftTrigger(1);
+    	double triggerRight = Robot.oi.rightTrigger(1);
     	double speed = triggerRight-triggerLeft;
     	Robot.grabber.grab(speed);
     	
     	
-    	
-    }else if(mode == 1){
-    		double joyLeft = Robot.oi.joystick.getRawAxis(1);
-        	double joyRight = Robot.oi.joystick.getRawAxis(5);
-        	Robot.grabber.grabAD(joyRight, joyLeft);
-        	
-    	}
+//    	}
+//    }else if(mode == 1){
+//    		double joyLeft = Robot.oi.joystick.getRawAxis(1);
+//        	double joyRight = Robot.oi.joystick.getRawAxis(5);
+//        	Robot.grabber.grabAD(joyRight, joyLeft);
+//        	
+//    	}
     }
     
 

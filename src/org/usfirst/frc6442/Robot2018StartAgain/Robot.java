@@ -51,6 +51,9 @@ public class Robot extends TimedRobot {
     
     public static Preferences prefs;
     
+    public static int tankMode = 0;
+    public static int arcadeMode = 1;
+    
     public static int controllerMode = 0;
     
 
@@ -106,23 +109,23 @@ public class Robot extends TimedRobot {
 
     public void controllerPeriodic() {
     	
-    	boolean finesse = Robot.oi.buttonLB.get();
-    	boolean tankDrive = Robot.oi.buttonRB.get();
-    	boolean steerDrive = Robot.oi.buttonY.get();    
+    	//boolean finesse = Robot.oi.buttonLB.get();
+    	boolean tankDrive = Robot.oi.rightBumper(1);
+    	boolean arcadeDrive = Robot.oi.leftBumper(1);  
     	
-    	if(finesse) {
-    		controllerMode = 1;
-    		System.out.println("finesse change");	
-    		}
+//    	if(finesse) {
+//    		controllerMode = 1;
+//    		System.out.println("finesse change");	
+//    		}
     	
     	if(tankDrive) {
-    		controllerMode = 0;
+    		controllerMode = tankMode;
     		System.out.println("tankDrive change");
 	
     	}
-        if(steerDrive) {
-        	controllerMode = 2;
-        	System.out.println("steerDrive change");
+        if(arcadeDrive) {
+        	controllerMode = arcadeMode;
+        	System.out.println("arcadeDrive change");
         }
     }
     
