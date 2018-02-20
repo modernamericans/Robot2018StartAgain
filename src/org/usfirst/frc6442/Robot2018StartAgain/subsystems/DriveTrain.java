@@ -63,7 +63,7 @@ public class DriveTrain extends Subsystem {
     	drive1.set(-speed);
     	drive2.set(speed);
     }
-    public void autonoumousLeftTurn(double speed) {
+    public void autonomousLeftTurn(double speed) {
     	drive1.set(speed);
     	drive2.set(-speed);
     }
@@ -72,11 +72,6 @@ public class DriveTrain extends Subsystem {
     	drive2.set(-speed);
     }
     
-    public void stop(int speed) {
-    	drive1.set(speed);
-    	drive2.set(speed);
-    	
-    }
     public void periodic() {
         // Put code here to be run every loop
     
