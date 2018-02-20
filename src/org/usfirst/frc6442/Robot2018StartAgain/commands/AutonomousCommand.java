@@ -12,6 +12,7 @@
 package org.usfirst.frc6442.Robot2018StartAgain.commands;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 
@@ -100,15 +101,23 @@ public class AutonomousCommand extends Command {
     	if (near == 1);
     	  	System.out.println("Go to Right Start");
     	  	if(StartLeft == true || StartCenter == true) {
-    	  			Robot.driveTrain.autoDriveForward();
-    	  			Robot.DriveTrain.autoLeftTurn(time);
-    	  			Robot.DriveTrain.autoDriveForward(time);
-    	  			Robot.DriveTrain.autoRightTurn(time);
+    	  			Robot.driveTrain.autonomousForward(.5);
+    	  			Timer.delay(1);
+    	  			Robot.driveTrain.autonoumousLeftTurn(.5);
+    	  			Timer.delay(1);
+    	  			Robot.driveTrain.autonomousForward(.5);
+    	  			Timer.delay(1);
+    	  			if(StartLeft == true){
+    	  				Robot.driveTrain.autonomousForward(.5);
+    	  				Timer.delay(1);
+    	  			}
+    	  			Robot.driveTrain.autonomousRightTurn(.5);
     	  			}
     	  		if(StartRight == true) {
-    	  			Robot.DriveTrain.autoDriveForward(time);
-    	  		Robot.DriveTrain.autoDriveForward(time);
-    	  		Robot.DriveTrain.autoTurnLeft(time);
+    	  			Robot.driveTrain.autonomousForward(.5);
+    	  			Timer.delay(1);
+    	  		Robot.driveTrain.autonomousForward(.5);
+    	  		Robot.driveTrain.autonomousTurnLeft(.5);
     	  		eject block;
     	  		Robot.DriveTrain.autoRightTurn(time);
     	 		Stop;
