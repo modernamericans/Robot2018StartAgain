@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc6442.Robot2018StartAgain.commands.*;
@@ -48,6 +49,7 @@ public class Robot extends TimedRobot {
     public static Launcher launcher;
     public static DistanceSensor distanceSensor;
     public static Grabber grabber;
+    public static NetworkTable netTable;
     
     public static Preferences prefs;
     
@@ -75,6 +77,7 @@ public class Robot extends TimedRobot {
         grabber = new Grabber();
         prefs = Preferences.getInstance();
         CameraServer.getInstance().startAutomaticCapture();
+        netTable = NetworkTable.getTable("DataTable");
         
         
        
