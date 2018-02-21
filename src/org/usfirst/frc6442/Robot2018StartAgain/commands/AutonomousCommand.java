@@ -90,19 +90,19 @@ public class AutonomousCommand extends Command {
         
         if(near == 1) {
         	if(StartRight == true)
-        		run(AutonomousRightGoRight);
+        		run(AutonomousRightGoRight());
         	if(StartCenter == true)
-        		run(AutonomousCenterGoRight);
+        		run(AutonomousCenterGoRight());
         	if(StartLeft == true)
-        		run(AutonomousLeftGoRight);
+        		run(AutonomousLeftGoRight());
         }
         if(near == 0) {
         	if(StartRight == true)
-        		run(AutonomousRightGoLeft);
+        		run(AutonomousRightGoLeft());
         	if(StartCenter == true)
-        		run(AutonomousCenterGoLeft);
+        		run(AutonomousCenterGoLeft());
         	if(StartLeft == true)
-        		run(AutonomousLeftGoLeft);
+        		run(AutonomousLeftGoLeft());
         }
              
         /*System Grab block, however that is done      
