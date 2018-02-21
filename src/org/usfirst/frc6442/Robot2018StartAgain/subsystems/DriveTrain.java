@@ -52,7 +52,7 @@ public class DriveTrain extends Subsystem {
     public void joyDrive(double rightMagnitude, double leftMagnitude) {
     	drive1.set(rightMagnitude);
     	drive2.set(leftMagnitude);
-    	System.out.println("joyDrive output:" + rightMagnitude + " " + leftMagnitude);
+    	//System.out.println("joyDrive output:" + rightMagnitude + " " + leftMagnitude);
     }
     
     //realistically it would be driveForward(double speed, int time)

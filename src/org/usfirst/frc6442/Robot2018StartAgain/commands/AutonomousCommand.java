@@ -51,13 +51,13 @@ public class AutonomousCommand extends Command {
         Robot.StartCenter = false;
         Robot.StartRight = false;
         
-        if (StartRight == false && StartLeft == false && StartCenter == false)
+        if (Robot.StartRight == false && Robot.StartLeft == false && Robot.StartCenter == false)
         	System.out.println("Please Enter a Start Location");
-        else if(StartRight == true)
+        else if(Robot.StartRight == true)
         	System.out.println("Auto Right Start");
-        else if (StartLeft == true)
+        else if (Robot.StartLeft == true)
         	System.out.println("Auto Left Start");
-        else if(StartCenter == true)
+        else if(Robot.StartCenter == true)
         	System.out.println("Auto Center Start");
         else {}
        // time = 0;
@@ -67,39 +67,39 @@ public class AutonomousCommand extends Command {
     @Override
     protected void execute() {
     	
-        StartLocation = Preferences.getInstance();
-        StartLeft = false;
-        StartCenter = false;
-        StartRight = false;
+        Robot.StartLocation = Preferences.getInstance();
+        Robot.StartLeft = false;
+        Robot.StartCenter = false;
+        Robot.StartRight = false;
     	
-        if (StartRight == false && StartLeft == false && StartCenter == false)
+        if (Robot.StartRight == false && Robot.StartLeft == false && Robot.StartCenter == false)
         	System.out.println("Why no start Location");
-        	if(Robot.near == 1)
-        		StartLeft = true;
+        	if(Robot.near == 0)//num should be one
+        		Robot.StartLeft = true;
         	else
-        		StartRight = true;
-        if(StartRight == true)
+        		Robot.StartRight = true;
+        if(Robot.StartRight == true)
         	System.out.println("Auto Right Start");
-        else if (StartLeft == true)
+        else if (Robot.StartLeft == true)
         	System.out.println("Auto Left Start");
-        else if(StartCenter == true)
+        else if(Robot.StartCenter == true)
         	System.out.println("Auto Center Start");
         else {}
         
         if(Robot.near == 1) {
-        	if(StartRight == true)
+        	if(Robot.StartRight == true)
         		Scheduler.getInstance().add(new AutonomousRightGoRight());
-        	if(StartCenter == true)
+        	if(Robot.StartCenter == true)
         		Scheduler.getInstance().add(new AutonomousCenterGoRight());
-        	if(StartLeft == true)
+        	if(Robot.StartLeft == true)
         		Scheduler.getInstance().add(new AutonomousLeftGoRight());
         }
         if(Robot.near == 0) {
-        	if(StartRight == true)
+        	if(Robot.StartRight == true)
         		Scheduler.getInstance().add(new AutonomousRightGoLeft());
-        	if(StartCenter == true)
+        	if(Robot.StartCenter == true)
         		Scheduler.getInstance().add(new AutonomousCenterGoLeft());
-        	if(StartLeft == true)
+        	if(Robot.StartLeft == true)
         		Scheduler.getInstance().add(new AutonomousLeftGoLeft());
         }
              
