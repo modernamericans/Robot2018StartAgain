@@ -61,6 +61,17 @@ public class Launcher extends Subsystem {
 
     }
 
+    public void secure() {
+    	
+    }
+    
+    public void exchange() {
+    	
+    }
+    
+    public void feed() {
+    	
+    }
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
