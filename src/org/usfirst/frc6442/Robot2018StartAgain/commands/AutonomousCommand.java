@@ -132,7 +132,7 @@ public class AutonomousCommand extends Command {
     	  	Robot.driveTrain.autonomousLeftTurn(.5);
     	  	Timer.delay(1);
     	  	//eject block;
-    	  	//driveReverse(.5);
+    	  	//driveReverse(.5,time);
     	  //turnRight(90)
     	  	Robot.driveTrain.autonomousRightTurn(.5);
     	  	Timer.delay(1);
@@ -164,7 +164,7 @@ public class AutonomousCommand extends Command {
 	  		Robot.driveTrain.autonomousForward(.5);
 	  		Timer.delay(1);
 	  	}
-	  //driveForward(.5)
+	  //driveForward(.5,time)
 	  	Robot.driveTrain.autonomousForward(.5);
 	  	Timer.delay(1);
 	  //turnRight(90)
