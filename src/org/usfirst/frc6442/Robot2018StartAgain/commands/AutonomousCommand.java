@@ -50,7 +50,7 @@ public class AutonomousCommand extends Command {
     protected void initialize() {
     	
     	String gameData = DriverStation.getInstance().getGameSpecificMessage();
-    	 if(gameData.charAt(0) == 'L') {
+    	if(gameData.charAt(0) == 'L') {
     		near = 0;
     	}
     	else if(gameData.charAt(0) == 'R') {
