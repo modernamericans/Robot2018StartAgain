@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
+
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 
 /**
@@ -88,27 +90,27 @@ public class AutonomousCommand extends Command {
         	System.out.println("Auto Center Start");
         else {}
         
-        if(near == 1) {
+        if(Robot.near == 1) {
         	if(StartRight == true)
-        		run(AutonomousRightGoRight());
+        		Scheduler.getInstance().add(new AutonomousRightGoRight());
         	if(StartCenter == true)
-        		run(AutonomousCenterGoRight());
+        		Scheduler.getInstance().add(new AutonomousCenterGoRight());
         	if(StartLeft == true)
-        		run(AutonomousLeftGoRight());
+        		Scheduler.getInstance().add(new AutonomousLeftGoRight());
         }
-        if(near == 0) {
+        if(Robot.near == 0) {
         	if(StartRight == true)
-        		run(AutonomousRightGoLeft());
+        		Scheduler.getInstance().add(new AutonomousRightGoLeft());
         	if(StartCenter == true)
-        		run(AutonomousCenterGoLeft());
+        		Scheduler.getInstance().add(new AutonomousCenterGoLeft());
         	if(StartLeft == true)
-        		run(AutonomousLeftGoLeft());
+        		Scheduler.getInstance().add(new AutonomousLeftGoLeft());
         }
              
         /*System Grab block, however that is done      
         System.out.println("Got Block");
         */
-    	if (near == 1){
+    	/*if (near == 1){
     	  	System.out.println("Go to Right Start");
     	  	if(StartLeft == true || StartCenter == true) {
     	  		//driveForward(.5,time)
@@ -187,7 +189,7 @@ public class AutonomousCommand extends Command {
 	 	Robot.driveTrain.autonomousForward(0);
 	  	}
           //time++;
-    }
+    }*/
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
