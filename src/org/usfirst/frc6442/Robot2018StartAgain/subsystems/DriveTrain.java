@@ -55,7 +55,13 @@ public class DriveTrain extends Subsystem {
     	System.out.println("joyDrive output:" + rightMagnitude + " " + leftMagnitude);
     }
     
-    public void autonomousForward(double speed) {//idealy these are times, but for now, this works.
+    //realistically it would be driveForward(double speed, int time)
+    //  drive1.set(speed);
+    //  drive2.set(speed);
+    //  do for(time);
+    //  etc for rest of them
+    
+    public void autonomousForward(double speed) {
     	drive1.set(speed);
     	drive2.set(speed);
     }

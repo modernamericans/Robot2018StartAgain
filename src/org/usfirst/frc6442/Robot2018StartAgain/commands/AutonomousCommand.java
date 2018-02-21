@@ -97,8 +97,8 @@ public class AutonomousCommand extends Command {
         else if(StartCenter == true)
         	System.out.println("Auto Center Start");
         else {}
-        //System Grab block, however that is done      
-        //System.out.println("Got Block");
+        /*System Grab block, however that is done      
+        System.out.println("Got Block");
         
         
     	if (near == 1){
@@ -179,7 +179,7 @@ public class AutonomousCommand extends Command {
 	  //driveForward(0,time)
 	 	Robot.driveTrain.autonomousForward(0);
 	  	}
-        //  time++;
+          time++;*/
     }
 
     // Make this return true when this Command no longer needs to run execute()
