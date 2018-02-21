@@ -53,9 +53,11 @@ public class AutonomousCommand extends Command {
     	
     	if(gameData.charAt(0) == 'L') {
     		near = 0;
+    		System.out.println("Near is Left");
     	}
     	else if(gameData.charAt(0) == 'R') {
     		near = 1;
+    		System.out.println("Near is Right");
     	}
         
         StartLocation = Preferences.getInstance();
@@ -97,10 +99,27 @@ public class AutonomousCommand extends Command {
         else if(StartCenter == true)
         	System.out.println("Auto Center Start");
         else {}
+        
+        if(near == 1) {
+        	if(StartRight == true)
+        		run(AutonomousRightGoRight);
+        	if(StartCenter == true)
+        		run(AutonomousCenterGoRight);
+        	if(StartLeft == true)
+        		run(AutonomousLeftGoRight);
+        }
+        if(near == 0) {
+        	if(StartRight == true)
+        		run(AutonomousRightGoLeft);
+        	if(StartCenter == true)
+        		run(AutonomousCenterGoLeft);
+        	if(StartLeft == true)
+        		run(AutonomousLeftGoLeft);
+        }
+             
         /*System Grab block, however that is done      
         System.out.println("Got Block");
-        
-        
+        */
     	if (near == 1){
     	  	System.out.println("Go to Right Start");
     	  	if(StartLeft == true || StartCenter == true) {
@@ -179,7 +198,7 @@ public class AutonomousCommand extends Command {
 	  //driveForward(0,time)
 	 	Robot.driveTrain.autonomousForward(0);
 	  	}
-          time++;*/
+          //time++;
     }
 
     // Make this return true when this Command no longer needs to run execute()
