@@ -13,6 +13,7 @@
 package org.usfirst.frc6442.Robot2018StartAgain.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
+import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
 
 /**
 *
@@ -44,6 +45,9 @@ public class LauncherSpinSlow extends Command {
  // Called just before this Command runs the first time
  @Override
  protected void initialize() {
+ 
+	 RobotMap.launcherLauncherStage2Group.set(0.5);
+ 
  }
 
  // Called repeatedly when this Command is scheduled to run

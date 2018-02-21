@@ -12,6 +12,7 @@
 package org.usfirst.frc6442.Robot2018StartAgain.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
+import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
 
 /**
  *
@@ -37,7 +38,11 @@ public class Feed extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	System.out.println("Starting System 1");
+    	
+    	RobotMap.launcherLauncherStage1Group.set(1);
+    	
+    	
+//    	System.out.println("Starting System 1");
     }
 
     // Called repeatedly when this Command is scheduled to run
