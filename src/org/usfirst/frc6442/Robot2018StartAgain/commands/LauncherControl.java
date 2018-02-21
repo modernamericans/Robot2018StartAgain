@@ -11,7 +11,7 @@ public class LauncherControl {
 	    boolean isAPressed = Robot.oi.xbox.getAButton();
 	    
 	    if(isAPressed) {
-	    	Scheduler.getInstance().add(new LaunchCube());
+	    	Scheduler.getInstance().add(new LaunchCube(1));
 	    	
 	    	
 	    }
