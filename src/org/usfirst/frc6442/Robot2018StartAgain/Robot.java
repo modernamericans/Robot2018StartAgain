@@ -77,9 +77,9 @@ public class Robot extends TimedRobot {
         StartRight = false;
         
         if (StartRight == false && StartLeft == false && StartCenter == false)
-        	while(StartRight == false && StartLeft == false && StartCenter == false){
+        //	while(StartRight == false && StartLeft == false && StartCenter == false){
         		System.out.println("Please Enter a Start Location");
-        	}
+        	//}
         else if(StartRight == true)
         	System.out.println("Auto Right Start");
         else if (StartLeft == true)
@@ -160,7 +160,7 @@ public class Robot extends TimedRobot {
         driveCommand = chooser.getSelected();//?
         if(driveCommand != null) driveCommand.start();//?
         System.out.println("I am working");
-        public boid
+        //public void
         
     }
 
