@@ -36,6 +36,7 @@ public AutonomousLeftGoLeft() {
    // Command1 and Command2 will run in parallel.
 	//addSequential(new DriveForwardTime(1));
 	addSequential(new TurnRight(.2));
+	System.out.println("********************************************************HI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**********************************************")
 	//addSequential(new DriveForwardTime(1));
 	//addSequential(new LaunchLow);
 	//addSequential(new DriveReverseTime(1));
