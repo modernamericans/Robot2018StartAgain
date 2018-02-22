@@ -45,6 +45,7 @@ public DriveReverseTime(double timetoDrive) {
 protected void initialize() {
 	 timer.start();
 	 Robot.driveTrain.reverse();
+	 System.out.println("BEEP BEEP BEEP");
 }
 
 // Called repeatedly when this Command is scheduled to run

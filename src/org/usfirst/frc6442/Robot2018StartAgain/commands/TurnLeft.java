@@ -45,6 +45,7 @@ public TurnLeft(double turnDegrees) {
 protected void initialize() {
 	 timer.start();
 	 Robot.driveTrain.leftTurn();
+	 System.out.println("WE'RE GONNA SPIN COUNTER-CLOCKWISE TONIGHT");
 }
 
 // Called repeatedly when this Command is scheduled to run

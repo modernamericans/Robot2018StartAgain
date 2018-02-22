@@ -45,6 +45,7 @@ public DriveStop(double timetoDrive) {
 protected void initialize() {
 	 timer.start();
 	 Robot.driveTrain.stop();
+	 System.out.println("Waiting For New Instruction");
 }
 
 //Called repeatedly when this Command is scheduled to run

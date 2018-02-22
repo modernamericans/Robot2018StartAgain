@@ -45,6 +45,7 @@ public Timer timer;
  protected void initialize() {
 	 timer.start();
 	 Robot.driveTrain.forward();
+	 System.out.println("Driving Forward");
  }
 
  // Called repeatedly when this Command is scheduled to run
