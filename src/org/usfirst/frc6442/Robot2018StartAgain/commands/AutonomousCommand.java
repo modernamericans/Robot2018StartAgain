@@ -75,7 +75,7 @@ public class AutonomousCommand extends Command {
     	
         if (Robot.StartRight == false && Robot.StartLeft == false && Robot.StartCenter == false)
         	System.out.println("Why no start Location");
-        	if(Robot.near == 0)//num should be one
+        	if(Robot.near == 1)
         		Robot.StartLeft = true;
         	else
         		Robot.StartRight = true;
