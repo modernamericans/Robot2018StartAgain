@@ -110,8 +110,8 @@ public class AutonomousCommand extends Command {
              
         /*System Grab block, however that is done      
         System.out.println("Got Block");
-        */
-    	/*if (near == 1){
+        
+    	if (near == 1){
     	  	System.out.println("Go to Right Start");
     	  	if(StartLeft == true || StartCenter == true) {
     	  		//driveForward(.5,time)
