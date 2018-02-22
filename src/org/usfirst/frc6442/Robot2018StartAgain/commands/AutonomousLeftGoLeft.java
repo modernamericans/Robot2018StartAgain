@@ -36,11 +36,11 @@ public AutonomousLeftGoLeft() {
    // Command1 and Command2 will run in parallel.
 	addSequential(new DriveForwardTime(1));
 	addSequential(new DriveStop(1));
-	addSequential(new TurnRight(.2));
-	//addSequential(new DriveForwardTime(1));
+	addSequential(new TurnRight(90));//this is in degrees, not in terms of time
+	addSequential(new DriveForwardTime(1));
 	//addSequential(new LaunchLow);
-	//addSequential(new DriveReverseTime(1));
-	//addSequential(new TurnLeft(90));	
+	addSequential(new DriveReverseTime(1));
+	addSequential(new TurnLeft(90));	
 
    // A command group will require all of the subsystems that each member
    // would require.
