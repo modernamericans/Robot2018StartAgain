@@ -11,6 +11,7 @@
 
 package org.usfirst.frc6442.Robot2018StartAgain.subsystems;
 
+import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
 import org.usfirst.frc6442.Robot2018StartAgain.commands.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -50,6 +51,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public void joyDrive(double rightMagnitude, double leftMagnitude) {
+<<<<<<< HEAD
     	drive1.set(rightMagnitude);
     	drive2.set(leftMagnitude);
     	//System.out.println("joyDrive output:" + rightMagnitude + " " + leftMagnitude);
@@ -62,6 +64,25 @@ public class DriveTrain extends Subsystem {
     //  etc for rest of them
     
     public void forward() {
+=======
+//    	drive1.set(1);
+//    	drive2.set(1);
+    	 
+    	
+    	drive1.set(fracSpeed(rightMagnitude));
+    	drive2.set(fracSpeed(leftMagnitude));
+//    	System.out.println("joyDrive output:" + rightMagnitude + " " + leftMagnitude);
+    }
+    public double fracSpeed(double speed) {
+    	double speedFrac = Robot.prefs.getDouble("speedFrac", 1);
+//    	return speedFrac * speed;
+    	return speed;
+    	
+    	
+    }
+    
+    /*Stanton's idea of Autonomous
+>>>>>>> master
     	drive1.set(.5);
     	drive2.set(.5);
     }

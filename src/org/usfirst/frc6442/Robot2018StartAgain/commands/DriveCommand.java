@@ -10,10 +10,12 @@
 
 
 package org.usfirst.frc6442.Robot2018StartAgain.commands;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
+
 
 /**
  *
@@ -40,6 +42,7 @@ public class DriveCommand extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+
     
     }
     
@@ -49,16 +52,59 @@ public class DriveCommand extends Command {
     //THIS IS THE ROBOT2018STARTAGAIN CODE//////////////////////////////////////////////////////
     protected void execute() {
     	
-    	//System.out.println("Yes, I work");
-    	double right = Robot.oi.joystick.getRawAxis(1);
-    	double left = Robot.oi.joystick.getRawAxis(3);
+    	int mode = Robot.controllerMode;
     	
-//    	if(right > 0.1 || left > 0.1){
-//			RobotMap.driveTrainDrive1.set(-right);
-    		Robot.driveTrain.joyDrive(right, left);
+    	System.out.println(mode);
+    	
+		double left = Robot.oi.leftStickVertical(1);
+		double right = Robot.oi.rightStickVertical(1);
+		
+
+    	if(mode == Robot.tankMode) {
+//        	double right = Robot.oi.joystick.getRawAxis(5);
+//        	double left = Robot.oi.joystick.getRawAxis(1);
+
+    		Robot.driveTrain.joyDrive(right, left);	
+//    	}else if(mode == Robot.t) {
+//        	double triggerLeft = Robot.oi.joystick.getRawAxis(2);
+//        	double triggerRight = Robot.oi.joystick.getRawAxis(3);
+//        	Robot.driveTrain.joyDrive(triggerRight, triggerLeft);
+    	}else if(mode == Robot.arcadeMode) {
+
+//        	double joySpeed = Robot.oi.joystick.getRawAxis(1);
+//        	double joySteer = Robot.oi.joystick.getRawAxis(4);
+    		double joySpeed = left;
+    		double joySteer = right;
+    		
+        	double steerStrength = joySteer * joySteer / 2;
+        	double rightValue = 1;
+        	double leftValue = 1;
+        	
+        	boolean steerRight = joySteer > 0;
+        	boolean steerLeft = joySteer < 0;
+        	
+        if(steerRight) {
+        rightValue = rightValue - steerStrength;	
+        }
+        if(steerLeft) {
+        	leftValue = leftValue - steerStrength;	
+        }
+        rightValue = rightValue * joySpeed;
+        leftValue = leftValue * joySpeed; 
+       
+    	
+    	Robot.driveTrain.joyDrive(rightValue, leftValue);
+    	
+    	}
+    	//4axis left is -, right is +. (steer)
+    	
+
+    		
+    		
+    	
     		
 //		}
-		System.out.println(right + ", " + left);
+//		System.out.println(right + ", " + left);
     }
 
     // Make this return true when this Command no longer needs to run execute()
