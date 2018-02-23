@@ -82,6 +82,7 @@ public class DriveTrain extends Subsystem {
     }
     
     /*Stanton's idea of Autonomous
+    public void autoDriveForward() {
 >>>>>>> master
     	drive1.set(.5);
     	drive2.set(.5);
