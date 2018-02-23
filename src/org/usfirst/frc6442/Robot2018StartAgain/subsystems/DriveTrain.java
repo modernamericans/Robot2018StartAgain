@@ -51,7 +51,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public void joyDrive(double rightMagnitude, double leftMagnitude) {
-<<<<<<< HEAD
+
     	drive1.set(rightMagnitude);
     	drive2.set(leftMagnitude);
     	//System.out.println("joyDrive output:" + rightMagnitude + " " + leftMagnitude);
@@ -64,13 +64,13 @@ public class DriveTrain extends Subsystem {
     //  etc for rest of them
     
     public void forward() {
-=======
-//    	drive1.set(1);
-//    	drive2.set(1);
+
+    	drive1.set(1);
+    	drive2.set(1);
     	 
     	
-    	drive1.set(fracSpeed(rightMagnitude));
-    	drive2.set(fracSpeed(leftMagnitude));
+    	//drive1.set(fracSpeed(rightMagnitude));
+    	//drive2.set(fracSpeed(leftMagnitude));
 //    	System.out.println("joyDrive output:" + rightMagnitude + " " + leftMagnitude);
     }
     public double fracSpeed(double speed) {
@@ -81,9 +81,9 @@ public class DriveTrain extends Subsystem {
     	
     }
     
-    /*Stanton's idea of Autonomous
+    
     public void autoDriveForward() {
->>>>>>> master
+
     	drive1.set(.5);
     	drive2.set(.5);
     }
