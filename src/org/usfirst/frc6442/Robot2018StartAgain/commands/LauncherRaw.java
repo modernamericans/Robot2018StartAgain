@@ -12,6 +12,7 @@
 
 package org.usfirst.frc6442.Robot2018StartAgain.commands;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -32,8 +33,8 @@ import org.usfirst.frc6442.Robot2018StartAgain.subsystems.*;
 public class LauncherRaw extends Command {
 	
 	public Timer timer;
-	private final SpeedControllerGroup feeder = RobotMap.launcherLauncherStage1Group;
-	private final SpeedControllerGroup launcher = RobotMap.launcherLauncherStage2Group;
+	private final SpeedController feeder = RobotMap.launcherLaunchStage1;
+	private final SpeedController launcher = RobotMap.launcherLaunchStage2;
 	private final DoubleSolenoid doubleSolenoid = RobotMap.pneumaticsDoubleSolenoid;
 	
 	
@@ -69,37 +70,37 @@ protected void initialize() {
 @Override
 protected void execute() {
 	
-    boolean isAPressed = Robot.oi.xbox.getAButton();
-    boolean isBPressed = Robot.oi.xbox.getBButton();
-    
-    if(isAPressed) {
-
-    	timer.reset();
-    	timer.start();
-    	doubleSolenoid.set(DoubleSolenoid.Value.kForward);
-    	launcher.set(.5);
-    	
-    	while(timer.get() < 1);
-    	feeder.set(1);
-    	
-    	while(timer.get() < 2);
-    	launcher.set(0);
-    	feeder.set(0);
-    }
-    if(isBPressed) {
-
-    	timer.reset();
-    	timer.start();
-    	doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
-    	launcher.set(1);
-    	
-    	while(timer.get() < 1);
-    	feeder.set(1);
-    	
-    	while(timer.get() < 2);
-    	launcher.set(0);
-    	feeder.set(0);
-    }
+//    boolean isAPressed = Robot.oi.xbox.getAButton();
+//    boolean isYPressed = Robot.oi.xbox.getYButton();
+//    
+//    if(isAPressed) {
+//
+//    	timer.reset();
+//    	timer.start();
+//    	doubleSolenoid.set(DoubleSolenoid.Value.kForward);
+//    	launcher.set(.5);
+//    	
+//    	while(timer.get() < 1);
+//    	feeder.set(1);
+//    	
+//    	while(timer.get() < 2);
+//    	launcher.set(0);
+//    	feeder.set(0);
+//    }
+//    if(isYPressed) {
+//
+//    	timer.reset();
+//    	timer.start();
+//    	doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
+//    	launcher.set(1);
+//    	
+//    	while(timer.get() < 1);
+//    	feeder.set(1);
+//    	
+//    	while(timer.get() < 2);
+//    	launcher.set(0);
+//    	feeder.set(0);
+//    }
 }
 
 

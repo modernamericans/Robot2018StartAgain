@@ -67,17 +67,17 @@ public class OI {
 //    public JoystickButton buttonY2;
 //    public JoystickButton buttonA2;
     
-    public XboxController xbox = new XboxController(1);
-    public XboxController xbox2 = new XboxController(2);
+    public XboxController xbox = new XboxController(2);
+    public XboxController xbox2 = new XboxController(3);
     
     
     public double rightStickVertical(int controllerNumber) {
     	
     	XboxController controller = xbox;
     	
-    	if(controllerNumber == 2) {
-    		controller = xbox2;
-    	}
+//    	if(controllerNumber == 2) {
+//    		controller = xbox2;
+//    	}
     	return controller.getY(Hand.kRight);
     }
     
@@ -85,9 +85,9 @@ public class OI {
     	
     	XboxController controller = xbox;
     	
-    	if(controllerNumber == 2) {
-    		controller = xbox2;
-    	}
+//    	if(controllerNumber == 2) {
+//    		controller = xbox2;
+//    	}
     	return controller.getY(Hand.kLeft);
     }
     
@@ -95,9 +95,9 @@ public class OI {
     	
     	XboxController controller = xbox;
     	
-    	if(controllerNumber == 2) {
-    		controller = xbox2;
-    	}
+//    	if(controllerNumber == 2) {
+//    		controller = xbox2;
+//    	}
     	return controller.getX(Hand.kRight);
     }
     
@@ -105,9 +105,9 @@ public class OI {
     	
     	XboxController controller = xbox;
     	
-    	if(controllerNumber == 2) {
-    		controller = xbox2;
-    	}
+//    	if(controllerNumber == 2) {
+//    		controller = xbox2;
+//    	}
     	return controller.getX(Hand.kLeft);
     }
     
@@ -115,9 +115,9 @@ public class OI {
     	
     	XboxController controller = xbox;
     	
-    	if(controllerNumber == 2) {
-    		controller = xbox2;
-    	}
+//    	if(controllerNumber == 2) {
+//    		controller = xbox2;
+//    	}
     	return controller.getTriggerAxis(Hand.kRight);
     }
     
@@ -125,9 +125,9 @@ public class OI {
     	
     	XboxController controller = xbox;
     	
-    	if(controllerNumber == 2) {
-    		controller = xbox2;
-    	}
+//    	if(controllerNumber == 2) {
+//    		controller = xbox2;
+//    	}
     	return controller.getTriggerAxis(Hand.kLeft);
     }
     
@@ -135,9 +135,9 @@ public class OI {
     	
     	XboxController controller = xbox;
     	
-    	if(controllerNumber == 2) {
-    		controller = xbox2;
-    	}
+//    	if(controllerNumber == 2) {
+//    		controller = xbox2;
+//    	}
     	return controller.getBumper(Hand.kLeft);
     }
     
@@ -145,9 +145,9 @@ public class OI {
     	
     	XboxController controller = xbox;
     	
-    	if(controllerNumber == 2) {
-    		controller = xbox2;
-    	}
+//    	if(controllerNumber == 2) {
+//    		controller = xbox2;
+//    	}
     	return controller.getBumper(Hand.kRight);
     }
     
@@ -155,9 +155,9 @@ public class OI {
     	
     	XboxController controller = xbox;
     	
-    	if(controllerNumber == 2) {
-    		controller = xbox2;
-    	}
+//    	if(controllerNumber == 2) {
+//    		controller = xbox2;
+//    	}
     	return controller.getAButton();
     }
     
@@ -165,9 +165,9 @@ public class OI {
     	
     	XboxController controller = xbox;
     	
-    	if(controllerNumber == 2) {
-    		controller = xbox2;
-    	}
+//    	if(controllerNumber == 2) {
+//    		controller = xbox2;
+//    	}
     	return controller.getYButton();
     }
     
@@ -175,9 +175,9 @@ public class OI {
     	
     	XboxController controller = xbox;
     	
-    	if(controllerNumber == 2) {
-    		controller = xbox2;
-    	}
+//    	if(controllerNumber == 2) {
+//    		controller = xbox2;
+//    	}
     	return controller.getBButton();
     }
     
@@ -185,9 +185,9 @@ public class OI {
     	
     	XboxController controller = xbox;
     	
-    	if(controllerNumber == 2) {
-    		controller = xbox2;
-    	}
+//    	if(controllerNumber == 2) {
+//    		controller = xbox2;
+//    	}
     	return controller.getXButton();
     }
     
