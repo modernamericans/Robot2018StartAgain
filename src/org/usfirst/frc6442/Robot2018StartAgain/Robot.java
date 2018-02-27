@@ -218,7 +218,47 @@ String gameData;
     	Scheduler.getInstance().run();
     }
     
-    public void initDashboard {
+    public void initDashboard() {
+    	SmartDashboard.putData(Scheduler.getInstance());
+    	SmartDashboard.putData(driveTrain);
+    	SmartDashboard.putData(distributionPanel);
+    	SmartDashboard.putData(distanceSensor);
+    	SmartDashboard.putData(grabber);
+    	SmartDashboard.putData(launcher);
+    	SmartDashboard.putData(pneumatics);
+    	SmartDashboard.putData("Drive Command", new DriveCommand());
+    	SmartDashboard.putData("Autonomous Command",new AutonomousCommand());
+    	SmartDashboard.putData("Feed", new Feed());
+    	SmartDashboard.putData("AutonomousCenterGoLeft", new AutonomousCenterGoLeft());
+    	SmartDashboard.putData("AutonomousCenterGoRight", new AutonomousCenterGoRight());
+    	SmartDashboard.putData("AutonomousDisplay", new AutonomousDisplay());
+    	SmartDashboard.putData("AutonomousLeftGoLeft", new AutonomousLeftGoLeft());
+    	SmartDashboard.putData("AutonomousLeftGoRight", new AutonomousLeftGoRight());
+    	SmartDashboard.putData("AutonomousRightGoLeft", new AutonomousRightGoLeft());
+    	SmartDashboard.putData("AutonomousRightGoRight", new AutonomousRightGoRight());
+    	SmartDashboard.putData("DriveForwardTime", new DriveForwardTime(1.0));
+    	SmartDashboard.putData("DriveReverseTime", new DriveReverseTime(1.0));
+    	SmartDashboard.putData("DriveStop", new DriveStop(2.0));
+    	SmartDashboard.putData("Exchange", new Exchange());
+    	SmartDashboard.putData("ExchangeCube", new ExchangeCube());
+    	SmartDashboard.putData("Grab", new Grab());
+    	SmartDashboard.putData("LaunchCube", new LaunchCube(1));
+    	SmartDashboard.putData("LaunchDone", new LaunchDone(1));
+    	//SmartDashboard.putData("LauncherControl", new LauncherControl());
+    	SmartDashboard.putData("LauncherDown", new LauncherDown());
+    	SmartDashboard.putData("LauncherRaw", new LauncherRaw());
+    	SmartDashboard.putData("LauncherSpinFast", new LauncherSpinFast());
+    	SmartDashboard.putData("LauncherSpinSlow", new LauncherSpinSlow());
+    	SmartDashboard.putData("LauncherUp", new LauncherUp());
+    	SmartDashboard.putData("PneumaticsLeveler", new PneumaticsLeveler());
+    	SmartDashboard.putData("PrepLaunch", new PrepLaunch());
+    	SmartDashboard.putData("Push", new Push());
+    	SmartDashboard.putData("Secure", new Secure());
+    	SmartDashboard.putData("SecureCube", new SecureCube());
+    	SmartDashboard.putData("TeleopCommand", new TeleopCommand());
+    	SmartDashboard.putData("TurnLeft", new TurnLeft(90.0));
+    	SmartDashboard.putData("TurnRight", new TurnRight(90.0));
+
     	
     }	
 }
