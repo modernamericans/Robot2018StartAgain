@@ -36,8 +36,8 @@ public class RobotMap {
     public static Solenoid pneumaticsSolenoid1;
     public static Solenoid pneumaticsSolenoid2;
     public static DoubleSolenoid pneumaticsDoubleSolenoid;
-    public static SpeedController driveTrainDrive1;
-    public static SpeedController driveTrainDrive2;
+    public static SpeedController driveTrainDriveRight;
+    public static SpeedController driveTrainDriveLeft;
     public static SpeedControllerGroup driveTrainSpeedControllerGroup1;
     public static PowerDistributionPanel distributionPanelPowerDistributionPanel1;
     public static SpeedController launcherLaunchStage1;
@@ -69,13 +69,13 @@ public class RobotMap {
         pneumaticsSolenoid2 = new Solenoid(0, 3);
         LiveWindow.addActuator("Pneumatics", "Solenoid 2", pneumaticsSolenoid2);
         
-        driveTrainDrive1 = new Spark(0);
-        LiveWindow.addActuator("DriveTrain", "Drive 1", (Spark) driveTrainDrive1);
-        driveTrainDrive1.setInverted(true);
-        driveTrainDrive2 = new Spark(1);
-        LiveWindow.addActuator("DriveTrain", "Drive 2", (Spark) driveTrainDrive2);
-        driveTrainDrive2.setInverted(false);
-        driveTrainSpeedControllerGroup1 = new SpeedControllerGroup(driveTrainDrive1, driveTrainDrive2  );
+        driveTrainDriveRight = new Spark(0);
+        LiveWindow.addActuator("DriveTrain", "Drive Right", (Spark) driveTrainDriveRight);
+        driveTrainDriveRight.setInverted(true);
+        driveTrainDriveLeft = new Spark(1);
+        LiveWindow.addActuator("DriveTrain", "Drive Left", (Spark) driveTrainDriveLeft);
+        driveTrainDriveLeft.setInverted(false);
+        driveTrainSpeedControllerGroup1 = new SpeedControllerGroup(driveTrainDriveRight, driveTrainDriveLeft);
         LiveWindow.addActuator("DriveTrain", "Speed Controller Group 1", driveTrainSpeedControllerGroup1);
         
         distributionPanelPowerDistributionPanel1 = new PowerDistributionPanel(0);
