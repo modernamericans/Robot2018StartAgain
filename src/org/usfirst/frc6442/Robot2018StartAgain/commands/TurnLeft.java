@@ -63,7 +63,8 @@ protected void execute() {
 protected boolean isFinished() {
    //return timer.get()>turn;
    double angleNow = RobotMap.gyro.getAngle();
-   return angleNow<heading-turn;
+   
+   return angleNow < heading - turn;
 }
 
 // Called once after isFinished returns true
