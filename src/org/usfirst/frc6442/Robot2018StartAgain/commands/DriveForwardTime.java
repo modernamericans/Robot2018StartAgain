@@ -44,7 +44,7 @@ public Timer timer;
  @Override
  protected void initialize() {
 	 timer.start();
-	 Robot.driveTrain.forward();
+	 Robot.driveTrain.forwardHalf();
 	 System.out.println("Driving Forward");
  }
 

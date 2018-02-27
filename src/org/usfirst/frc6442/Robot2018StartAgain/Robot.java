@@ -77,6 +77,10 @@ public class Robot extends TimedRobot {
         distanceSensor = new DistanceSensor();
         grabber = new Grabber();
         prefs = Preferences.getInstance();
+        
+        
+        initDashboard();
+        
         CameraServer.getInstance().startAutomaticCapture();
 //        netTable = NetworkTable.getTable("DataTable");
 //        
@@ -181,6 +185,22 @@ String gameData;
         
         if (autonomousCommand != null) autonomousCommand.start();
         if (driveCommand != null) driveCommand.cancel();//?
+        /*Robot.StartLocation = Preferences.getInstance();
+        Robot.StartLeft = false;
+        Robot.StartCenter = false;
+        Robot.StartRight = false;
+		Robot.display = false;
+        
+        if (Robot.StartRight == false && Robot.StartLeft == false && Robot.StartCenter == false)
+        	System.out.println("Please Enter a Start Location");
+        else if(Robot.StartRight == true)
+        	System.out.println("Auto Right Start");
+        else if (Robot.StartLeft == true)
+        	System.out.println("Auto Left Start");
+        else if(Robot.StartCenter == true)
+        	System.out.println("Auto Center Start");
+        else {}
+       // time = 0;*/
     }
     
 
