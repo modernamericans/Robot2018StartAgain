@@ -72,12 +72,12 @@ public class RobotMap {
         pneumaticsSolenoid2 = new Solenoid(0, 3);
         LiveWindow.addActuator("Pneumatics", "Solenoid 2", pneumaticsSolenoid2);
         
-        driveTrainDriveRight = new Spark(0);
+        driveTrainDriveRight = new Spark(Robot.values.rightDrivePWM);
         LiveWindow.addActuator("DriveTrain", "Drive Right", (Spark) driveTrainDriveRight);
-        driveTrainDriveRight.setInverted(true);
-        driveTrainDriveLeft = new Spark(1);
+        driveTrainDriveRight.setInverted(Robot.values.rightDriveInvert);
+        driveTrainDriveLeft = new Spark(Robot.values.leftDrivePWM);
         LiveWindow.addActuator("DriveTrain", "Drive Left", (Spark) driveTrainDriveLeft);
-        driveTrainDriveLeft.setInverted(false);
+        driveTrainDriveLeft.setInverted(Robot.values.leftDriveInvert);
         driveTrainSpeedControllerGroup1 = new SpeedControllerGroup(driveTrainDriveRight, driveTrainDriveLeft);
         LiveWindow.addActuator("DriveTrain", "Speed Controller Group 1", driveTrainSpeedControllerGroup1);
         

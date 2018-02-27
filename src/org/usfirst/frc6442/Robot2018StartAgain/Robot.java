@@ -51,6 +51,7 @@ public class Robot extends TimedRobot {
     public static DistanceSensor distanceSensor;
     public static Grabber grabber;
 //    public static NetworkTable netTable;
+    public static RobotValues values;
     
     public static Preferences prefs;
     
@@ -77,6 +78,7 @@ public class Robot extends TimedRobot {
         distanceSensor = new DistanceSensor();
         grabber = new Grabber();
         prefs = Preferences.getInstance();
+        values = new RobotValues();
         
         
         initDashboard();
