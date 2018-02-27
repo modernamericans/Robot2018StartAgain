@@ -56,11 +56,13 @@ public class DriveCommand extends Command {
     	
     	System.out.println(mode);
     	
-		double left = Robot.oi.leftStickVertical(1);
-		double right = Robot.oi.rightStickVertical(1);
+		
+				
 		
 
     	if(mode == Robot.tankMode) {
+    		double left = Robot.oi.leftStickVertical(0);
+    		double right = Robot.oi.rightStickVertical(0);
 //        	double right = Robot.oi.joystick.getRawAxis(5);
 //        	double left = Robot.oi.joystick.getRawAxis(1);
 
@@ -70,11 +72,13 @@ public class DriveCommand extends Command {
 //        	double triggerRight = Robot.oi.joystick.getRawAxis(3);
 //        	Robot.driveTrain.joyDrive(triggerRight, triggerLeft);
     	}else if(mode == Robot.arcadeMode) {
-
+//    		right = Robot.oi.rightStickHorizontal(0);
+    		double left = Robot.oi.leftStickVertical(0);
+    		double right = Robot.oi.rightStickHorizontal(0);
 //        	double joySpeed = Robot.oi.joystick.getRawAxis(1);
 //        	double joySteer = Robot.oi.joystick.getRawAxis(4);
     		double joySpeed = left;
-    		double joySteer = right;
+    		double joySteer = -right;
     		
         	double steerStrength = joySteer * joySteer / 2;
         	double rightValue = 1;

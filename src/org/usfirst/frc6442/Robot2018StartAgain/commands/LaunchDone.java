@@ -69,9 +69,9 @@ public class LaunchDone extends Command {
     @Override
     protected void end() {
     	System.out.println("Stoping Stage 1");
-    	RobotMap.launcherLauncherStage1Group.set(0);
+//    	RobotMap.launcherLauncherStage1Group.set(0);
     	System.out.println("Stoping Stage 2");
-    	RobotMap.launcherLauncherStage2Group.set(0);
+//    	RobotMap.launcherLauncherStage2Group.set(0);
     }
 
     // Called when another command which requires one or more of the same

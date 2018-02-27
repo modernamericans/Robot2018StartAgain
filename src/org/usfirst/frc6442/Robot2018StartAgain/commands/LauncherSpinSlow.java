@@ -46,7 +46,7 @@ public class LauncherSpinSlow extends Command {
  @Override
  protected void initialize() {
  
-	 RobotMap.launcherLauncherStage2Group.set(0.5);
+	 RobotMap.launcherLaunchStage2.set(0.5);
  
  }
 
