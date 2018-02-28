@@ -52,7 +52,7 @@ public AutonomousDisplay() {
 	addSequential(new TurnLeft(90));
 	addSequential(new DriveForwardTime(1.5));
 	addSequential(new DriveStop(1));
-	addSequential(new DriveReverse(1.5));
+	addSequential(new DriveReverseTime(1.5));
 
  // A command group will require all of the subsystems that each member
  // would require.

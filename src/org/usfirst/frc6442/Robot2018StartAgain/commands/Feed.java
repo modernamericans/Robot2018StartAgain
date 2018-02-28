@@ -39,7 +39,7 @@ public class Feed extends Command {
     @Override
     protected void initialize() {
     	
-    	RobotMap.launcherLauncherStage1Group.set(1);
+    	//RobotMap.launcherLauncherStage1.set(1);
     	
     	
 //    	System.out.println("Starting System 1");

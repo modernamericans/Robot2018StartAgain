@@ -46,153 +46,122 @@ public class AutonomousCommand extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	       
-        Robot.StartLocation = Preferences.getInstance();
-        Robot.StartLeft = false;
-        Robot.StartCenter = false;
-        Robot.StartRight = false;
-		Robot.display = false;
-        
-        if (Robot.StartRight == false && Robot.StartLeft == false && Robot.StartCenter == false)
-        	System.out.println("Please Enter a Start Location");
-        else if(Robot.StartRight == true)
-        	System.out.println("Auto Right Start");
-        else if (Robot.StartLeft == true)
-        	System.out.println("Auto Left Start");
-        else if(Robot.StartCenter == true)
-        	System.out.println("Auto Center Start");
-        else {}
-       // time = 0;
+    	   
+    	Scheduler.getInstance().add(new AutonomousDisplay());
+    	
+      
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
     	
-        Robot.StartLocation = Preferences.getInstance();
-        Robot.StartLeft = false;
-        Robot.StartCenter = false;
-        Robot.StartRight = false;
-		Robot.display = false;
     	
-        if (Robot.StartRight == false && Robot.StartLeft == false && Robot.StartCenter == false)
-        	System.out.println("Why no start Location");
-        	if(Robot.near == 1)
-        		Robot.StartLeft = true;
-        	else
-        		Robot.StartRight = true;
-        if(Robot.StartRight == true)
-        	System.out.println("Auto Right Start");
-        else if (Robot.StartLeft == true)
-        	System.out.println("Auto Left Start");
-        else if(Robot.StartCenter == true)
-        	System.out.println("Auto Center Start");
-        else {}
         
         
-        if(Robot.display) {
-        	Scheduler.getInstance().add(new AutonomousDisplay());
-        }
-        else if(Robot.near == 1) {
-        	if(Robot.StartRight == true)
-        		Scheduler.getInstance().add(new AutonomousRightGoRight());
-        	if(Robot.StartCenter == true)
-        		Scheduler.getInstance().add(new AutonomousCenterGoRight());
-        	if(Robot.StartLeft == true)
-        		Scheduler.getInstance().add(new AutonomousLeftGoRight());
-        }
-        else if(Robot.near == 0) {
-        	if(Robot.StartRight == true)
-        		Scheduler.getInstance().add(new AutonomousRightGoLeft());
-        	if(Robot.StartCenter == true)
-        		Scheduler.getInstance().add(new AutonomousCenterGoLeft());
-        	if(Robot.StartLeft == true)
-        		Scheduler.getInstance().add(new AutonomousLeftGoLeft());
-        }
-             
-        /*System Grab block, however that is done      
-        System.out.println("Got Block");
-        
-    	if (near == 1){
-    	  	System.out.println("Go to Right Start");
-    	  	if(StartLeft == true || StartCenter == true) {
-    	  		//driveForward(.5,time)
-    	  			Robot.driveTrain.autonomousForward(.5);
-    	  			Timer.delay(1);//need to time things out
-    	  			//turnRight(90)
-    	  			Robot.driveTrain.autonomousRightTurn(.5);
-    	  			Timer.delay(1);
-    	  		//driveForward(.5,time)
-    	  			Robot.driveTrain.autonomousForward(.5);
-    	  			Timer.delay(1);
-    	  			if(StartLeft == true) {
-    	  			//driveForward(.5,time)
-    	  				Robot.driveTrain.autonomousForward(.5);
-    	  				Timer.delay(1);
-    	  			}
-    	  			//turnLeft(90)
-    	  			Robot.driveTrain.autonomousLeftTurn(.5);
-    	  			}
-    	  		if(StartRight == true) {
-    	  		//driveForward(.5,time)
-    	  			Robot.driveTrain.autonomousForward(.5);
-    	  			Timer.delay(1);
-    	  		}
-    	  	//driveForward(.5,time)
-    	  	Robot.driveTrain.autonomousForward(.5);
-    	  	Timer.delay(1);
-    	  //turnLeft(90)
-    	  	Robot.driveTrain.autonomousLeftTurn(.5);
-    	  	Timer.delay(1);
-    	  	//eject block;
-    	  	//driveReverse(.5,time);
-    	  //turnRight(90)
-    	  	Robot.driveTrain.autonomousRightTurn(.5);
-    	  	Timer.delay(1);
-    	  //driveForward(.5,time)
-    	  	Robot.driveTrain.autonomousForward(0);
-    	  	}
-    	if (near == 0) {
-	  	System.out.println("Go to Left Start");
-	  	if(StartRight == true || StartCenter == true) {
-	  	//driveForward(.5,time)
-	  		Robot.driveTrain.autonomousForward(.5);
-	  		Timer.delay(1);//need to time things out
-	  	//turnLeft(90)
-	  		Robot.driveTrain.autonomousLeftTurn(.5);
-	  		Timer.delay(1);
-	  	//driveForward(.5,time)
-	  		Robot.driveTrain.autonomousForward(.5);
-	  		Timer.delay(1);
-	  		if(StartLeft == true){
-	  		//driveForward(.5,time)
-	  			Robot.driveTrain.autonomousForward(.5);
-	  			Timer.delay(1);
-	  		}
-	  	//turnRight(90)
-	  		Robot.driveTrain.autonomousRightTurn(.5);
-	  		}
-	  	if(StartRight == true) {
-	  	//driveForward(.5,time)
-	  		Robot.driveTrain.autonomousForward(.5);
-	  		Timer.delay(1);
-	  	}
-	  //driveForward(.5,time)
-	  	Robot.driveTrain.autonomousForward(.5);
-	  	Timer.delay(1);
-	  //turnRight(90)
-	  	Robot.driveTrain.autonomousRightTurn(.5);
-	  	Timer.delay(1);
-	  	//eject block;
-	  	//driveReverse(.5,time);
-	  //turnLeft(90)
-	  	Robot.driveTrain.autonomousLeftTurn(.5);
-	  	Timer.delay(1);
-	  //driveForward(0,time)
-	 	Robot.driveTrain.autonomousForward(0);
-	  	}
-          //time++;
-    }*/
+//        if(Robot.display) {
+//        	Scheduler.getInstance().add(new AutonomousDisplay());
+//        }
+//        else if(Robot.near == 1) {
+//        	if(Robot.StartRight == true)
+//        		Scheduler.getInstance().add(new AutonomousRightGoRight());
+//        	if(Robot.StartCenter == true)
+//        		Scheduler.getInstance().add(new AutonomousCenterGoRight());
+//        	if(Robot.StartLeft == true)
+//        		Scheduler.getInstance().add(new AutonomousLeftGoRight());
+//        }
+//        else if(Robot.near == 0) {
+//        	if(Robot.StartRight == true)
+//        		Scheduler.getInstance().add(new AutonomousRightGoLeft());
+//        	if(Robot.StartCenter == true)
+//        		Scheduler.getInstance().add(new AutonomousCenterGoLeft());
+//        	if(Robot.StartLeft == true)
+//        		Scheduler.getInstance().add(new AutonomousLeftGoLeft());
+//        }
+//             
+//        /*System Grab block, however that is done      
+//        System.out.println("Got Block");
+//        
+//    	if (near == 1){
+//    	  	System.out.println("Go to Right Start");
+//    	  	if(StartLeft == true || StartCenter == true) {
+//    	  		//driveForward(.5,time)
+//    	  			Robot.driveTrain.autonomousForward(.5);
+//    	  			Timer.delay(1);//need to time things out
+//    	  			//turnRight(90)
+//    	  			Robot.driveTrain.autonomousRightTurn(.5);
+//    	  			Timer.delay(1);
+//    	  		//driveForward(.5,time)
+//    	  			Robot.driveTrain.autonomousForward(.5);
+//    	  			Timer.delay(1);
+//    	  			if(StartLeft == true) {
+//    	  			//driveForward(.5,time)
+//    	  				Robot.driveTrain.autonomousForward(.5);
+//    	  				Timer.delay(1);
+//    	  			}
+//    	  			//turnLeft(90)
+//    	  			Robot.driveTrain.autonomousLeftTurn(.5);
+//    	  			}
+//    	  		if(StartRight == true) {
+//    	  		//driveForward(.5,time)
+//    	  			Robot.driveTrain.autonomousForward(.5);
+//    	  			Timer.delay(1);
+//    	  		}
+//    	  	//driveForward(.5,time)
+//    	  	Robot.driveTrain.autonomousForward(.5);
+//    	  	Timer.delay(1);
+//    	  //turnLeft(90)
+//    	  	Robot.driveTrain.autonomousLeftTurn(.5);
+//    	  	Timer.delay(1);
+//    	  	//eject block;
+//    	  	//driveReverse(.5,time);
+//    	  //turnRight(90)
+//    	  	Robot.driveTrain.autonomousRightTurn(.5);
+//    	  	Timer.delay(1);
+//    	  //driveForward(.5,time)
+//    	  	Robot.driveTrain.autonomousForward(0);
+//    	  	}
+//    	if (near == 0) {
+//	  	System.out.println("Go to Left Start");
+//	  	if(StartRight == true || StartCenter == true) {
+//	  	//driveForward(.5,time)
+//	  		Robot.driveTrain.autonomousForward(.5);
+//	  		Timer.delay(1);//need to time things out
+//	  	//turnLeft(90)
+//	  		Robot.driveTrain.autonomousLeftTurn(.5);
+//	  		Timer.delay(1);
+//	  	//driveForward(.5,time)
+//	  		Robot.driveTrain.autonomousForward(.5);
+//	  		Timer.delay(1);
+//	  		if(StartLeft == true){
+//	  		//driveForward(.5,time)
+//	  			Robot.driveTrain.autonomousForward(.5);
+//	  			Timer.delay(1);
+//	  		}
+//	  	//turnRight(90)
+//	  		Robot.driveTrain.autonomousRightTurn(.5);
+//	  		}
+//	  	if(StartRight == true) {
+//	  	//driveForward(.5,time)
+//	  		Robot.driveTrain.autonomousForward(.5);
+//	  		Timer.delay(1);
+//	  	}
+//	  //driveForward(.5,time)
+//	  	Robot.driveTrain.autonomousForward(.5);
+//	  	Timer.delay(1);
+//	  //turnRight(90)
+//	  	Robot.driveTrain.autonomousRightTurn(.5);
+//	  	Timer.delay(1);
+//	  	//eject block;
+//	  	//driveReverse(.5,time);
+//	  //turnLeft(90)
+//	  	Robot.driveTrain.autonomousLeftTurn(.5);
+//	  	Timer.delay(1);
+//	  //driveForward(0,time)
+//	 	Robot.driveTrain.autonomousForward(0);
+//	  	}
+//          //time++;
+//    }*/
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -44,39 +44,27 @@ public class LauncherDown extends Command {
  // Called just before this Command runs the first time
  @Override
  protected void initialize() {
+ 
+	 Robot.pneumatics.down();
+ 
  }
 
  // Called repeatedly when this Command is scheduled to run
  @Override
  protected void execute() {
  	
- 	int mode = Robot.controllerMode;
+
 
  	
  	
-// 	if(mode == Robot.tankMode || mode == Robot.arcadeMode) { 
-// 	double triggerLeft = Robot.oi.joystick.getRawAxis(2);
-// 	double triggerRight = Robot.oi.joystick.getRawAxis(3);
- 	double triggerLeft = Robot.oi.leftTrigger(1);
- 	double triggerRight = Robot.oi.rightTrigger(1);
- 	double speed = triggerRight-triggerLeft;
- 	Robot.grabber.grab(speed);
- 	
- 	
-// 	}
-// }else if(mode == 1){
-// 		double joyLeft = Robot.oi.joystick.getRawAxis(1);
-//     	double joyRight = Robot.oi.joystick.getRawAxis(5);
-//     	Robot.grabber.grabAD(joyRight, joyLeft);
-//     	
-// 	}
+
  }
  
 
  // Make this return true when this Command no longer needs to run execute()
  @Override
  protected boolean isFinished() {
-     return false;
+     return true;
  }
 
  // Called once after isFinished returns true
