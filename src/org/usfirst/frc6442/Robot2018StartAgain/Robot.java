@@ -23,7 +23,6 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-//import edu.wpi.first.networktables.NetworkTable;
 //import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -54,13 +53,11 @@ public class Robot extends TimedRobot {
     public static DistanceSensor distanceSensor;
     public static Grabber grabber;
     public static int near;
-    public static NetworkTable netTable;
 	public static boolean StartRight;
 	public static boolean StartCenter;
 	public static boolean StartLeft;
 	public static boolean display;
 	public static Preferences StartLocation;
-//    public static NetworkTable netTable;
     public static RobotValues values;
     
     public static Preferences prefs;
