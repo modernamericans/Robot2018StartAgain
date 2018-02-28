@@ -55,12 +55,12 @@ public class Pneumatics extends Subsystem {
     @Override
     public void periodic() {
         // Put code here to be run every loop
-    	Compressor c = new Compressor(0);
+    	/*Compressor c = new Compressor(0);
     	
     	boolean enabled = c.enabled();
     	boolean pressureSwitch = c.getPressureSwitchValue();
     	double current = c.getCompressorCurrent();
-    	
+    	*/
     }
     
     
