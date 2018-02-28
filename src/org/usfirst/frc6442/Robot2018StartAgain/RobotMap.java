@@ -80,15 +80,14 @@ public class RobotMap {
 		gyro = new ADXRS450_Gyro();
 		distanceSensorUltrasonic1 = new Ultrasonic(0, 1);
 		
-		LiveWindow.addActuator("Pneumatics", "Compressor 1", pneumaticsCompressor1);
+		/*LiveWindow.addActuator("Pneumatics", "Compressor 1", pneumaticsCompressor1);
 		LiveWindow.addActuator("Pneumatics", "Solenoid 1", pneumaticsSolenoid1);
 		LiveWindow.addActuator("Pneumatics", "Solenoid 2", pneumaticsSolenoid2);
+		LiveWindow.addSensor("DistributionPanel", "PowerDistributionPanel 1", distributionPanelPowerDistributionPanel1);*/
 		
 		LiveWindow.addActuator("DriveTrain", "Drive Right", (Spark) driveTrainDriveRight);
         LiveWindow.addActuator("DriveTrain", "Drive Left", (Spark) driveTrainDriveLeft); 
         LiveWindow.addActuator("DriveTrain", "Speed Controller Group 1", driveTrainSpeedControllerGroup1);
-		
-		LiveWindow.addSensor("DistributionPanel", "PowerDistributionPanel 1", distributionPanelPowerDistributionPanel1);
 		
 		LiveWindow.addActuator("Launcher", "Launch Stage 1", (Spark) launcherLaunchStage1);
 		LiveWindow.addActuator("Launcher", "Launcher Stage 2", (Spark) launcherLaunchStage2);
