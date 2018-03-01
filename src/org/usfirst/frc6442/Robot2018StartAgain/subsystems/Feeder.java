@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
-public class Launcher extends Subsystem {
+public class Feeder extends Subsystem {
 	
-	private final SpeedController launcher = RobotMap.launchCtrl;
+	private final SpeedController feeder = RobotMap.feedCtrl;
 
     @Override
     public void initDefaultCommand() {
@@ -18,7 +18,7 @@ public class Launcher extends Subsystem {
     }
 
     public void set(double speed) {
-    	launcher.set(speed);
+    	feeder.set(speed);
     }
     
     public void launch(double speed) {

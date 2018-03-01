@@ -33,8 +33,8 @@ import org.usfirst.frc6442.Robot2018StartAgain.subsystems.*;
 public class LauncherRaw extends Command {
 	
 	public Timer timer;
-	private final SpeedController feeder = RobotMap.launcherLaunchStage1;
-	private final SpeedController launcher = RobotMap.launcherLaunchStage2;
+	private final SpeedController feeder = RobotMap.feedCtrl;
+	private final SpeedController launcher = RobotMap.launchCtrl;
 	private final DoubleSolenoid doubleSolenoid = RobotMap.pneumaticsDoubleSolenoid;
 	
 	

@@ -46,7 +46,7 @@ public class LauncherSpinFast extends Command {
  @Override
  protected void initialize() {
 
-	 RobotMap.launcherLaunchStage2.set(1);
+	 RobotMap.launchCtrl.set(1);
  
  
  }
