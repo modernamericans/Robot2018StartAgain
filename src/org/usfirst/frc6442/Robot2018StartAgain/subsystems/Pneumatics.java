@@ -16,14 +16,19 @@ public class Pneumatics extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-    
+    	
     }
-
-    @Override
-    public void periodic() {	
-//    	boolean enabled = compressor.enabled();
-//    	boolean pressureSwitch = compressor.getPressureSwitchValue();
-//    	double current = compressor.getCompressorCurrent();
+    
+    public boolean compressorEnabled() {
+    	return compressor.enabled();
+    }
+    
+    public boolean compressorSwitch() {
+    	return compressor.getPressureSwitchValue();
+    }
+    
+    public double compressorCurrent() {
+    	return compressor.getCompressorCurrent();
     }
     
     public void up() {
@@ -36,6 +41,11 @@ public class Pneumatics extends Subsystem {
     
     public void off() {
     	if (doubleSolenoid != null) doubleSolenoid.set(DoubleSolenoid.Value.kOff);   
+    }
+    
+    @Override
+    public void periodic() {	
+
     }
 }
 

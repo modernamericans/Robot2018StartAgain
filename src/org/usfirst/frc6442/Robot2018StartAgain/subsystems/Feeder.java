@@ -21,29 +21,28 @@ public class Feeder extends Subsystem {
     	feeder.set(speed);
     }
     
-    public void launch(double speed) {
+    public void feed(double speed) {
     	set(speed);
     }
     
-    public void reverse() {
+    public void feed() {
+    	feed(1);
+    }
+    
+    public void secure(double speed) {
+    	set(speed);
+    }
+    
+    public void secure() {
+    	secure(1);
+    }
+    
+    public void exchange() {
     	set(-0.5);
     }
     
-    public void launchFast() {
-    	set(1);
-    }
-    
-    public void launchMed() {
-    	set(0.5);
-    }
-    
-    public void launchSlow() {
-    	set(0.1);
-    }
-    
-    @Override
-    public void periodic() {
-    	
+    public void stop() {
+    	set(0);
     }
 }
 

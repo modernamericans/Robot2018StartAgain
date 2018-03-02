@@ -17,7 +17,7 @@ public class DriveTrain extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-       setDefaultCommand(new DriveTeleop());
+       setDefaultCommand(new AnalogDrive());
     }
     
     public void tankDrive(double rightMagnitude, double leftMagnitude) {

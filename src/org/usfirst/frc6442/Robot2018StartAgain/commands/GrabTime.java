@@ -1,25 +1,26 @@
 package org.usfirst.frc6442.Robot2018StartAgain.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.TimedCommand;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 import org.usfirst.frc6442.Robot2018StartAgain.subsystems.Grabber;
 
-public class Push extends Command {
+public class GrabTime extends TimedCommand {
 	public Grabber grabber = Robot.grabber;
 	
-    public Push() {
+    public GrabTime(double time) {
+    	super(time);
     	requires(Robot.grabber);
     }
 
     protected void initialize() {
-    	grabber.push();
+    	grabber.grab();
     }
-    
-    protected boolean isFinished() {
-    	return true;
+
+    protected void end() {
+    	grabber.stop();
     }
 
     protected void interrupted() { 
-    	grabber.stop();
+    	end(); 
     }
 }

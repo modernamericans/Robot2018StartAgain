@@ -41,6 +41,10 @@ public class Launcher extends Subsystem {
     	set(0.1);
     }
     
+    public void stop() {
+    	set(0);
+    }
+    
     @Override
     public void periodic() {
     	

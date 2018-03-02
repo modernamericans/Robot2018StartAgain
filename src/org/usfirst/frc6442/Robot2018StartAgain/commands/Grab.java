@@ -4,15 +4,15 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 import org.usfirst.frc6442.Robot2018StartAgain.subsystems.Grabber;
 
-public class Push extends Command {
+public class Grab extends Command {
 	public Grabber grabber = Robot.grabber;
 	
-    public Push() {
+    public Grab() {
     	requires(Robot.grabber);
     }
 
     protected void initialize() {
-    	grabber.push();
+    	grabber.grab();
     }
     
     protected boolean isFinished() {

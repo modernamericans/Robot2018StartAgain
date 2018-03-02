@@ -42,6 +42,8 @@ public class OI {
     public void inputPeriodic() {
     	controller1.update();
     	controller2.update();
+    	updateGrabValues();
+    	updateDriveValues();
     }
     
 	public void mapButtons() {

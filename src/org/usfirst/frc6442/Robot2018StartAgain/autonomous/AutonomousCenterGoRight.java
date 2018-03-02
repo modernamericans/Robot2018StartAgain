@@ -9,10 +9,10 @@
 //it from being updated in the future.
 
 
-package org.usfirst.frc6442.Robot2018StartAgain.commands;
+package org.usfirst.frc6442.Robot2018StartAgain.autonomous;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import org.usfirst.frc6442.Robot2018StartAgain.subsystems.*;
+import org.usfirst.frc6442.Robot2018StartAgain.commands.*;
 
 /**
 *
@@ -35,15 +35,15 @@ public AutonomousCenterGoRight() {
    //      addSequential(new Command2());
    // Command1 and Command2 will run in parallel.
 	addSequential(new DriveForwardTime(1));
-	addSequential(new TurnRight(90));
+	addSequential(new TurnRightGyro(90));
 	addSequential(new DriveForwardTime(1));
-	addSequential(new TurnLeft(90));
+	addSequential(new TurnLeftGyro(90));
 	addSequential(new DriveForwardTime(1));
-	addSequential(new TurnLeft(90));
+	addSequential(new TurnLeftGyro(90));
 	addSequential(new DriveForwardTime(1));
 	//addSequential(new Launch Low);
 	addSequential(new DriveReverseTime(1));
-	addSequential(new TurnRight(90));
+	addSequential(new TurnRightGyro(90));
 
    // A command group will require all of the subsystems that each member
    // would require.

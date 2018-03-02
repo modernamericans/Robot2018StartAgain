@@ -1,6 +1,9 @@
 package org.usfirst.frc6442.Robot2018StartAgain;
 
+import edu.wpi.first.wpilibj.Preferences;
+
 public class RobotValues {
+	public Preferences prefs = Preferences.getInstance();
 	
 	public boolean skipCAN = true;
 	
@@ -30,5 +33,11 @@ public class RobotValues {
 	public boolean grabberRightInvert = false;
 	public boolean grabberLeftInvert  = false;
 	
-	
+	public double get(String key, double defaultValue) {
+		if (!prefs.containsKey(key)) {
+			prefs.putDouble(key, defaultValue);
+			return defaultValue;
+		}
+		return prefs.getDouble(key, defaultValue);
+	}
 }

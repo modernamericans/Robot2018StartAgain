@@ -9,14 +9,15 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-//import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.networktables.NetworkTableInstance;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.usfirst.frc6442.Robot2018StartAgain.autonomous.*;
 import org.usfirst.frc6442.Robot2018StartAgain.commands.*;
 import org.usfirst.frc6442.Robot2018StartAgain.subsystems.*;
 
@@ -37,26 +38,27 @@ public class Robot extends TimedRobot {
     public static Pneumatics pneumatics;
     public static DriveTrain driveTrain;
     public static DistributionPanel distributionPanel;
+    public static Feeder feeder;
     public static Launcher launcher;
     public static DistanceSensor distanceSensor;
     public static Grabber grabber;
 	
 	// Game state
-    enum StartPosition { LEFT, CENTER, RIGHT }
-	enum OurSide { LEFT, RIGHT }
+    public enum StartPosition { LEFT, CENTER, RIGHT }
+	public enum OurSide { LEFT, RIGHT }
 	
-	public StartPosition position;
+    public static String gameMessage;
+    
+	public static StartPosition position;
 	
-	public OurSide nearSwitch;
-	public OurSide scale;
-	public OurSide farSwitch;
+	public static OurSide nearSwitch;
+	public static OurSide scale;
+	public static OurSide farSwitch;
 	
     public Command teleopCommand;
     public SendableChooser<Command> teleopChooser;
     
     // Autonomous
-    public String gameMessage;
-    
     public Command autoCommand;
     public Command autoDefaultCommand;
     
@@ -75,6 +77,7 @@ public class Robot extends TimedRobot {
         pneumatics        = new Pneumatics();
         driveTrain        = new DriveTrain();
         distributionPanel = new DistributionPanel();
+        feeder            = new Feeder();
         launcher          = new Launcher();
         distanceSensor    = new DistanceSensor();
         grabber           = new Grabber();
@@ -93,14 +96,14 @@ public class Robot extends TimedRobot {
     public void getGameData() {
     	gameMessage = DriverStation.getInstance().getGameSpecificMessage();
 		
-		if      (gameMessage.charAt(0) == 'L') nearSwitch = OurSide.LEFT;
-		else if (gameMessage.charAt(0) == 'R') nearSwitch = OurSide.RIGHT;
-		
-		if      (gameMessage.charAt(1) == 'L') scale      = OurSide.LEFT;  
-		else if (gameMessage.charAt(1) == 'R') scale      = OurSide.RIGHT; 
-		
-		if      (gameMessage.charAt(2) == 'L') farSwitch  = OurSide.LEFT;  
-		else if (gameMessage.charAt(2) == 'R') farSwitch  = OurSide.RIGHT; 
+		if      (gameMessage.charAt(0) == 'L') Robot.nearSwitch = OurSide.LEFT;
+		else if (gameMessage.charAt(0) == 'R') Robot.nearSwitch = OurSide.RIGHT;
+		                                       
+		if      (gameMessage.charAt(1) == 'L') Robot.scale      = OurSide.LEFT;  
+		else if (gameMessage.charAt(1) == 'R') Robot.scale      = OurSide.RIGHT; 
+		                                      
+		if      (gameMessage.charAt(2) == 'L') Robot.farSwitch  = OurSide.LEFT;  
+		else if (gameMessage.charAt(2) == 'R') Robot.farSwitch  = OurSide.RIGHT; 
     }
     
     public void setAutonomousCommand() {
@@ -157,7 +160,7 @@ public class Robot extends TimedRobot {
     	SmartDashboard.putData(grabber);
     	SmartDashboard.putData(launcher);
     	SmartDashboard.putData(pneumatics);
-    	SmartDashboard.putData("Drive Command", new DriveTeleop());
+    	SmartDashboard.putData("Drive Command", new AnalogDrive());
     	SmartDashboard.putData("Autonomous Command",new AutonomousCommand());
     	SmartDashboard.putData("Feed", new Feed());
     	SmartDashboard.putData("AutonomousCenterGoLeft", new AutonomousCenterGoLeft());
@@ -170,25 +173,22 @@ public class Robot extends TimedRobot {
     	SmartDashboard.putData("DriveForwardTime(1)", new DriveForwardTime(1.0));
     	SmartDashboard.putData("DriveReverseTime(1)", new DriveReverseTime(1.0));
     	SmartDashboard.putData("DriveStop(2)", new DriveStop(2.0));
-    	SmartDashboard.putData("Exchange", new Exchange());
+    	SmartDashboard.putData("Exchange", new ExchangeTime(1));
     	SmartDashboard.putData("ExchangeCube", new ExchangeCube());
-    	SmartDashboard.putData("Grab", new GrabTeleop());
+    	SmartDashboard.putData("Grab", new AnalogGrab());
     	SmartDashboard.putData("LaunchCube(1)", new LaunchCube(1));
-    	SmartDashboard.putData("LaunchDone(1)", new LaunchDone(1));
-    	SmartDashboard.putData("LauncherControl", new LauncherControl());
+    	SmartDashboard.putData("LaunchDone(1)", new LaunchDone());
     	SmartDashboard.putData("LauncherDown", new LauncherDown());
     	SmartDashboard.putData("LauncherRaw", new LauncherRaw());
     	SmartDashboard.putData("LauncherSpinFast", new LauncherSpinFast());
     	SmartDashboard.putData("LauncherSpinSlow", new LauncherSpinSlow());
     	SmartDashboard.putData("LauncherUp", new LauncherUp());
-    	SmartDashboard.putData("PneumaticsLeveler", new PneumaticsLeveler());
     	SmartDashboard.putData("PrepLaunch", new PrepLaunch());
-    	SmartDashboard.putData("Push", new Push());
+    	SmartDashboard.putData("Push", new PushTime(1));
     	SmartDashboard.putData("Secure", new Secure());
     	SmartDashboard.putData("SecureCube", new SecureCube());
-    	SmartDashboard.putData("TeleopCommand", new TeleopCommand());
-    	SmartDashboard.putData("TurnLeft(90)", new TurnLeft(90.0));
-    	SmartDashboard.putData("TurnRight(90)", new TurnRight(90.0));
+    	SmartDashboard.putData("TurnLeft(90)", new TurnLeftGyro(90.0));
+    	SmartDashboard.putData("TurnRight(90)", new TurnRightGyro(90.0));
     	
     	// Autonomous choosers
     	chooserLLL = new SendableChooser<Command>(); 
@@ -203,7 +203,7 @@ public class Robot extends TimedRobot {
         );
         for (SendableChooser<Command> chooser : choosers) {
 	        for (Command command : autoCommands) {
-	        	chooser.addObject(c.getClass().getName(), command);
+	        	chooser.addObject(command.getClass().getName(), command);
 	        }
 	        chooser.addDefault("Autonomous Command", autoDefaultCommand);
         }
@@ -213,12 +213,10 @@ public class Robot extends TimedRobot {
         SmartDashboard.putData("Auto if RLR", chooserRLR);
         SmartDashboard.putData("Auto if RRR", chooserRRR);
         
-        
         // Teleop chooser
-        teleopChooser.addObject("Arcade", new ArcadeDrive());
-        teleopChooser.addDefault("Tank", new TankDrive());
-        SmartDashboard.putData("Start teleop with:", teleopChooser);
-    	
+//         teleopChooser.addObject("Arcade", new ArcadeDrive());
+//         teleopChooser.addDefault("Tank", new TankDrive());
+         SmartDashboard.putData("Start teleop with:", teleopChooser);
     }	
     
 
