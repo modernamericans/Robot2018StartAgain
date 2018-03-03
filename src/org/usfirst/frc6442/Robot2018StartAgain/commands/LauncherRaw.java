@@ -3,21 +3,19 @@ package org.usfirst.frc6442.Robot2018StartAgain.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
-import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
 import org.usfirst.frc6442.Robot2018StartAgain.RobotValues;
-import org.usfirst.frc6442.Robot2018StartAgain.commands.*;
 import org.usfirst.frc6442.Robot2018StartAgain.subsystems.*;
 
 public class LauncherRaw extends Command {
 	enum Goal {HIGH, LOW}
 	enum State {WAITING, INIT, SPINNING, FEEDING, LAUNCHING, ENDING}
-	public Timer timer;
+	
 	public State state;
 	public Goal goal;
+	
+	public Timer timer;
+	
 	private final Feeder feeder = Robot.feeder;
 	private final Launcher launcher = Robot.launcher;
 	private final Pneumatics  pneumatics = Robot.pneumatics;

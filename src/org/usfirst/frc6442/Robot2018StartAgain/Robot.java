@@ -3,22 +3,12 @@ package org.usfirst.frc6442.Robot2018StartAgain;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.networktables.NetworkTableInstance;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.usfirst.frc6442.Robot2018StartAgain.autonomous.*;
-import org.usfirst.frc6442.Robot2018StartAgain.commands.*;
 import org.usfirst.frc6442.Robot2018StartAgain.subsystems.*;
 
 /**
@@ -84,7 +74,6 @@ public class Robot extends TimedRobot {
         
         // OI must be constructed after subsystems to avoid null pointer exceptions from requires()
         oi = new OI();
-        
     }
     
     public void getGameData() {
@@ -125,9 +114,9 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopInit() {
-    	if (autoCommand != null) autoCommand.cancel();
     	teleopCommand = RobotDashboard.teleopChooser.getSelected();
-        if(teleopCommand != null) teleopCommand.start();
+    	if (autoCommand   != null) autoCommand.cancel();
+        if (teleopCommand != null) teleopCommand.start();
     }
 
     @Override
