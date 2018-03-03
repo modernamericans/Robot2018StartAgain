@@ -16,6 +16,8 @@ import org.usfirst.frc6442.Robot2018StartAgain.subsystems.*;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.*;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.InstantCommand;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
@@ -58,6 +60,13 @@ public class OI {
 		
 		controller1.buttonUp   .whenPressed( new ExchangeCube()   );
 		controller2.buttonUp   .whenPressed( new ExchangeCube()   );
+		
+		Command updateValues = new InstantCommand() { protected void initialize(){ 
+			Robot.values.update(); 
+		}};
+		
+		controller1.buttonStart   .whenPressed( updateValues );
+		controller2.buttonStart   .whenPressed( updateValues );
 	}
 
 

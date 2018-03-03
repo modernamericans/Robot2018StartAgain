@@ -1,8 +1,10 @@
 package org.usfirst.frc6442.Robot2018StartAgain.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
+import org.usfirst.frc6442.Robot2018StartAgain.subsystems.Grabber;
 
 public class AnalogGrab extends Command {
+	protected Grabber grabber = Robot.grabber;
 	
     public AnalogGrab() {
         requires(Robot.grabber);
@@ -18,7 +20,7 @@ public class AnalogGrab extends Command {
     	double  leftGrab = Robot.oi.grabLeft();
     	double rightGrab = Robot.oi.grabRight();
     	
-    	Robot.grabber.grab(rightGrab, leftGrab);
+    	grabber.grab(rightGrab, leftGrab);
     }
     
     @Override
@@ -28,7 +30,7 @@ public class AnalogGrab extends Command {
     
     @Override
     protected void end() {
-    	Robot.grabber.grab(0, 0);
+    	grabber.stop();
     }
 
     @Override

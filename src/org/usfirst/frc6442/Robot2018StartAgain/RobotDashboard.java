@@ -11,13 +11,14 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
-import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.interfaces.Accelerometer;
+
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -25,6 +26,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RobotDashboard {
 	
     public static SendableChooser<Command> teleopChooser;
+    
+    public static SendableChooser<Robot.StartPosition> startPosition;
+    
     public static SendableChooser<Command> chooserLLL;
     public static SendableChooser<Command> chooserLRL;
     public static SendableChooser<Command> chooserRLR;
@@ -69,6 +73,16 @@ public class RobotDashboard {
     	SmartDashboard.putData("TurnLeft(90)", new TurnLeftGyro(90.0));
     	SmartDashboard.putData("TurnRight(90)", new TurnRightGyro(90.0));
     	
+    	// Position chooser
+    	startPosition = new SendableChooser<Robot.StartPosition>(); 
+    	startPosition.addObject("Left", Robot.StartPosition.LEFT);
+    	startPosition.addObject("Left", Robot.StartPosition.CENTER);
+    	startPosition.addObject("Left", Robot.StartPosition.RIGHT);
+    	
+        // Teleop chooser
+		teleopChooser.addObject("Arcade", new AnalogDrive());
+		SmartDashboard.putData("Start teleop with:", teleopChooser);
+    	
     	// Autonomous choosers
     	chooserLLL = new SendableChooser<Command>(); 
     	chooserLRL = new SendableChooser<Command>(); 
@@ -92,11 +106,6 @@ public class RobotDashboard {
         SmartDashboard.putData("Auto if RLR", chooserRLR);
         SmartDashboard.putData("Auto if RRR", chooserRRR);
         
-        // Teleop chooser
-//         teleopChooser.addObject("Arcade", new ArcadeDrive());
-//         teleopChooser.addDefault("Tank", new TankDrive());
-         SmartDashboard.putData("Start teleop with:", teleopChooser);
-	
 	}
 	
 	public static void initLiveWindow() {
