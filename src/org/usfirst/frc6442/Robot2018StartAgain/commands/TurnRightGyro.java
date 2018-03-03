@@ -15,13 +15,13 @@ public class TurnRightGyro extends Command {
 	public TurnRightGyro(double turnDegrees) {
 		 requires(Robot.driveTrain);
 		 turn = turnDegrees; //number to change with timing
-		 margin = 5;
 	}
 	
 	protected void initialize() {
 		start = RobotMap.gyro.getAngle();
 		target = start + turn; 
 		Robot.driveTrain.rightTurn();
+		margin = Robot.values.gyroTurnErrorMargin;
 	}
 	
 	protected boolean isFinished() {

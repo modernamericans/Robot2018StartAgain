@@ -16,7 +16,7 @@ public class Secure extends Command {
     }
 
     protected boolean isFinished() {
-    	// test limit switch?
+    	// ToDo: test limit switch?
         return true;
     }
 

@@ -9,9 +9,9 @@ public class AutonomousLeftGoLeft extends CommandGroup {
 
 		addSequential(new DriveForwardTime(1));
 		addSequential(new DriveStop(1));
-		addSequential(new TurnRightGyro(90));//this is in degrees, not in terms of time
+		addSequential(new TurnRightGyro(90));
 		addSequential(new DriveForwardTime(1));
-		//addSequential(new LaunchLow);
+		addSequential(new LaunchCubeLow());
 		addSequential(new DriveReverseTime(1));
 		addSequential(new TurnLeftGyro(90));	
 	} 

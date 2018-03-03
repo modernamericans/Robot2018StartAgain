@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
+import org.usfirst.frc6442.Robot2018StartAgain.RobotValues;
 import org.usfirst.frc6442.Robot2018StartAgain.commands.*;
 import org.usfirst.frc6442.Robot2018StartAgain.subsystems.*;
 
@@ -25,64 +26,13 @@ public class LauncherRaw extends Command {
 		requires(Robot.feeder);
 		requires(Robot.launcher);
 		requires(Robot.pneumatics);
-		
-		List<String> vars = Arrays.asList(
-				"High Launch Speed",     
-				"Low Launch Speed",      
-				"High Launch Spin Time", 
-				"Low Launch Spin Time",  
-				"High Launch Feed Speed",
-				"Low Launch Feed Speed", 
-				"High Launch Feed Time", 
-				"Low Launch Feed Time",  
-				"High Launch Speed",     
-				"Low Launch Speed",      
-				"High Launch Spin Time", 
-				"Low Launch Spin Time",  
-				"High Launch Feed Speed",
-				"Low Launch Feed Speed", 
-				"High Launch Feed Time", 
-				"Low Launch Feed Time"
-		);
-		
-		for (String var : vars) {
-			double val = 0.5;
-			if (var.startsWith("Low")) val = 0.2;
-			if (!Robot.prefs.containsKey(var)) Robot.prefs.putDouble(var, val);
-		}
-	}
-
-	protected double highSpeed() {
-		return Robot.prefs.getDouble("High Launch Speed", 0.5);
-	}
-
-	protected double lowSpeed() {
-		return Robot.prefs.getDouble("Low Launch Speed",  0.2);
 	}
 	
-	protected double highSpin() {
-		return Robot.prefs.getDouble("High Launch Spin Time", 0.5);
-	}
-
-	protected double lowSpin() {
-		return Robot.prefs.getDouble("Low Launch Spin Time",  0.2);
+	protected void initialize() {
+		Robot.values.update();
 	}
 	
-	protected double highFeed() {
-		return Robot.prefs.getDouble("High Launch Feed Speed", 0.5);
-	}
-
-	protected double lowFeed() {
-		return Robot.prefs.getDouble("Low Launch Feed Speed",  0.2);
-	}
-	
-	protected double highFeedTime() {
-		return Robot.prefs.getDouble("High Launch Feed Time", 0.5);
-	}
-
-	protected double lowFeedTime() {
-		return Robot.prefs.getDouble("Low Launch Feed Time",  0.2);
-	}
+	private RobotValues v = Robot.values;
 	
 	protected void execute() {
 		double speed, wait;
@@ -105,7 +55,7 @@ public class LauncherRaw extends Command {
 	    		break;
 	    		
 	    	case INIT:
-	    		speed = goal == Goal.HIGH ? highSpeed() : lowSpeed();
+	    		speed = goal == Goal.HIGH ? v.highSpeed : v.lowSpeed ;
 	    		launcher.launch(speed);
 	    		timer.reset();
 	    		timer.start();
@@ -113,19 +63,19 @@ public class LauncherRaw extends Command {
 	    		break;
 	    		
 	    	case SPINNING:
-	    		wait = goal == Goal.HIGH ? highSpin() : lowSpin();
+	    		wait = goal == Goal.HIGH ? v.highSpin : v.lowSpin;
 	    		if (timer.get() > wait) state = State.FEEDING;
 	    		break;
 	    		
 	    	case FEEDING:
-	    		speed = goal == Goal.HIGH ? highFeed() : lowFeed();
+	    		speed = goal == Goal.HIGH ? v.highFeed : v.lowFeed;
 	    		feeder.feed(speed);
 	    		timer.reset();
 	    		timer.start();
 	    		break;
 	    		
 	    	case LAUNCHING:
-	    		wait = goal == Goal.HIGH ? highFeedTime() : lowFeedTime();
+	    		wait = goal == Goal.HIGH ? v.highFeedTime : v.lowFeedTime;
 	    		if (timer.get() > wait) state = State.ENDING;
 	    		break;
 	    		

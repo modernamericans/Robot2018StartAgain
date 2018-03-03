@@ -19,8 +19,10 @@ public class PushTime extends TimedCommand {
     }
 
     protected void end() {
+    	grabber.stop();
     }
 
     protected void interrupted() {
+    	end();
     }
 }

@@ -10,7 +10,7 @@ public class AutonomousRightGoRight extends CommandGroup {
 		addSequential(new DriveForwardTime(1));
 		addSequential(new TurnLeftGyro(90));
 		addSequential(new DriveForwardTime(1));
-		//addSequential(new LaunchLow);
+		addSequential(new LaunchCubeLow());
 		addSequential(new DriveReverseTime(1));
 		addSequential(new TurnRightGyro(90));	
 	} 

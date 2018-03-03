@@ -56,16 +56,10 @@ public class Robot extends TimedRobot {
 	public static OurSide farSwitch;
 	
     public Command teleopCommand;
-    public SendableChooser<Command> teleopChooser;
     
     // Autonomous
     public Command autoCommand;
-    public Command autoDefaultCommand;
-    
-    public SendableChooser<Command> chooserLLL;
-    public SendableChooser<Command> chooserLRL;
-    public SendableChooser<Command> chooserRLR;
-    public SendableChooser<Command> chooserRRR;
+    public static Command autoDefaultCommand;
     
     @Override
     public void robotInit() {
@@ -84,7 +78,7 @@ public class Robot extends TimedRobot {
 
         autoDefaultCommand = new AutonomousDisplay();
         
-        initDashboard();      
+        RobotDashboard.initDashboard();      
         
         CameraServer.getInstance().startAutomaticCapture();
         
@@ -108,10 +102,10 @@ public class Robot extends TimedRobot {
     
     public void setAutonomousCommand() {
     	switch (gameMessage) {
-			case "LLL": autoCommand = chooserLLL.getSelected(); break;
-			case "LRL": autoCommand = chooserLRL.getSelected(); break;
-			case "RLR": autoCommand = chooserRLR.getSelected(); break;
-			case "RRR": autoCommand = chooserRRR.getSelected(); break;
+			case "LLL": autoCommand = RobotDashboard.chooserLLL.getSelected(); break;
+			case "LRL": autoCommand = RobotDashboard.chooserLRL.getSelected(); break;
+			case "RLR": autoCommand = RobotDashboard.chooserRLR.getSelected(); break;
+			case "RRR": autoCommand = RobotDashboard.chooserRRR.getSelected(); break;
     	}
     }
 
@@ -132,7 +126,7 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
     	if (autoCommand != null) autoCommand.cancel();
-    	teleopCommand = teleopChooser.getSelected();
+    	teleopCommand = RobotDashboard.teleopChooser.getSelected();
         if(teleopCommand != null) teleopCommand.start();
     }
 
@@ -151,73 +145,4 @@ public class Robot extends TimedRobot {
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
     }
-    
-    public void initDashboard() {
-    	SmartDashboard.putData(Scheduler.getInstance());
-    	SmartDashboard.putData(driveTrain);
-    	SmartDashboard.putData(distributionPanel);
-    	SmartDashboard.putData(distanceSensor);
-    	SmartDashboard.putData(grabber);
-    	SmartDashboard.putData(launcher);
-    	SmartDashboard.putData(pneumatics);
-    	SmartDashboard.putData("Drive Command", new AnalogDrive());
-    	SmartDashboard.putData("Autonomous Command",new AutonomousCommand());
-    	SmartDashboard.putData("Feed", new Feed());
-    	SmartDashboard.putData("AutonomousCenterGoLeft", new AutonomousCenterGoLeft());
-    	SmartDashboard.putData("AutonomousCenterGoRight", new AutonomousCenterGoRight());
-    	SmartDashboard.putData("AutonomousDisplay", new AutonomousDisplay());
-    	SmartDashboard.putData("AutonomousLeftGoLeft", new AutonomousLeftGoLeft());
-    	SmartDashboard.putData("AutonomousLeftGoRight", new AutonomousLeftGoRight());
-    	SmartDashboard.putData("AutonomousRightGoLeft", new AutonomousRightGoLeft());
-    	SmartDashboard.putData("AutonomousRightGoRight", new AutonomousRightGoRight());
-    	SmartDashboard.putData("DriveForwardTime(1)", new DriveForwardTime(1.0));
-    	SmartDashboard.putData("DriveReverseTime(1)", new DriveReverseTime(1.0));
-    	SmartDashboard.putData("DriveStop(2)", new DriveStop(2.0));
-    	SmartDashboard.putData("Exchange", new ExchangeTime(1));
-    	SmartDashboard.putData("ExchangeCube", new ExchangeCube());
-    	SmartDashboard.putData("Grab", new AnalogGrab());
-    	SmartDashboard.putData("LaunchCube(1)", new LaunchCube(1));
-    	SmartDashboard.putData("LaunchDone(1)", new LaunchDone());
-    	SmartDashboard.putData("LauncherDown", new LauncherDown());
-    	SmartDashboard.putData("LauncherRaw", new LauncherRaw());
-    	SmartDashboard.putData("LauncherSpinFast", new LauncherSpinFast());
-    	SmartDashboard.putData("LauncherSpinSlow", new LauncherSpinSlow());
-    	SmartDashboard.putData("LauncherUp", new LauncherUp());
-    	SmartDashboard.putData("PrepLaunch", new PrepLaunch());
-    	SmartDashboard.putData("Push", new PushTime(1));
-    	SmartDashboard.putData("Secure", new Secure());
-    	SmartDashboard.putData("SecureCube", new SecureCube());
-    	SmartDashboard.putData("TurnLeft(90)", new TurnLeftGyro(90.0));
-    	SmartDashboard.putData("TurnRight(90)", new TurnRightGyro(90.0));
-    	
-    	// Autonomous choosers
-    	chooserLLL = new SendableChooser<Command>(); 
-    	chooserLRL = new SendableChooser<Command>(); 
-    	chooserRLR = new SendableChooser<Command>(); 
-    	chooserRRR = new SendableChooser<Command>(); 
-    	
-    	List<SendableChooser<Command>> choosers = Arrays.asList(chooserLLL, chooserLRL, chooserRLR, chooserRRR);
-    	
-        List<Command> autoCommands = Arrays.asList(
-        		new AutonomousCommand()
-        );
-        for (SendableChooser<Command> chooser : choosers) {
-	        for (Command command : autoCommands) {
-	        	chooser.addObject(command.getClass().getName(), command);
-	        }
-	        chooser.addDefault("Autonomous Command", autoDefaultCommand);
-        }
-        
-        SmartDashboard.putData("Auto if LLL", chooserLLL);
-        SmartDashboard.putData("Auto if LRL", chooserLRL);
-        SmartDashboard.putData("Auto if RLR", chooserRLR);
-        SmartDashboard.putData("Auto if RRR", chooserRRR);
-        
-        // Teleop chooser
-//         teleopChooser.addObject("Arcade", new ArcadeDrive());
-//         teleopChooser.addDefault("Tank", new TankDrive());
-         SmartDashboard.putData("Start teleop with:", teleopChooser);
-    }	
-    
-
 }
