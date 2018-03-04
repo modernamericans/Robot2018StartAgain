@@ -12,7 +12,8 @@ lines = content.split('\n')
 vars = lines.map(line => line.match(re)).filter(x => x).filter(x=>allowed.includes(x[1]))
 
 outs = vars.map( ([l, type, name, value]) => 
-  `${name} = get${ucFirst(type)}("${name}", ${value || 0});`
+  `${name} = get${ucFirst(type)}("${name}", ${value || 0});
+  System.out.println("${name} = " + ${name});`
 )
 
 log(outs.join("\n"))
