@@ -1,6 +1,8 @@
 package org.usfirst.frc6442.Robot2018StartAgain.subsystems;
 
 import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
+import org.usfirst.frc6442.Robot2018StartAgain.commands.AnalogGrab;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -12,7 +14,7 @@ public class Grabber extends Subsystem {
     private final SpeedControllerGroup grabbingGroup = RobotMap.grabCtrlBoth;
 
     public void initDefaultCommand() {
-         //setDefaultCommand(new Grab());
+         setDefaultCommand(new AnalogGrab());
     }
     
     public void set(double speedRight, double speedLeft) {

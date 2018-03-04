@@ -74,11 +74,13 @@ public class OI {
     	
 		leftGrab  = LAxis != 0 ? LAxis : TR - TL ;
 		rightGrab = RAxis != 0 ? RAxis : TR - TL ;
+		//System.out.println("Afirmative " + leftGrab + " " + rightGrab);
     }
     
     private void updateDriveValues() {
     	double LX, LY, RX, RY, LX1, LX2, LY1, LY2, RX1, RX2, RY1, RY2;
     	
+
     	leftDrive = 0;
     	rightDrive = 0;
     	

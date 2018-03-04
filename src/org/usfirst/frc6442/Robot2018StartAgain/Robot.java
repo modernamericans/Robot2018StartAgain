@@ -137,6 +137,6 @@ public class Robot extends TimedRobot {
         //	System.out.println("switch work");
         //}
         //System.out.println(RobotMap.gyro.getAngle());
-        System.out.println(RobotMap.distSensor1.getRangeInches());
+       // System.out.println(RobotMap.distSensor1.getRangeInches());
     }
 }

@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Button;
 
 public class Controller extends Joystick {
-	public DriveMode mode;
+	public DriveMode mode = DriveMode.TANK;
 
 	public double deadzone = 0.05;
 	 
