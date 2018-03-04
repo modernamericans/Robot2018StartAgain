@@ -73,7 +73,9 @@ public class RobotMap {
         grabCtrlBoth = new SpeedControllerGroup(grabCtrlRight, grabCtrlLeft  );
 		
 		distSensor1 = new Ultrasonic(v.echoPortOut1, v.triggerPortIn1);
-		distSensor1 = new Ultrasonic(v.echoPortOut2, v.triggerPortIn2);
+		distSensor2 = new Ultrasonic(v.echoPortOut2, v.triggerPortIn2);
+		distSensor1.setAutomaticMode(true);
+		distSensor2.setAutomaticMode(true);
 		gyro = new ADXRS450_Gyro();
 		accel = new BuiltInAccelerometer();
 		feedSwitch = new DigitalInput(v.feedSwitchPortIn);

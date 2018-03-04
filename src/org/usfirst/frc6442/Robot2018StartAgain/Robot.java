@@ -127,11 +127,16 @@ public class Robot extends TimedRobot {
     
     @Override
     public void disabledInit(){
-
+    	
     }
     
     @Override
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
+       // if(RobotMap.feedSwitch.get()) {
+        //	System.out.println("switch work");
+        //}
+        //System.out.println(RobotMap.gyro.getAngle());
+        System.out.println(RobotMap.distSensor1.getRangeInches());
     }
 }

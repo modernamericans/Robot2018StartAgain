@@ -70,6 +70,7 @@ public class RobotDashboard {
     	startPosition.addObject("Left", Robot.StartPosition.RIGHT);
     	
         // Teleop chooser
+    	teleopChooser = new SendableChooser<Command>();
 		teleopChooser.addObject("Arcade", new AnalogDrive());
 		SmartDashboard.putData("Start teleop with:", teleopChooser);
     	

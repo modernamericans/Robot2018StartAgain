@@ -94,19 +94,20 @@ public class OI {
     	RY2 = controller2.axisRY();
     	
     	// dominance
-    	if (LX1 > 0 || LY1 > 0 || RX1 > 0 || RY1 > 0) {
-    		LX = LX1;
-    		LY = LY1;
-    		RX = RX1;
-    		RY = RY1;
-    		mode = controller1.mode;
-    		
-    	} else {
-    		LX = LX2;
-    		LY = LY2;
-    		RX = RX2;
-    		RY = RY2;
-    		mode = controller2.mode;
+    	LX = LX1;
+		LY = LY1;
+		RX = RX1;
+		RY = RY1;
+		mode = controller1.mode;
+		
+    	if (Robot.values.pairDrive) {
+	    	if (LX1 == 0 && LY1 == 0 && RX1 == 0 && RY1 == 0) {
+	    		LX = LX2;
+	    		LY = LY2;
+	    		RX = RX2;
+	    		RY = RY2;
+	    		mode = controller2.mode;
+	    	}
     	}
     	
     	if (mode == DriveMode.TANK) {

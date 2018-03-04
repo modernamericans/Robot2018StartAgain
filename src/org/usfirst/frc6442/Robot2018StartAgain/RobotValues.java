@@ -69,6 +69,8 @@ public class RobotValues {
 	public double spinYRange = 0.2;
 	public double spinXRange = 0.2;
 
+	public boolean pairDrive = false;
+
 	
 	
 	public void update() {
