@@ -33,13 +33,16 @@ public class Feeder extends Subsystem {
     public void secure(double speed) {
     	set(speed);
     }
+    public void exchange(double speed) {
+    	set(-speed);
+    }
     
     public void secure() {
     	secure(Robot.values.secureSpeed);
     }
     
     public void exchange() {
-    	set(Robot.values.exchangeSpeed);
+    	exchange(Robot.values.exchangeSpeed);
     }
     
     public void stop() {

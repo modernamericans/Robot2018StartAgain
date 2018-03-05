@@ -16,6 +16,7 @@ public class OI {
 	private double rightDrive ;
 	private double  leftGrab  ;
 	private double rightGrab  ;
+	private double secureSpeed;
 	
     public Controller controller1;
     public Controller controller2;
@@ -32,6 +33,7 @@ public class OI {
     	controller2.update();
     	updateGrabValues();
     	updateDriveValues();
+    	updateSecureValues();
     }
     
 	public void mapButtons() {
@@ -41,11 +43,11 @@ public class OI {
 		controller1.buttonA    .whenPressed( new LaunchCubeLow()  );
 		controller2.buttonA    .whenPressed( new LaunchCubeLow()  );
 		
-		controller1.buttonDown .whenPressed( new SecureCube()     );
-		controller2.buttonDown .whenPressed( new SecureCube()     );
+		controller1.buttonDown .whileActive( new Secure()     );
+		controller2.buttonDown .whileActive( new Secure()     );
 		
-		controller1.buttonUp   .whenPressed( new ExchangeCube()   );
-		controller2.buttonUp   .whenPressed( new ExchangeCube()   );
+		controller1.buttonUp   .whileActive( new Exchange()   );
+		controller2.buttonUp   .whileActive( new Exchange()   );
 		
 		Command updateValues = new InstantCommand() { protected void initialize(){ 
 			Robot.values.update(); 
@@ -58,25 +60,39 @@ public class OI {
 
     
     private void updateGrabValues() {
-    	double TL, TR, TL1, TL2, TR1, TR2, RAxis, LAxis;
+    	double TL, TR, TL1, TR1, RAxis, LAxis;
     	
     	TL1 = controller1.triggerL();
     	TR1 = controller1.triggerR();
-    	TL2 = controller2.triggerL();
-    	TR2 = controller2.triggerR();
+    	//TL2 = controller2.triggerL();
+    	//TR2 = controller2.triggerR();
     	
     	RAxis = controller2.axisRY();
     	LAxis = controller2.axisLY();
     	
     	// dominance is max only
-    	TL = Math.max(TL1, TL2);
-    	TR = Math.max(TR1, TR2);
+    	TL = TL1;//Math.max(TL1, TL2);
+    	TR = TR1;//Math.max(TR1, TR2);
     	
 		leftGrab  = LAxis != 0 ? LAxis : TR - TL ;
 		rightGrab = RAxis != 0 ? RAxis : TR - TL ;
 		//System.out.println("Afirmative " + leftGrab + " " + rightGrab);
     }
-    
+    private void updateSecureValues() {
+    	double TL, TR, TL1, TL2, TR1, TR2, RAxis, LAxis;
+    	
+    	//TL1 = controller1.triggerL();
+    	//TR1 = controller1.triggerR();
+    	TL2 = controller2.triggerL();
+    	TR2 = controller2.triggerR();
+    	
+    	//RAxis = controller2.axisRY();
+    //	LAxis = controller2.axisLY();
+    	
+    	// dominance is max only
+    	leftGrab =TL2;// Math.max(TL1, TL2);
+    	rightGrab = TR2;//Math.max(TR1, TR2);
+    }
     private void updateDriveValues() {
     	double LX, LY, RX, RY, LX1, LX2, LY1, LY2, RX1, RX2, RY1, RY2;
     	
@@ -154,5 +170,6 @@ public class OI {
     public double driveRight() { return rightDrive; }
     public double  grabLeft () { return  leftGrab;  }
     public double  grabRight() { return rightGrab;  }
+    public double  getSecure() { return secureSpeed; }
 
 }
