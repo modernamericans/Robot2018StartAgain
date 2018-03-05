@@ -13,7 +13,7 @@ public class LaunchCubeHigh extends CommandGroup {
         
         addSequential(new LauncherUp());
         addSequential(new LauncherSpinFast());
-    	addSequential(new Feed());
+    	addSequential(new FeedFast());
         addSequential(new WaitCommand(Robot.values.launchWait));
         addSequential(new LaunchDone());
     } 

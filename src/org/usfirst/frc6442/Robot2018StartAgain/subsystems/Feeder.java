@@ -1,5 +1,6 @@
 package org.usfirst.frc6442.Robot2018StartAgain.subsystems;
 
+import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
 import org.usfirst.frc6442.Robot2018StartAgain.commands.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -26,7 +27,7 @@ public class Feeder extends Subsystem {
     }
     
     public void feed() {
-    	feed(1);
+    	feed(Robot.values.lowFeed);
     }
     
     public void secure(double speed) {
@@ -34,11 +35,11 @@ public class Feeder extends Subsystem {
     }
     
     public void secure() {
-    	secure(1);
+    	secure(Robot.values.secureSpeed);
     }
     
     public void exchange() {
-    	set(-0.5);
+    	set(Robot.values.exchangeSpeed);
     }
     
     public void stop() {

@@ -1,5 +1,6 @@
 package org.usfirst.frc6442.Robot2018StartAgain.subsystems;
 
+import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
 import org.usfirst.frc6442.Robot2018StartAgain.commands.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -30,7 +31,7 @@ public class Launcher extends Subsystem {
     }
     
     public void launchFast() {
-    	set(1);
+    	set(Robot.values.highSpeed);
     }
     
     public void launchMed() {
@@ -38,7 +39,7 @@ public class Launcher extends Subsystem {
     }
     
     public void launchSlow() {
-    	set(0.1);
+    	set(Robot.values.lowSpeed);
     }
     
     public void stop() {

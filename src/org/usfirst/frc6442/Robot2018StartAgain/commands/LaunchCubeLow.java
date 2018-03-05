@@ -13,7 +13,7 @@ public class LaunchCubeLow extends CommandGroup {
     	
         addSequential(new LauncherDown());
         addSequential(new LauncherSpinSlow());
-        addSequential(new Feed());
+        addSequential(new FeedSlow());
         addSequential(new WaitCommand(Robot.values.launchWait));
         addSequential(new LaunchDone());
     } 

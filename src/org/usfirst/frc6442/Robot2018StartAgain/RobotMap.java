@@ -50,7 +50,7 @@ public class RobotMap {
     	if (!v.skipCAN) {
     		pneumaticsCompressor     = new Compressor();
 	        pneumaticsDoubleSolenoid = new DoubleSolenoid(v.solenoidForwardChannel, v.solenoidReverseChannel);
-	        powerDist                = new PowerDistributionPanel();
+	       // powerDist                = new PowerDistributionPanel();
 	        
 	        //double current = powerDist.getCurrent(intPortNum); //in amps
     	}

@@ -14,7 +14,7 @@ public class LauncherSpinSlow extends TimedCommand {
 	}
 	
 	protected void initialize() {
-		setTimeout(Robot.values.highSpin);
+		setTimeout(Robot.values.lowSpin);
 		launcher.launchSlow();
 	}
 }
