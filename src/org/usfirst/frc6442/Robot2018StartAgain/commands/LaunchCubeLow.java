@@ -11,8 +11,9 @@ public class LaunchCubeLow extends CommandGroup {
 
     public LaunchCubeLow() {
     	
-        addSequential(new LauncherDown());
-        addSequential(new LauncherSpinSlow());
+      //  addSequential(new LauncherDown());
+        addSequential(new LauncherOff());
+    	addSequential(new LauncherSpinSlow());
         addSequential(new FeedSlow());
         addSequential(new WaitCommand(Robot.values.launchWait));
         addSequential(new LaunchDone());
