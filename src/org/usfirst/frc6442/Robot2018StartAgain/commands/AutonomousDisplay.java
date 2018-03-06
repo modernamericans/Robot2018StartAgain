@@ -37,5 +37,5 @@ public AutonomousDisplay() {
 	addSequential(new DriveForwardTime(1.5));
 	addSequential(new DriveStop(1));
 	addSequential(new DriveReverseTime(1.5));
-S} 
+} 
 }
