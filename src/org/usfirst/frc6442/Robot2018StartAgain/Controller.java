@@ -70,7 +70,7 @@ public class Controller extends Joystick {
     }
     
     public double  axisLX    () { return applyDeadzone(   this.getRawAxis(0) ); }
-    public double  axisLY    () { return applyDeadzone( - this.getRawAxis(1) ); }u
+    public double  axisLY    () { return applyDeadzone( - this.getRawAxis(1) ); }
     public double  axisRX    () { return applyDeadzone(   this.getRawAxis(4) ); }
     public double  axisRY    () { return applyDeadzone( - this.getRawAxis(5) ); }
     public double  triggerR  () { return applyDeadzone(   this.getRawAxis(3) ); }
