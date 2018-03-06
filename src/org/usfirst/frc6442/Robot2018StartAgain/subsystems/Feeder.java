@@ -15,7 +15,7 @@ public class Feeder extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-        //setDefaultCommand(new LauncherRaw());
+        setDefaultCommand(new AnalogSecure());
     }
 
     public void set(double speed) {
