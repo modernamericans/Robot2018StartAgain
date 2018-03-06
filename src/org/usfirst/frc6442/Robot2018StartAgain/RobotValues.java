@@ -8,8 +8,8 @@ public class RobotValues {
 	public boolean skipCAN = false;
 	
 	// PDW Ports
-	public int    leftDrivePWM = 1;
-	public int   rightDrivePWM = 0;
+	public int    leftDrivePWM = 0;
+	public int   rightDrivePWM = 1;
 	public int       feederPWM = 3;
 	public int     launcherPWM = 4;
 	public int grabberRightPWM = 7;
@@ -31,8 +31,8 @@ public class RobotValues {
 	public int solenoidReverseChannel = 1;
 	
 	// PWM Inverts
-	public boolean leftDriveInvert    = false;
-	public boolean rightDriveInvert   = true;
+	public boolean leftDriveInvert    = true;
+	public boolean rightDriveInvert   = false;
 
 	public boolean feederInvert       = false;
 	public boolean launcherInvert     = false;
@@ -75,6 +75,10 @@ public class RobotValues {
 
 	public double exchangeSpeed = 1;
 
+	public double leftDriveFrac = .9;
+
+	public double rightDriveFrac = 1.0;
+
 	
 	
 	public void update() {
@@ -83,11 +87,11 @@ public class RobotValues {
 		System.out.println("skipCAN = " + skipCAN);
 
 
-		leftDrivePWM = getInt("leftDrivePWM", 1);
+		leftDrivePWM = getInt("leftDrivePWM", leftDrivePWM);
 		System.out.println("leftDrivePWM = " + leftDrivePWM);
 
 
-		rightDrivePWM = getInt("rightDrivePWM", 0);
+		rightDrivePWM = getInt("rightDrivePWM", rightDrivePWM);
 		System.out.println("rightDrivePWM = " + rightDrivePWM);
 
 
@@ -143,11 +147,11 @@ public class RobotValues {
 		System.out.println("solenoidReverseChannel = " + solenoidReverseChannel);
 
 
-		leftDriveInvert = getBoolean("leftDriveInvert", false);
+		leftDriveInvert = getBoolean("leftDriveInvert", true);
 		System.out.println("leftDriveInvert = " + leftDriveInvert);
 
 
-		rightDriveInvert = getBoolean("rightDriveInvert", true);
+		rightDriveInvert = getBoolean("rightDriveInvert", false);
 		System.out.println("rightDriveInvert = " + rightDriveInvert);
 
 
@@ -167,6 +171,12 @@ public class RobotValues {
 		System.out.println("grabberLeftInvert = " + grabberLeftInvert);
 
 
+		leftDriveFrac  = getDouble("leftDriveFrac ", leftDriveFrac );
+		System.out.println("leftDriveFrac  = " + leftDriveFrac );
+		
+		rightDriveFrac  = getDouble("rightDriveFrac ", rightDriveFrac );
+		System.out.println("rightDriveFrac  = " + rightDriveFrac );
+		
 		highSpeed = getDouble("highSpeed", 0.5);
 		System.out.println("highSpeed = " + highSpeed);
 

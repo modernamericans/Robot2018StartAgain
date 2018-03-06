@@ -30,7 +30,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public void set(double value) {
-    	set(value, value);	
+    	set(value*Robot.values.leftDriveFrac, value*Robot.values.rightDriveFrac);	
     }
     
     public void forwardFull() {
