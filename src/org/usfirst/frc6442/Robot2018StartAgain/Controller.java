@@ -48,12 +48,16 @@ public class Controller extends Joystick {
     }
     
     class DPadButton extends Button {
+    	
     	private Controller controller;
+    	
     	private int zone;
+    	
     	public DPadButton(Controller c, int zoneToMatch) {
     		controller = c;
     		zone = zoneToMatch;
     	}
+    	
     	public boolean get() {
     		return controller.dPadZone == zone;
     	}
@@ -65,12 +69,12 @@ public class Controller extends Joystick {
     	if (buttonRB.get()) mode = DriveMode.TANK;
     }
     
-    public double  axisLX    () { return applyDeadzone( this.getRawAxis(0) ); }
-    public double  axisLY    () { return applyDeadzone( this.getRawAxis(1) ); }
-    public double  axisRX    () { return applyDeadzone( this.getRawAxis(4) ); }
-    public double  axisRY    () { return applyDeadzone( this.getRawAxis(5) ); }
-    public double  triggerR  () { return applyDeadzone( this.getRawAxis(3) ); }
-    public double  triggerL  () { return applyDeadzone( this.getRawAxis(2) ); }
+    public double  axisLX    () { return applyDeadzone(   this.getRawAxis(0) ); }
+    public double  axisLY    () { return applyDeadzone( - this.getRawAxis(1) ); }u
+    public double  axisRX    () { return applyDeadzone(   this.getRawAxis(4) ); }
+    public double  axisRY    () { return applyDeadzone( - this.getRawAxis(5) ); }
+    public double  triggerR  () { return applyDeadzone(   this.getRawAxis(3) ); }
+    public double  triggerL  () { return applyDeadzone(   this.getRawAxis(2) ); }
     
     public double applyDeadzone(double value) {
     	return Math.abs(value) > deadzone ? value : 0;
