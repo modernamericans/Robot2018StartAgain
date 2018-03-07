@@ -11,19 +11,18 @@ public class Grabber extends Subsystem {
 
     private final SpeedController grabberR = RobotMap.grabCtrlRight;
     private final SpeedController grabberL = RobotMap.grabCtrlLeft;
-    private final SpeedControllerGroup grabbingGroup = RobotMap.grabCtrlBoth;
 
     public void initDefaultCommand() {
          setDefaultCommand(new AnalogGrab());
     }
     
-    public void set(double speedRight, double speedLeft) {
-    	grabberR.set(speedRight);
+    public void set(double speedLeft, double speedRight) {
     	grabberL.set(speedLeft);
+    	grabberR.set(speedRight);
     }
     
-    public void grab(double speedR, double speedL) {
-    	set(speedR, speedL);
+    public void grab(double speedL, double speedR) {
+    	set(speedL, speedR);
     }
     
     public void grabLeft(double speed) {
@@ -42,8 +41,8 @@ public class Grabber extends Subsystem {
     	grab(1);
     }
     
-    public void push(double speedR, double speedL) {
-    	set(-speedR, -speedL);
+    public void push(double speedL, double speedR) {
+    	set(-speedL, -speedR);
     }
     
     public void push(double speed) {

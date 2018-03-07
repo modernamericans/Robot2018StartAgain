@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 import org.usfirst.frc6442.Robot2018StartAgain.subsystems.*;
 
-
 public class LaunchCubeLow extends CommandGroup {
 
     public LaunchCubeLow() {

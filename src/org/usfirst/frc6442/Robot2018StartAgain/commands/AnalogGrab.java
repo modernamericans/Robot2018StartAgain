@@ -17,10 +17,10 @@ public class AnalogGrab extends Command {
 
     @Override
     protected void execute() {
-    	double  leftGrab = Robot.oi.grabLeft();
-    	double rightGrab = Robot.oi.grabRight();
+    	double  leftGrab = Robot.oi.getGrabLeft();
+    	double rightGrab = Robot.oi.getDriveRight();
     	
-    	grabber.grab(rightGrab, leftGrab);
+    	grabber.grab(leftGrab, rightGrab);
     }
     
     @Override

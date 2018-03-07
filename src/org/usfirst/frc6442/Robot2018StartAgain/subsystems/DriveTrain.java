@@ -10,17 +10,15 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 public class DriveTrain extends Subsystem {
-
+	private final SpeedController driveLeft = RobotMap.driveCtrlLeft;
     private final SpeedController driveRight = RobotMap.driveCtrlRight;
-    private final SpeedController driveLeft = RobotMap.driveCtrlLeft;
-    private final SpeedControllerGroup driveBoth = RobotMap.driveCtrlBoth;
 
     @Override
     public void initDefaultCommand() {
        setDefaultCommand(new AnalogDrive());
     }
     
-    public void tankDrive(double rightMagnitude, double leftMagnitude) {
+    public void tankDrive(double leftMagnitude, double rightMagnitude) {
     	set(leftMagnitude, rightMagnitude);
     }
     
@@ -30,7 +28,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public void set(double value) {
-    	set(value*Robot.values.leftDriveFrac, value*Robot.values.rightDriveFrac);	
+    	set(value * Robot.values.leftDriveFrac, value * Robot.values.rightDriveFrac);	
     }
     
     public void forwardFull() {

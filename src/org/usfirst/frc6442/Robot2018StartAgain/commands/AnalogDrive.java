@@ -19,8 +19,8 @@ public class AnalogDrive extends Command {
 
     @Override
     protected void execute() {
-    	double  leftValue = Robot.oi.driveLeft();
-    	double rightValue = Robot.oi.driveRight();
+    	double  leftValue = Robot.oi.getDriveLeft();
+    	double rightValue = Robot.oi.getDriveRight();
     	
     	Robot.driveTrain.tankDrive(rightValue, leftValue);
     }

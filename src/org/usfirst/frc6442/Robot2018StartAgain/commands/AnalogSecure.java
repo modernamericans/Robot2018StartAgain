@@ -18,7 +18,7 @@ public class AnalogSecure extends Command {
 
     @Override
     protected void execute() {
-    	double  secure = Robot.oi.getSecure();
+    	double  secure = Robot.oi.getFeed();
     	
     	feeder.secure(secure);
     }
