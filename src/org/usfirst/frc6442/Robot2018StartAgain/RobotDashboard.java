@@ -71,7 +71,7 @@ public class RobotDashboard {
     	SmartDashboard.putData("LauncherSpinSlow", new LauncherSpinSlow());
     	SmartDashboard.putData("LauncherUp", new LauncherUp());
     	SmartDashboard.putData("Push", new PushTime(1));
-    	SmartDashboard.putData("Secure", new Secure());
+    	SmartDashboard.putData("Secure", new SecureToSwitch());
     	SmartDashboard.putData("SecureCube", new SecureCube());
     	SmartDashboard.putData("TurnLeft(90)", new TurnLeftGyro(90.0));
     	SmartDashboard.putData("TurnRight(90)", new TurnRightGyro(90.0));

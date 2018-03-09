@@ -8,7 +8,7 @@ public class Exchange extends Command {
 	protected Feeder feeder = Robot.feeder;
 	
     public Exchange() {
-    	requires(Robot.feeder);
+    	requires(feeder);
     }
 
     protected void initialize() {
@@ -16,7 +16,6 @@ public class Exchange extends Command {
     }
 
     protected boolean isFinished() {
-    	// ToDo: test limit switch?
         return false;
     }
 

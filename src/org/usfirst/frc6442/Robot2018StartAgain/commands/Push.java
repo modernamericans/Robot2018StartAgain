@@ -8,7 +8,7 @@ public class Push extends InstantCommand {
 	public Grabber grabber = Robot.grabber;
 	
     public Push() {
-    	requires(Robot.grabber);
+    	requires(grabber);
     }
 
     protected void initialize() {

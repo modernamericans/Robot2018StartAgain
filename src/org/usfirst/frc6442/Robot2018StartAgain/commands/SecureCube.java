@@ -7,6 +7,6 @@ public class SecureCube extends CommandGroup {
 
     public SecureCube() {
     	addParallel(new GrabTime(1));
-    	addSequential(new Secure());
+    	addSequential(new SecureToSwitch());
     } 
 }

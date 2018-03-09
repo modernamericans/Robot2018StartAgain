@@ -8,7 +8,7 @@ public class FeedFast extends InstantCommand {
 	public Feeder feeder = Robot.feeder;
 
 	public FeedFast() {
-		requires(Robot.feeder);
+		requires(feeder);
 	}
 	
     protected void initialize() {

@@ -2,7 +2,6 @@ package org.usfirst.frc6442.Robot2018StartAgain.commands;
 
 import edu.wpi.first.wpilibj.command.TimedCommand;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
-import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
 import org.usfirst.frc6442.Robot2018StartAgain.subsystems.DriveTrain;
 
 public class DriveForwardTime extends TimedCommand {
@@ -11,15 +10,15 @@ public class DriveForwardTime extends TimedCommand {
 	
 	public DriveForwardTime(double time) {
 		super(time);
-		requires(Robot.driveTrain);
+		requires(driveTrain);
 	}
 
 	protected void initialize() {
-		 Robot.driveTrain.forwardHalf();
+		 driveTrain.forwardHalf();
 	}
 
 	protected void end() {
-		 Robot.driveTrain.stop();
+		 driveTrain.stop();
 	}
 	
 	protected void interrupted() {

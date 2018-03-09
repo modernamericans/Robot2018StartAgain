@@ -63,7 +63,7 @@ public class OI {
 		controller.buttonStart .whenPressed( updateValues         );
 		controller.buttonY     .whenPressed( new LaunchCubeHigh() );
 		controller.buttonA     .whenPressed( new LaunchCubeLow()  );
-		controller.buttonDown  .whileActive( new Secure()         );
+		controller.buttonDown  .whileActive( new SecureToSwitch()         );
 		controller.buttonUp    .whileActive( new Exchange()       );
 	}
 

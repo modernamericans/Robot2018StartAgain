@@ -8,7 +8,7 @@ public class Feed extends InstantCommand {
 	public Feeder feeder = Robot.feeder;
 
 	public Feed() {
-		requires(Robot.feeder);
+		requires(feeder);
 	}
 	
     protected void initialize() {

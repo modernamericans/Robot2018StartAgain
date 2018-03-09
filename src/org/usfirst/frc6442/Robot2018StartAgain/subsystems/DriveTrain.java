@@ -9,9 +9,19 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
-public class DriveTrain extends Subsystem {
+public class DriveTrain extends PIDSubsystem {
 	private final SpeedController driveLeft = RobotMap.driveCtrlLeft;
     private final SpeedController driveRight = RobotMap.driveCtrlRight;
+
+    private static final double Kp = 3;
+    private static final double Ki = 0.2;
+    private static final double Kd = 0.1;
+
+    // IDEA!!! Gyro drive, like playing a isomorphic game, left controller drives the robot and goes in absolute direction
+
+    public DriveTrain() {
+        super("DriveSystem", Kp, Ki, Kd);
+    }
 
     @Override
     public void initDefaultCommand() {
@@ -38,26 +48,46 @@ public class DriveTrain extends Subsystem {
     public void forwardHalf() {
     	set(0.5);
     }
-    
-    public void rightTurn() {
-    	set(-0.5, 0.5);
+
+    public void rightTurn(double speed) {
+    	set(-speed, speed);
     }
     
+    public void rightTurn() {
+    	set(0.5);
+    }
+    
+    public void leftTurn(double speed) {
+    	set(speed,-speed);
+    }
+
     public void leftTurn() {
-    	set(0.5,-0.5);
+    	leftTurn(0.5);
     }
     
     public void reverse() {
     	set(-0.5);
     }
+
+    public void driveStraight(double speed) {
+        drivingStraight = true;
+        setSetpoint(RobotMap.gyro.getAngle());
+    }
     
     public void stop() {
+        drivingStraight = false;
     	set(0);
+    }
+
+    protected double returnPIDInput() {
+        return RobotMap.gyro.getAngle();
+    }
+    
+    protected void usePIDOutput(double output) { 
+        set(0.5+output,0.5-output);
     }
     
     public void periodic() {
-        // Put code here to be run every loop
-    
+
     }
 }
-
