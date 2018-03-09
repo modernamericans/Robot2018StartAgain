@@ -50,7 +50,14 @@ public class Robot extends TimedRobot {
         
     }
     public void setStartingPositon() {
-    	startSide = RobotDashboard.startPosition.getSelected();
+    	//startSide = Side.CENTER;
+    	//RobotDashboard.startPosition.getSelected();
+    	Preferences prefs = Preferences.getInstance();
+    	if(!prefs.containsKey("start")) prefs.putString("start", "C");
+    	String sidePrefs = prefs.getString("start", "C");
+    	if(sidePrefs == "L") startSide = Side.LEFT;
+    	if(sidePrefs == "C") startSide = Side.CENTER;
+    	if(sidePrefs == "R") startSide = Side.RIGHT;    		
     }
     public void autonomousInit() {
     	getGameData();
@@ -64,6 +71,7 @@ public class Robot extends TimedRobot {
     	
     	
     	if (autonomousCommand != null) autonomousCommand.start();
+    	else (new DriveForwardTime(5)).start();
     }    
     public void getGameData() {
     	gameMessage = DriverStation.getInstance().getGameSpecificMessage();

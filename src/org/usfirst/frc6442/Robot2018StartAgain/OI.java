@@ -98,7 +98,7 @@ public class OI {
         	boolean steerLeft = joySteer < 0;
         	
         	if(steerRight) {
-        		driveRight =1 - steerStrength;	
+        		driveRight = 1 - steerStrength;	
         	}
         	if(steerLeft) {
         		driveLeft = 1 - steerStrength;	
