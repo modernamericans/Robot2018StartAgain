@@ -12,6 +12,8 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc6442.Robot2018StartAgain.autonomous.*;
 import org.usfirst.frc6442.Robot2018StartAgain.commands.*;
 import org.usfirst.frc6442.Robot2018StartAgain.subsystems.*;
 import edu.wpi.first.wpilibj.Preferences;
@@ -41,6 +43,7 @@ public class Robot extends TimedRobot {
         CameraServer.getInstance().startAutomaticCapture();
 
         oi = new OI();
+        //TODO: Set Start Side(Dashboard Choser? Pref?)
       }
     public void autonomousInit() {
     	getGameData();
@@ -54,7 +57,7 @@ public class Robot extends TimedRobot {
     				} 
     	else if(gameMessage.charAt(0) == 'R') {
     		switchSide = Side.RIGHT;
-	}
+    	}
         
     }
 	public void setAutonomousCommand() {
@@ -71,7 +74,7 @@ public class Robot extends TimedRobot {
 		}
     	if(switchSide == Side.RIGHT) {
 			if(startSide == Side.LEFT) {
-				autonomousCommand = new AutonomousRighttGoRight();
+				autonomousCommand = new AutonomousRightGoRight();
 			}
 			if(startSide == Side.CENTER) {
 				autonomousCommand = new AutonomousCenterGoRight();
