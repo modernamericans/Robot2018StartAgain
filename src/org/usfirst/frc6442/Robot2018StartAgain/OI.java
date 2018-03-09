@@ -36,11 +36,18 @@ public class OI {
 		UpdateFeederValue();
 		UpdateGabberValue();
 		UpdateDriverValue();
+		UpdateMode();
 	}
 
 //Update Mode method
-
-
+//new method updateMode()
+	public void UpdateMode() {
+		if(Controller1.LB.get())
+			Controller1.mode = Controller.Mode.ARCADE;
+		if(Controller1.RB.get())
+			Controller1.mode = Controller.Mode.TANK;
+		//done, now just add this method to the update
+	}
 //Update Feeder Method
 	private void UpdateFeederValue() {
 		double RT = Controller2.axisRT();

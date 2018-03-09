@@ -43,11 +43,24 @@ public class Robot extends TimedRobot {
         CameraServer.getInstance().startAutomaticCapture();
 
         oi = new OI();
-        //TODO: Set Start Side(Dashboard Choser? Pref?)
-      }
+
+        RobotDashboard.initDashboard();
+        
+    }
+    public void setStartingPositon() {
+    	startSide = RobotDashboard.startPosition.getSelected();
+    }
     public void autonomousInit() {
     	getGameData();
+    	setStartingPositon();
     	setAutonomousCommand();
+    	//ok time to test it I guess?
+    	//time to test
+    	//oh got a minute, we just need to add drive mode swithing, it's like 2 lines of code
+    	//In analogDrive?
+    	//oi
+    	
+    	
     	if (autonomousCommand != null) autonomousCommand.start();
     }    
     public void getGameData() {
