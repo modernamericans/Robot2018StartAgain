@@ -97,14 +97,16 @@ public class OI {
         	boolean steerRight = joySteer > 0;
         	boolean steerLeft = joySteer < 0;
         	
+        	
+        	
         	if(steerRight) {
         		driveRight = 1 - steerStrength;	
         	}
         	if(steerLeft) {
         		driveLeft = 1 - steerStrength;	
         	}
-        	driveRight = LY;//driveRight * joySpeed;
-        	driveLeft =  LY;//driveLeft * joySpeed;
+        	driveRight = LY/2;
+        	driveLeft =  LY/2;
 		}
 	}
 }
