@@ -21,7 +21,7 @@ public class TurnLeftGyro extends Command {
 		start = RobotMap.gyro.getAngle();
 		target = start - turn; 
 		Robot.driveTrain.set(.5,-.5);
-		margin = Robot.values.gyroTurnErrorMargin;
+		margin = 5;
 	}
 	
 	protected boolean isFinished() {

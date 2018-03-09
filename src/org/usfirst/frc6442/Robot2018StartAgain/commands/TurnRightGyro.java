@@ -20,8 +20,8 @@ public class TurnRightGyro extends Command {
 	protected void initialize() {
 		start = RobotMap.gyro.getAngle();
 		target = start + turn; 
-		Robot.driveTrain.rightTurn();
-		margin = Robot.values.gyroTurnErrorMargin;
+		Robot.driveTrain.set(-.5,.5);
+		margin = 5;
 	}
 	
 	protected boolean isFinished() {
