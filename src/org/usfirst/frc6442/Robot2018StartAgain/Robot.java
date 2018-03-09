@@ -44,7 +44,7 @@ public class Robot extends TimedRobot {
       }
     public void autonomousInit() {
     	getGameData();
-
+    	setAutonomousCommand();
     	if (autonomousCommand != null) autonomousCommand.start();
     }    
     public void getGameData() {
@@ -58,8 +58,28 @@ public class Robot extends TimedRobot {
         
     }
 	public void setAutonomousCommand() {
-		
-    	
+		if(switchSide == Side.LEFT){
+			if(startSide == Side.LEFT) {
+				autonomousCommand = new AutonomousLeftGoLeft();
+			}
+			if(startSide == Side.CENTER) {
+				autonomousCommand = new AutonomousCenterGoLeft();
+			}
+			if(startSide == Side.RIGHT) {
+				autonomousCommand = new AutonomousRightGoLeft();
+			}
+		}
+    	if(switchSide == Side.RIGHT) {
+			if(startSide == Side.LEFT) {
+				autonomousCommand = new AutonomousRighttGoRight();
+			}
+			if(startSide == Side.CENTER) {
+				autonomousCommand = new AutonomousCenterGoRight();
+			}
+			if(startSide == Side.RIGHT) {
+				autonomousCommand = new AutonomousRightGoRight();
+			}
+    	}
 	}
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
