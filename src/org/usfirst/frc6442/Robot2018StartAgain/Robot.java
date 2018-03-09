@@ -46,6 +46,7 @@ public class Robot extends TimedRobot {
         oi = new OI();
 
         RobotDashboard.initDashboard();
+        CameraServer.getInstance().startAutomaticCapture();
         
     }
     public void setStartingPositon() {
