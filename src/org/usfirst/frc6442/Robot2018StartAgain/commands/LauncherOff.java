@@ -4,14 +4,14 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 import org.usfirst.frc6442.Robot2018StartAgain.subsystems.Pneumatics;
 
-public class LauncherDown extends InstantCommand {
+public class LauncherOff extends InstantCommand {
 	protected Pneumatics pneumatics = Robot.pneumatics;
 	
-	public LauncherDown() {
+	public LauncherOff() {
 	    requires(Robot.pneumatics);
 	}
 	
 	protected void initialize() {
-		 pneumatics.down();
+		 pneumatics.off();
 	}
 }
