@@ -58,17 +58,19 @@ public class OI {
 		double RT = Controller2.axisRT();
 		double LT = Controller2.axisLT();
 		feed = RT-LT;
+		grabLeft = RT-LT;
+		grabRight = RT-LT;
 	}
 //updater grabber method
 	private void UpdateGabberValue() {
-		double RT = Controller1.axisRT();
-		double LT = Controller1.axisLT();
+		double RT = Controller2.axisRT();
+		double LT = Controller2.axisLT();
 		double RY = Controller2.axisRY();
 		double LY = Controller2.axisLY();
-		boolean finesse = RY !=0 || LY != 0;
+		boolean finesse = RT == 0 && LT == 0;
 		if(finesse) {
-			grabLeft = LY;
-			grabRight = RY;
+			grabLeft = -LY;
+			grabRight = -RY;
 		}
 		
 		else {
