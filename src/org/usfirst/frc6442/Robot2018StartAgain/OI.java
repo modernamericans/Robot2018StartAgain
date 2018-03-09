@@ -8,8 +8,8 @@ public class OI {
 	public double feed;
 	public double grabLeft;
 	public double grabRight;
-	public double driveLeft;
-	public double driveRight;
+	public double driveLeft = 0;
+	public double driveRight = 0;
 
 
 // Controlers
@@ -89,8 +89,8 @@ public class OI {
 		}
 		
 		else {
-    		double joySpeed = Controller1.axisLY();
-    		double joySteer = Controller1.axisRX();
+    		double joySpeed = LY;
+    		double joySteer = RX;
     		
         	double steerStrength = Math.abs(joySteer);
         	
@@ -103,8 +103,8 @@ public class OI {
         	if(steerLeft) {
         		driveLeft = 1 - steerStrength;	
         	}
-        	driveRight = driveRight * joySpeed;
-        	driveLeft = driveLeft * joySpeed;
+        	driveRight = LY;//driveRight * joySpeed;
+        	driveLeft =  LY;//driveLeft * joySpeed;
 		}
 	}
 }
