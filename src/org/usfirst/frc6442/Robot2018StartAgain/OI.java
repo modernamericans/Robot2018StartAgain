@@ -77,7 +77,22 @@ public class OI {
 		}
 		
 		else {
-			//TO Do, Arcade MAth
+    		double joySpeed = Controller1.axisLY();
+    		double joySteer = Controller1.axisRX();
+    		
+        	double steerStrength = Math.abs(joySteer);
+        	
+        	boolean steerRight = joySteer > 0;
+        	boolean steerLeft = joySteer < 0;
+        	
+        	if(steerRight) {
+        		driveRight =1 - steerStrength;	
+        	}
+        	if(steerLeft) {
+        		driveLeft = 1 - steerStrength;	
+        	}
+        	driveRight = driveRight * joySpeed;
+        	driveLeft = driveLeft * joySpeed;
 		}
 	}
 }
