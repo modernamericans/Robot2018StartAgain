@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 public class Feed extends InstantCommand{
 	protected Feeder feeder = Robot.feeder;
 	public Feed() {
-		requires(feeder);
+		requires(Robot.feeder);
 	}
 	protected void initialize() {
 		feeder.set(1);
