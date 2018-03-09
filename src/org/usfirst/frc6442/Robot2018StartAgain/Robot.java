@@ -40,6 +40,7 @@ public class Robot extends TimedRobot {
         driveTrain = new DriveTrain();
         launcher = new Launcher();
         grabber = new Grabber();
+        feeder = new Feeder();
         CameraServer.getInstance().startAutomaticCapture();
 
         oi = new OI();

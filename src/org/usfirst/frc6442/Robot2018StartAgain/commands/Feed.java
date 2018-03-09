@@ -5,7 +5,7 @@ import org.usfirst.frc6442.Robot2018StartAgain.subsystems.Feeder;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
 public class Feed extends InstantCommand{
-	public Feeder feeder = Robot.feeder;
+	protected Feeder feeder = Robot.feeder;
 	public Feed() {
 		requires(Robot.feeder);
 	}
