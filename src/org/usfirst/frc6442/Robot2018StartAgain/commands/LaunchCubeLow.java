@@ -11,8 +11,7 @@ public class LaunchCubeLow extends CommandGroup {
 
     public LaunchCubeLow() {
     	
-      //  addSequential(new LauncherDown());
-        addSequential(new LauncherOff());
+    	addSequential(new LauncherDown());
     	addSequential(new LauncherSpinSlow());
         addSequential(new Feed());
         addSequential(new WaitCommand(1));

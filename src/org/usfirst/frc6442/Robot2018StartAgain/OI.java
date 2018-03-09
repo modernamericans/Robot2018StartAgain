@@ -27,6 +27,11 @@ public class OI {
 		Controller1.Y.whenPressed(new LaunchCubeHigh());
 		Controller2.Y.whenPressed(new LaunchCubeHigh());
 		
+		Controller1.X.whenPressed(new LauncherDown());
+		Controller1.B.whenPressed(new LauncherUp());
+		Controller2.X.whenPressed(new LauncherDown());
+		Controller2.B.whenPressed(new LauncherUp());
+		
 		Controller1.A.whenPressed(new LaunchCubeLow());
 		Controller2.A.whenPressed(new LaunchCubeLow());
 	}
