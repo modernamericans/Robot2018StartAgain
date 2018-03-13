@@ -9,7 +9,7 @@ public class LauncherSpinFast extends TimedCommand {
 	public Launcher launcher = Robot.launcher;
 	
 	public LauncherSpinFast() {
-		super(1);
+		super(1.5);
 	    requires(Robot.launcher);
 	}
 	

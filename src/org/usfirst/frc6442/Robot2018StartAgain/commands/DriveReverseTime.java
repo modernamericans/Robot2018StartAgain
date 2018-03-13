@@ -15,7 +15,7 @@ public class DriveReverseTime extends TimedCommand {
 	}
 
 	protected void initialize() {
-		driveTrain.set(-0.5);
+		driveTrain.set(-0.3);
 	}
 
 	protected void end() {
