@@ -53,11 +53,13 @@ public class Robot extends TimedRobot {
     	//startSide = Side.CENTER;
     	//RobotDashboard.startPosition.getSelected();
     	Preferences prefs = Preferences.getInstance();
-    	if(!prefs.containsKey("start")) prefs.putString("start", "C");
-    	String sidePrefs = prefs.getString("start", "C");
-    	if(sidePrefs == "L") startSide = Side.LEFT;
-    	if(sidePrefs == "C") startSide = Side.CENTER;
-    	if(sidePrefs == "R") startSide = Side.RIGHT;    		
+    	if(!prefs.containsKey("start")) prefs.putString("start", "");
+    	String sidePrefs = prefs.getString("start", "");
+    	if(sidePrefs.equals("L")) startSide = Side.LEFT;
+    	if(sidePrefs.equals("C")) startSide = Side.CENTER;
+    	if(sidePrefs.equals("R")) startSide = Side.RIGHT; 
+    	System.out.println(sidePrefs);
+    	System.out.println(startSide);
     }
     public void autonomousInit() {
     	getGameData();
@@ -77,7 +79,8 @@ public class Robot extends TimedRobot {
     	gameMessage = DriverStation.getInstance().getGameSpecificMessage();
     	if(gameMessage.charAt(0) == 'L' ) {	
     		switchSide = Side.LEFT;	
-    				} 
+    		System.out.println(switchSide);		
+    	} 
     	else if(gameMessage.charAt(0) == 'R') {
     		switchSide = Side.RIGHT;
     	}
@@ -90,6 +93,8 @@ public class Robot extends TimedRobot {
 			}
 			if(startSide == Side.CENTER) {
 				autonomousCommand = new AutonomousCenterGoLeft();
+				System.out.println("Starting from Center");
+				System.out.println(autonomousCommand);
 			}
 			if(startSide == Side.RIGHT) {
 				autonomousCommand = new AutonomousRightGoLeft();
@@ -105,6 +110,7 @@ public class Robot extends TimedRobot {
 			if(startSide == Side.RIGHT) {
 				autonomousCommand = new AutonomousRightGoRight();
 			}
+			
     	}
 	}
     public void autonomousPeriodic() {

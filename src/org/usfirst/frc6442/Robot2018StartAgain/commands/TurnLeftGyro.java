@@ -2,6 +2,7 @@ package org.usfirst.frc6442.Robot2018StartAgain.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
 
@@ -13,6 +14,7 @@ public class TurnLeftGyro extends Command {
 	public double margin;
 	
 	public TurnLeftGyro(double turnDegrees) {
+		super(turnDegrees);
 		 requires(Robot.driveTrain);
 		 turn = turnDegrees; //number to change with timing
 	}
