@@ -10,6 +10,7 @@ public class OI {
 	public double grabRight;
 	public double driveLeft;
 	public double driveRight;
+	public boolean reverse = false;
 
 
 // Controlers
@@ -24,11 +25,15 @@ public class OI {
 	}
 //Map buttons
 	public void defineButtons() {
-		Controller1.Y.whenPressed(new LaunchCubeHigh());
+		Controller1.Y.whenPressed(new WiggleFeed());
 		Controller2.Y.whenPressed(new LaunchCubeHigh());
 		
 		Controller1.A.whenPressed(new LaunchCubeLow());
 		Controller2.A.whenPressed(new LaunchCubeLow());
+
+		Controller2.X.whenPressed(new LaunchDown());
+		Controller2.B.whenPressed(new LaunchUp());
+
 	}
 
 //Update
@@ -37,6 +42,11 @@ public class OI {
 		UpdateGabberValue();
 		UpdateDriverValue();
 		UpdateMode();
+		if(reverse)	{ 
+			double storage = driveLeft;
+			driveLeft = -driveRight;
+			driveRight=-storage;
+		}
 	}
 
 //Update Mode method
@@ -46,6 +56,8 @@ public class OI {
 			Controller1.mode = Controller.Mode.ARCADE;
 		if(Controller1.RB.get())
 			Controller1.mode = Controller.Mode.TANK;
+		if(Controller1.X.get())
+			reverse = !reverse;
 		//done, now just add this method to the update
 	}
 //Update Feeder Method
@@ -91,7 +103,9 @@ public class OI {
         	
         	boolean steerRight = joySteer > 0;
         	boolean steerLeft = joySteer < 0;
-        	
+					driveRight = 1;
+					driveLeft = 1;
+					
         	if(steerRight) {
         		driveRight =1 - steerStrength;	
         	}
