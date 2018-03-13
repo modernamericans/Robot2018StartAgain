@@ -25,7 +25,7 @@ public class OI {
 	}
 //Map buttons
 	public void defineButtons() {
-		Controller1.Y.whenPressed(new WiggleFeed());
+		Controller1.Y.whileHeld(new WiggleFeed());
 		Controller2.Y.whenPressed(new LaunchCubeHigh());
 		
 		Controller1.A.whenPressed(new LaunchCubeLow());
@@ -105,12 +105,12 @@ public class OI {
         	boolean steerLeft = joySteer < 0;
 					driveRight = 1;
 					driveLeft = 1;
-					
+
         	if(steerRight) {
-        		driveRight =1 - steerStrength;	
+        		driveRight -= steerStrength;	
         	}
         	if(steerLeft) {
-        		driveLeft = 1 - steerStrength;	
+        		driveLeft -= steerStrength;	
         	}
         	driveRight = driveRight * joySpeed;
         	driveLeft = driveLeft * joySpeed;
