@@ -28,8 +28,14 @@ public class DriveTrain extends PIDSubsystem{
 		ctlDriveLeft.set(left);
 	}
 	public void stop( ) {
-		set(0);
-	}
+        set(0);
+        disable();
+    }
+    public driveStraight(double speed){
+        double current = RobotMap.gyro.getAngle();
+        setSetpoint(current);
+        enable();
+    }
  protected double returnPIDInput() {
      return RobotMap.gyro.getAngle();
  }
