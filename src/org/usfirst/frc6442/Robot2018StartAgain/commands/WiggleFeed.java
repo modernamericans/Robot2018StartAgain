@@ -4,19 +4,20 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
+import org.usfirst.frc6442.Robot2018StartAgain.subsystems.*;
 
 public class WiggleFeed extends Command {
 	protected Feeder feeder = Robot.feeder;
 	protected Launcher launcher = Robot.launcher;
 	public int tic = 0;
   public int direction = 1;
-  public int time = time;
+  public int time;
   public WiggleFeed() {
 		 requires(feeder);
 		 requires(launcher);
 	}
 	
-	protected execute() {
+	protected void execute() {
     tic++;
     boolean swap = tic % time == 0;
     if(swap) {
@@ -24,7 +25,7 @@ public class WiggleFeed extends Command {
     direction = -direction;
     }
 		feeder.set(.5*direction);
-		launcher,set(.25*direction);
+		launcher.set(.25*direction);
 	}
 		protected boolean isFinished() {
 			return false;

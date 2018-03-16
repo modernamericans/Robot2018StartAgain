@@ -4,6 +4,7 @@ import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
 import org.usfirst.frc6442.Robot2018StartAgain.commands.AnalogDrive;
 
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveTrain extends PIDSubsystem{
@@ -14,7 +15,7 @@ public class DriveTrain extends PIDSubsystem{
     private static double Kd = .1;
 
     public DriveTrain() {
-        surper("DriveSystem", Kp, Ki, Kd);
+        super("DriveTrain", Kp, Ki, Kd);
     }
 	public void initDefaultCommand() {	
 		setDefaultCommand(new AnalogDrive());
@@ -31,7 +32,7 @@ public class DriveTrain extends PIDSubsystem{
         set(0);
         disable();
     }
-    public driveStraight(double speed){
+    public void driveStraight(double speed){
         double current = RobotMap.gyro.getAngle();
         setSetpoint(current);
         enable();

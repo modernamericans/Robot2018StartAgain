@@ -8,14 +8,9 @@ public class OI {
 	public double feed;
 	public double grabLeft;
 	public double grabRight;
-<<<<<<< HEAD
 	public double driveLeft = 0;
 	public double driveRight = 0;
-=======
-	public double driveLeft;
-	public double driveRight;
 	public boolean reverse = false;
->>>>>>> 6974ada606816ee520f300e31159f91593cc733c
 
 
 // Controlers
@@ -41,9 +36,6 @@ public class OI {
 		Controller1.A.whenPressed(new LaunchCubeLow());
 		Controller2.A.whenPressed(new LaunchCubeLow());
 
-		Controller2.X.whenPressed(new LaunchDown());
-		Controller2.B.whenPressed(new LaunchUp());
-
 	}
 
 //Update
@@ -53,9 +45,10 @@ public class OI {
 		UpdateDriverValue();
 		UpdateMode();
 		if(reverse)	{ 
-			double storage = driveLeft;
-			driveLeft = -driveRight;
-			driveRight=-storage;
+			double oldLeft = driveLeft;
+			double oldRight = driveRight;
+			driveLeft = -oldRight;
+			driveRight = -oldLeft;
 		}
 	}
 
@@ -101,7 +94,9 @@ public class OI {
 		double LY = Controller1.axisLY();
 		double RX = Controller1.axisRX();
 		double LX = Controller1.axisLX();
+		
 		Mode mode = Controller1.mode;
+		
 		if(mode == Mode.TANK) {
 			driveLeft = LY;
 			driveRight = RY;
@@ -115,25 +110,17 @@ public class OI {
         	
         	boolean steerRight = joySteer > 0;
         	boolean steerLeft = joySteer < 0;
-<<<<<<< HEAD
         	
+			driveRight = 1;
+			driveLeft = 1;
         	
-        	
-        	if(steerRight) {
-        		driveRight = 1 - steerStrength;	
-=======
-					driveRight = 1;
-					driveLeft = 1;
-
         	if(steerRight) {
         		driveRight -= steerStrength;	
->>>>>>> 6974ada606816ee520f300e31159f91593cc733c
         	}
         	if(steerLeft) {
         		driveLeft -= steerStrength;	
         	}
-        	driveRight = LY/2;
-        	driveLeft =  LY/2;
+        	
 		}
 	}
 }

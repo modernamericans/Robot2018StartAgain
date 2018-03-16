@@ -24,7 +24,7 @@ public class TurnLeftGyro extends Command {
 	}
 	protected void execute() {
 		double current = RobotMap.gyro.getAngle();
-		double error = target - currrent;
+		double error = target - current;
 		double distance = Math.abs(error);
 		double speed = .5;
 		if(distance < 50) speed = .4;
