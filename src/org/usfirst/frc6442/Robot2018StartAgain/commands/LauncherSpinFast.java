@@ -14,6 +14,6 @@ public class LauncherSpinFast extends TimedCommand {
 	}
 	
 	protected void initialize() {
-		launcher.set(1);
+		launcher.set(.9);
 	}
 }
