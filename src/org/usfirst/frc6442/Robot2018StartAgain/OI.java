@@ -40,7 +40,8 @@ public class OI {
 		
 		if(Controller1.dPadLeft()) Scheduler.getInstance().add(new TurnLeftGyro(90));
 		if(Controller1.dPadRight()) Scheduler.getInstance().add(new TurnRightGyro(90));
-		
+		if(Controller1.dPadUp()) reverse = false;
+		if(Controller1.dPadDown()) reverse = true;
 
 	}
 
