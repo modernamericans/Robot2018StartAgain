@@ -3,6 +3,8 @@ package org.usfirst.frc6442.Robot2018StartAgain;
 import org.usfirst.frc6442.Robot2018StartAgain.Controller.Mode;
 import org.usfirst.frc6442.Robot2018StartAgain.commands.*;
 
+import edu.wpi.first.wpilibj.command.Scheduler;
+
 public class OI {
 //Analog Values
 	public double feed;
@@ -28,13 +30,17 @@ public class OI {
 		Controller1.Y.whileHeld(new WiggleFeed());
 		Controller2.Y.whenPressed(new LaunchCubeHigh());
 		
-		Controller1.X.whenPressed(new LauncherDown());
+		//Controller1.X.whenPressed(new LauncherDown());
 		Controller1.B.whenPressed(new LauncherUp());
 		Controller2.X.whenPressed(new LauncherDown());
 		Controller2.B.whenPressed(new LauncherUp());
 		
 		Controller1.A.whenPressed(new LaunchCubeLow());
 		Controller2.A.whenPressed(new LaunchCubeLow());
+		
+		if(Controller1.dPadLeft()) Scheduler.getInstance().add(new TurnLeftGyro(90));
+		if(Controller1.dPadRight()) Scheduler.getInstance().add(new TurnRightGyro(90));
+		
 
 	}
 
@@ -59,6 +65,10 @@ public class OI {
 			Controller1.mode = Controller.Mode.ARCADE;
 		if(Controller1.RB.get())
 			Controller1.mode = Controller.Mode.TANK;
+//		if(Controller1.dPadUp())
+	//		reverse = false;
+		//if(Controller1.dPadDown())
+			//reverse = true;
 		if(Controller1.X.get())
 			reverse = !reverse;
 		//done, now just add this method to the update

@@ -11,7 +11,8 @@ public class TurnRightGyro extends Command {
 	public double turn;
 	public double start;
 	public double target;
-	public double margin;
+	public int tic;
+	public boolean alternate;
 	
 	public TurnRightGyro(double turnDegrees) {
 		super(turnDegrees); 
@@ -22,18 +23,27 @@ public class TurnRightGyro extends Command {
 	protected void initialize() {
 		start = RobotMap.gyro.getAngle();
 		target = start + turn; 
-		Robot.driveTrain.set(-.5,.5);
-		margin = 5;
+		tic=0;
+		alternate = true;
 	}
 	protected void execute() {
+		System.out.println("Right Turn");
 		double current = RobotMap.gyro.getAngle();
 		double error = target - current;
 		double distance = Math.abs(error);
 		double speed = .5;
-		if(distance < 50) speed = .4;
-		if(distance < 30) speed = .2;
-		if(distance < 10) speed = .1;
-		Robot.driveTrain.set(speed, -speed);
+		tic++;
+		//if(distance < 50) speed = .3;
+		//if(distance < 30) speed = .1;
+		//if(distance < 10) speed = .05;
+//		if(distance > 30) {
+//			if(tic % 20 == 0)
+//				alternate = !alternate;
+//			if(alternate) Robot.driveTrain.set(speed, -speed);
+//			else Robot.driveTrain.stop();
+//		}
+//		//else 
+			Robot.driveTrain.set(speed, -speed);
 	}
 
 		protected boolean isFinished() {

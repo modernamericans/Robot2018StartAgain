@@ -11,6 +11,8 @@ public class TurnLeftGyro extends Command {
 	public double turn;
 	public double start;
 	public double target;
+	public int tic;
+	public boolean alternate;
 	
 	public TurnLeftGyro(double turnDegrees) {
 		super(turnDegrees);
@@ -21,16 +23,25 @@ public class TurnLeftGyro extends Command {
 	protected void initialize() {
 		start = RobotMap.gyro.getAngle();
 		target = start - turn; 
+		tic = 0;
 	}
 	protected void execute() {
+		System.out.println("Left Turn");
+		tic++;
 		double current = RobotMap.gyro.getAngle();
 		double error = target - current;
 		double distance = Math.abs(error);
 		double speed = .5;
-		if(distance < 50) speed = .4;
-		if(distance < 30) speed = .2;
-		if(distance < 10) speed = .1;
-		Robot.driveTrain.set(-speed, speed);
+		//if(distance < 50) speed = .3;
+		//if(distance < 30) speed = .1;
+		//if(distance < 10) speed = .05;
+		if(distance < 20) {
+			if(tic %  20 == 0)
+				alternate = !alternate;
+			if(alternate) Robot.driveTrain.set(-speed, speed);
+			else Robot.driveTrain.stop();
+		}
+		else Robot.driveTrain.set(-speed, speed);
 
 	}
 	protected boolean isFinished() {

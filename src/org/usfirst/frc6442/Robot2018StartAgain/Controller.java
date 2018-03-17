@@ -38,4 +38,24 @@ public class Controller extends Joystick {
 	public double axisRT() {
 		return this.getRawAxis(3);
 	}
+	public boolean dPadUp() {
+	return dPad() == 0;
+	}
+	public boolean dPadRight() {
+	return dPad() == 2;
+	}
+	public boolean dPadDown() {
+	return dPad() == 4;
+	}
+	public boolean dPadLeft() {
+	return dPad() == 6;
+	}
+	public int dPad() {
+		double angle = this.getPOV();
+		if(angle == -1)
+			return (int)angle;
+		int direction = (int)Math.floor(((angle + 22.5) % 360)/45);
+		System.out.println(direction);
+		return direction;
+	}
 }
