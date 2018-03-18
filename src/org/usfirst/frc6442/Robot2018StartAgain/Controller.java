@@ -1,7 +1,8 @@
 package org.usfirst.frc6442.Robot2018StartAgain;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.buttons.*;
 
 public class Controller extends Joystick {
 	public enum Mode{TANK, ARCADE}
@@ -16,27 +17,32 @@ public class Controller extends Joystick {
 	public JoystickButton Start = new JoystickButton(this, 8);
 	public JoystickButton LF = new JoystickButton(this, 9);
 	public JoystickButton RF = new JoystickButton(this, 10);
+	public DPadButton Up = new DPadButton(this, 0);
+	public DPadButton Right = new DPadButton(this, 2);
+	public DPadButton Down = new DPadButton(this, 4);
+	public DPadButton Left = new DPadButton(this, 6);
+	
 	
 	public Controller(int id) {
 		super(id);
 		}
 	public double axisLX() {
-			return this.getRawAxis(0);
+			return deadZone(this.getRawAxis(0));
 		}
 	public double axisLY() {
-		return - this.getRawAxis(1);
+		return deadZone(-this.getRawAxis(1));
 	}
 	public double axisRX() {
-		return this.getRawAxis(4);
+		return deadZone(this.getRawAxis(4));
 	}
 	public double axisRY() {
-		return - this.getRawAxis(5);
+		return deadZone(-this.getRawAxis(5));
 	}
 	public double axisLT() {
-		return this.getRawAxis(2);
+		return deadZone(this.getRawAxis(2));
 	}
 	public double axisRT() {
-		return this.getRawAxis(3);
+		return deadZone(this.getRawAxis(3));
 	}
 	public boolean dPadUp() {
 	return dPad() == 0;
@@ -57,5 +63,38 @@ public class Controller extends Joystick {
 		int direction = (int)Math.floor(((angle + 22.5) % 360)/45);
 		System.out.println(direction);
 		return direction;
+	}
+	public double deadZone(double distance) {
+		if(distance < .05 || distance > -.05) return 0.0;
+		else return distance;
+	}
+	public class DPadButton extends Button{
+		private Controller controller;
+		private int zone;
+		
+		public DPadButton(Controller controller, int zone) {
+			this.controller = controller;
+			this.zone = zone;
+		}
+		public boolean get() {
+			return this.controller.dPad() == zone;
+		}
+	}
+	public class DebouncedButton extends JoystickButton{
+		public double latest = Timer.getFPGATimestamp();
+		
+		public DebouncedButton(Joystick joy,int button) {
+		super(joy, button);
+		}
+		public boolean debounced() {
+			double now = Timer.getFPGATimestamp();
+			if(this.get()) {
+				if((now-latest)>.25) {
+					latest = now;
+					return true;
+				}
+			}
+			return false;
+		}
 	}
 }

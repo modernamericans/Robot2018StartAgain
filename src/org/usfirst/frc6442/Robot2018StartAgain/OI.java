@@ -38,8 +38,8 @@ public class OI {
 		Controller1.A.whenPressed(new LaunchCubeLow());
 		Controller2.A.whenPressed(new LaunchCubeLow());
 		
-		if(Controller1.dPadLeft()) Scheduler.getInstance().add(new TurnLeftGyro(90));
-		if(Controller1.dPadRight()) Scheduler.getInstance().add(new TurnRightGyro(90));
+		Controller1.Left.whenPressed(new TurnLeftGyro(90));
+		Controller1.Right.whenPressed(new TurnRightGyro(90));
 		if(Controller1.dPadUp()) reverse = false;
 		if(Controller1.dPadDown()) reverse = true;
 
@@ -131,7 +131,8 @@ public class OI {
         	if(steerLeft) {
         		driveLeft -= steerStrength;	
         	}
-        	
+        	driveRight *= joySpeed;
+        	driveLeft *= joySpeed;
 		}
 	}
 }
