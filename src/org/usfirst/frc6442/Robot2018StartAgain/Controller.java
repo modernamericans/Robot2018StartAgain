@@ -15,8 +15,8 @@ public class Controller extends Joystick {
 	public JoystickButton RB = new JoystickButton(this, 6);
 	public JoystickButton Back = new JoystickButton(this, 7);
 	public JoystickButton Start = new JoystickButton(this, 8);
-	public JoystickButton LF = new JoystickButton(this, 9);
-	public JoystickButton RF = new JoystickButton(this, 10);
+	public JoystickButton LS = new JoystickButton(this, 9);
+	public JoystickButton RS = new JoystickButton(this, 10);
 	public DPadButton Up = new DPadButton(this, 0);
 	public DPadButton Right = new DPadButton(this, 2);
 	public DPadButton Down = new DPadButton(this, 4);

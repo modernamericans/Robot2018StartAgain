@@ -37,6 +37,7 @@ public class RobotMap {
     
     public static SpeedController ctlFeeder;
     public static SpeedController ctlLauncher;
+    public static SpeedController ctlBar;
     
     public static SpeedController ctlGrabRight;
     public static SpeedController ctlGrabLeft;
@@ -62,6 +63,9 @@ public class RobotMap {
         
         ctlLauncher = new Spark(4);
         ctlLauncher.setInverted(false);
+        
+        ctlBar = new Spark(5);
+        ctlBar.setInverted(false);
         
         ctlGrabRight = new Spark(7);
         ctlGrabRight.setInverted(false);

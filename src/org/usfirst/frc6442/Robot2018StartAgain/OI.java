@@ -10,6 +10,7 @@ public class OI {
 	public double feed;
 	public double grabLeft;
 	public double grabRight;
+	public double launch;
 	public double driveLeft = 0;
 	public double driveRight = 0;
 	public boolean reverse = false;
@@ -37,6 +38,9 @@ public class OI {
 		
 		Controller1.A.whenPressed(new LaunchCubeLow());
 		Controller2.A.whenPressed(new LaunchCubeLow());
+		
+		Controller2.LB.whileHeld(new BarLower());
+		Controller2.RB.whileHeld(new BarRaise());
 		
 		Controller1.Left.whenPressed(new TurnLeftGyro(90));
 		Controller1.Right.whenPressed(new TurnRightGyro(90));
@@ -66,13 +70,6 @@ public class OI {
 			Controller1.mode = Controller.Mode.ARCADE;
 		if(Controller1.RB.get())
 			Controller1.mode = Controller.Mode.TANK;
-//		if(Controller1.dPadUp())
-	//		reverse = false;
-		//if(Controller1.dPadDown())
-			//reverse = true;
-		if(Controller1.X.get())
-			reverse = !reverse;
-		//done, now just add this method to the update
 	}
 //Update Feeder Method
 	private void UpdateFeederValue() {
@@ -81,6 +78,7 @@ public class OI {
 		feed = RT-LT;
 		grabLeft = RT-LT;
 		grabRight = RT-LT;
+		launch = -LT/2;
 	}
 //updater grabber method
 	private void UpdateGabberValue() {

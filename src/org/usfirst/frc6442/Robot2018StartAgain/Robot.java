@@ -26,10 +26,13 @@ public class Robot extends TimedRobot {
     public static Launcher launcher;
     public static Feeder feeder;
     public static Grabber grabber;
+    public static Bar bar;
     
     public static String gameMessage;
     public static Command autonomousCommand;
     public enum Side{ LEFT,CENTER,RIGHT }
+    public enum Style{ ADVANCED, SIMPLE }
+    public static Style style;
     public static Side startSide;
     public static Side switchSide;
 
@@ -41,6 +44,7 @@ public class Robot extends TimedRobot {
         launcher = new Launcher();
         grabber = new Grabber();
         feeder = new Feeder();
+        bar = new Bar();
         CameraServer.getInstance().startAutomaticCapture();
 
         oi = new OI();
@@ -50,14 +54,16 @@ public class Robot extends TimedRobot {
         
     }
     public void setStartingPositon() {
-    	//startSide = Side.CENTER;
-    	//RobotDashboard.startPosition.getSelected();
     	Preferences prefs = Preferences.getInstance();
     	if(!prefs.containsKey("start")) prefs.putString("start", "");
     	String sidePrefs = prefs.getString("start", "");
+    	if(!prefs.containsKey("style")) prefs.putString("style", "");
+    	String stylePrefs = prefs.getString("style", "");
     	if(sidePrefs.equals("L")) startSide = Side.LEFT;
     	if(sidePrefs.equals("C")) startSide = Side.CENTER;
     	if(sidePrefs.equals("R")) startSide = Side.RIGHT; 
+    	if(stylePrefs.equals("A")) style = Style.ADVANCED;
+    	if(stylePrefs.equals("S")) style = Style.SIMPLE;
     	System.out.println(sidePrefs);
     	System.out.println(startSide);
     }
@@ -65,11 +71,6 @@ public class Robot extends TimedRobot {
     	getGameData();
     	setStartingPositon();
     	setAutonomousCommand();
-    	//ok time to test it I guess?
-    	//time to test
-    	//oh got a minute, we just need to add drive mode swithing, it's like 2 lines of code
-    	//In analogDrive?
-    	//oi
     	
     	
     	if (autonomousCommand != null) autonomousCommand.start();
@@ -89,27 +90,30 @@ public class Robot extends TimedRobot {
 	public void setAutonomousCommand() {
 		if(switchSide == Side.LEFT){
 			if(startSide == Side.LEFT) {
-				autonomousCommand = new AutonomousLeftGoLeft();
+				autonomousCommand = style == Style.ADVANCED ? new AutonomousLeftGoLeft()
+															: new AutonomousLeftGoLeftSimple();
 			}
 			if(startSide == Side.CENTER) {
-				autonomousCommand = new AutonomousCenterGoLeft();
-				System.out.println("Starting from Center");
-				System.out.println(autonomousCommand);
+				autonomousCommand = style == Style.ADVANCED ? new AutonomousCenterGoLeft()
+															: new AutonomousCenterGoLeftSimple();
 			}
 			if(startSide == Side.RIGHT) {
-				autonomousCommand = new AutonomousRightGoLeft();
+				autonomousCommand = style == Style.ADVANCED ? new AutonomousRightGoLeft()
+															: new AutonomousLeftGoLeftSimple(); new AutonomousRightGoLeft();
 			}
 		}
     	if(switchSide == Side.RIGHT) {
 			if(startSide == Side.LEFT) {
-				autonomousCommand = new AutonomousRightGoRight();
+				autonomousCommand = style == Style.ADVANCED ? new AutonomousLeftGoRight()
+															: new AutonomousLeftGoRightSimple();
 			}
 			if(startSide == Side.CENTER) {
-				autonomousCommand = new AutonomousCenterGoRight();
+				autonomousCommand = style == Style.ADVANCED ? new AutonomousCenterGoRight()
+															: new AutonomousCenterGoRightSimple();
 			}
 			if(startSide == Side.RIGHT) {
-				autonomousCommand = new AutonomousRightGoRight();
-			}
+				autonomousCommand = style == Style.ADVANCED ? new AutonomousRightGoRight()
+															: new AutonomousRightGoRightSimple();			}
 			
     	}
 	}

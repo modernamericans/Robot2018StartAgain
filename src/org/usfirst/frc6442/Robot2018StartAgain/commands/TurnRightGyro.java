@@ -1,5 +1,6 @@
 package org.usfirst.frc6442.Robot2018StartAgain.commands;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -8,11 +9,20 @@ import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
 
 public class TurnRightGyro extends Command {
 	
+	public ADXRS450_Gyro gyro = RobotMap.gyro;
 	public double turn;
 	public double start;
 	public double target;
-	public int tic;
-	public boolean alternate;
+	public int count;
+	public int stableTarget = 10;
+	public double approachVelocity = 20;
+	public double fullVelocity = 90;
+	public double speed = .5;
+	public double approachDistance = 50; 
+	public double error;
+	public double distance;
+	public double current;
+	public double margin = 5;
 	
 	public TurnRightGyro(double turnDegrees) {
 		super(turnDegrees); 
@@ -21,34 +31,30 @@ public class TurnRightGyro extends Command {
 	}
 	
 	protected void initialize() {
-		start = RobotMap.gyro.getAngle();
+		start = gyro.getAngle();
 		target = start + turn; 
-		tic=0;
-		alternate = true;
+		count=0;
 	}
 	protected void execute() {
 		System.out.println("Right Turn");
-		double current = RobotMap.gyro.getAngle();
-		double error = target - current;
-		double distance = Math.abs(error);
-		double speed = .5;
-		tic++;
-		//if(distance < 50) speed = .3;
-		//if(distance < 30) speed = .1;
-		//if(distance < 10) speed = .05;
-//		if(distance > 30) {
-//			if(tic % 20 == 0)
-//				alternate = !alternate;
-//			if(alternate) Robot.driveTrain.set(speed, -speed);
-//			else Robot.driveTrain.stop();
-//		}
-//		//else 
-			Robot.driveTrain.set(speed, -speed);
+		current = gyro.getAngle();
+		double velocity = gyro.getRate();
+		error = target - current;
+		distance = Math.abs(error);
+		double maxVelocity = fullVelocity;
+		if(error<0) speed = -speed;
+		
+		if(distance < approachDistance) maxVelocity = approachVelocity;
+		if(velocity > maxVelocity) speed = 0;
+			
+		Robot.driveTrain.set(speed, -speed);
 	}
 
 		protected boolean isFinished() {
-			double current = RobotMap.gyro.getAngle();
-			return current > target;
+			if(distance<margin)
+				count++;
+			else count = 0;
+			return count > stableTarget;
 	 }
 	
 	protected void end() {
