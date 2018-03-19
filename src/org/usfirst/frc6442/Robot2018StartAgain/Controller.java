@@ -65,7 +65,7 @@ public class Controller extends Joystick {
 		return direction;
 	}
 	public double deadZone(double distance) {
-		if(distance < .05 || distance > -.05) return 0.0;
+		if(Math.abs(distance) < .05) return 0.0;
 		else return distance;
 	}
 	public class DPadButton extends Button{

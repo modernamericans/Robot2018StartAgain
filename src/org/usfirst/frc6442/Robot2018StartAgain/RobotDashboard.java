@@ -42,7 +42,7 @@ public class RobotDashboard {
     	SmartDashboard.putData(  "AutonomousLeftGoRight", new   AutonomousLeftGoRight());
     	SmartDashboard.putData(  "AutonomousRightGoLeft", new   AutonomousRightGoLeft());
     	SmartDashboard.putData( "AutonomousRightGoRight", new  AutonomousRightGoRight());
-    	SmartDashboard.putData(   "AutonomousLeftGoScaleLeft", new    AutonomousLeftGoLeft());
+    	SmartDashboard.putData(   "AutonomousLeftGoScaleLeft", new    AutonomousLeftGoLeft());   
     	SmartDashboard.putData("DriveForwardTime(.2)", new DriveForwardTime(.2));
     	SmartDashboard.putData("DriveForwardTime(.4)", new DriveForwardTime(.4));
     	SmartDashboard.putData("DriveForwardTime(.6)", new DriveForwardTime(.6));
