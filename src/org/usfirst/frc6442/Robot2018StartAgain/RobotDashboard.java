@@ -29,13 +29,20 @@ public class RobotDashboard {
     	
     	SmartDashboard.putData("Drive Command", new AnalogDrive());
     	SmartDashboard.putData("Feed", new Feed());
-    	SmartDashboard.putData("AutonomousCenterGoLeft", new AutonomousCenterGoLeft());
+    	SmartDashboard.putData( "AutonomousCenterGoLeftSimple", new  AutonomousCenterGoLeftSimple());
+    	SmartDashboard.putData("AutonomousCenterGoRightSimple", new AutonomousCenterGoRightSimple());
+    	SmartDashboard.putData(   "AutonomousLeftGoLeftSimple", new    AutonomousLeftGoLeftSimple());
+    	SmartDashboard.putData(  "AutonomousLeftGoRightSimple", new   AutonomousLeftGoRightSimple());
+    	SmartDashboard.putData(  "AutonomousRightGoLeftSimple", new   AutonomousRightGoLeftSimple());
+    	SmartDashboard.putData( "AutonomousRightGoRightSimple", new  AutonomousRightGoRightSimple());
+    	SmartDashboard.putData( "AutonomousCenterGoLeft", new  AutonomousCenterGoLeft());
     	SmartDashboard.putData("AutonomousCenterGoRight", new AutonomousCenterGoRight());
-    	SmartDashboard.putData("AutonomousDisplay", new AutonomousDisplay());
-    	SmartDashboard.putData("AutonomousLeftGoLeft", new AutonomousLeftGoLeft());
-    	SmartDashboard.putData("AutonomousLeftGoRight", new AutonomousLeftGoRight());
-    	SmartDashboard.putData("AutonomousRightGoLeft", new AutonomousRightGoLeft());
-    	SmartDashboard.putData("AutonomousRightGoRight", new AutonomousRightGoRight());
+    	SmartDashboard.putData(      "AutonomousDisplay", new       AutonomousDisplay());
+    	SmartDashboard.putData(   "AutonomousLeftGoLeft", new    AutonomousLeftGoLeft());
+    	SmartDashboard.putData(  "AutonomousLeftGoRight", new   AutonomousLeftGoRight());
+    	SmartDashboard.putData(  "AutonomousRightGoLeft", new   AutonomousRightGoLeft());
+    	SmartDashboard.putData( "AutonomousRightGoRight", new  AutonomousRightGoRight());
+    	SmartDashboard.putData(   "AutonomousLeftGoScaleLeft", new    AutonomousLeftGoLeft());
     	SmartDashboard.putData("DriveForwardTime(.2)", new DriveForwardTime(.2));
     	SmartDashboard.putData("DriveForwardTime(.4)", new DriveForwardTime(.4));
     	SmartDashboard.putData("DriveForwardTime(.6)", new DriveForwardTime(.6));
@@ -45,6 +52,7 @@ public class RobotDashboard {
     	SmartDashboard.putData("DriveForwardTime(3)", new DriveForwardTime(3.0));
     	SmartDashboard.putData("DriveReverseTime(1)", new DriveReverseTime(1.0));
     	SmartDashboard.putData("DriveStraightTime(.6)", new DriveStraightTime(.6));
+    	SmartDashboard.putData("DriveStraightTime(3)", new DriveStraightTime(3));
     	SmartDashboard.putData("DriveStop(2)", new DriveStop(2.0));
     	SmartDashboard.putData("ExchangeCube", new ExchangeCube());
     	SmartDashboard.putData("Grab", new AnalogGrab());

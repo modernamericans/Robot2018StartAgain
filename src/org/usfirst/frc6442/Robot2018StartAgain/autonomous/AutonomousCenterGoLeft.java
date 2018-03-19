@@ -8,15 +8,13 @@ public class AutonomousCenterGoLeft extends CommandGroup {
 	public AutonomousCenterGoLeft() {
 		
 		addSequential(new DriveForwardTime(2));
-		addSequential(new TurnLeftGyro(50));
+		addSequential(new TurnLeftGyro(90));
 		addSequential(new DriveForwardTime(2.5));
-		addSequential(new TurnRightGyro(50));
+		addSequential(new TurnRightGyro(90));
 		addSequential(new DriveForwardTime(2.2));
-		addSequential(new TurnRightGyro(50));
+		addSequential(new TurnRightGyro(90));
 		addSequential(new DriveForwardTime(2));
 		addSequential(new LaunchCubeLow());
 		addSequential(new LaunchCubeLow());
-		addSequential(new DriveReverseTime(1.5));
-		addSequential(new TurnLeftGyro(50));
 	} 
 }

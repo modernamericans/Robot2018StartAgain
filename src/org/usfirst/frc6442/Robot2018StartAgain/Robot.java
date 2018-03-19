@@ -32,9 +32,12 @@ public class Robot extends TimedRobot {
     public static Command autonomousCommand;
     public enum Side{ LEFT,CENTER,RIGHT }
     public enum Style{ ADVANCED, SIMPLE }
+    public enum Strategy{ SWITCH,SCALE }
+    public static Strategy strategy; 
     public static Style style;
     public static Side startSide;
     public static Side switchSide;
+    public static Side scaleSide;
 
     @Override
     public void robotInit() {
@@ -59,13 +62,15 @@ public class Robot extends TimedRobot {
     	String sidePrefs = prefs.getString("start", "");
     	if(!prefs.containsKey("style")) prefs.putString("style", "");
     	String stylePrefs = prefs.getString("style", "");
+    	if(!prefs.containsKey("strategy")) prefs.putString("strategy", "");
+    	String strategyPrefs = prefs.getString("strategy", "");
     	if(sidePrefs.equals("L")) startSide = Side.LEFT;
     	if(sidePrefs.equals("C")) startSide = Side.CENTER;
     	if(sidePrefs.equals("R")) startSide = Side.RIGHT; 
     	if(stylePrefs.equals("A")) style = Style.ADVANCED;
     	if(stylePrefs.equals("S")) style = Style.SIMPLE;
-    	System.out.println(sidePrefs);
-    	System.out.println(startSide);
+    	if(strategyPrefs.equals("F")) strategy = Strategy.SCALE;
+    	if(strategyPrefs.equals("N")) strategy = Strategy.SWITCH;
     }
     public void autonomousInit() {
     	getGameData();
@@ -85,6 +90,8 @@ public class Robot extends TimedRobot {
     	else if(gameMessage.charAt(0) == 'R') {
     		switchSide = Side.RIGHT;
     	}
+    	if(gameMessage.charAt(1) == 'L') scaleSide = Side.LEFT;
+    	else if(gameMessage.charAt(1) == 'R') scaleSide = Side.RIGHT;
         
     }
 	public void setAutonomousCommand() {
