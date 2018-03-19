@@ -8,9 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Bar extends Subsystem{
 	private final SpeedController ctlBar = RobotMap.ctlBar;
-	public void initDefaultCommand() {	
-		setDefaultCommand(new AnalogSecure());
-	}
+	public void initDefaultCommand() {}
 	public void set(double speed) {
 		ctlBar.set(speed);
 	}

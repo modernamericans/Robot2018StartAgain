@@ -61,6 +61,7 @@ public class OI {
 			driveLeft = -oldRight;
 			driveRight = -oldLeft;
 		}
+		System.out.println(driveLeft + " " + driveRight);
 	}
 
 //Update Mode method
