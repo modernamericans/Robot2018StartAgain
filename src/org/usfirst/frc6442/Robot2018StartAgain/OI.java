@@ -41,11 +41,7 @@ public class OI {
 		
 		Controller2.LB.whileHeld(new BarLower());
 		Controller2.RB.whileHeld(new BarRaise());
-		
-		Controller1.Left.whenPressed(new TurnLeftGyro(90));
-		Controller1.Right.whenPressed(new TurnRightGyro(90));
-		if(Controller1.dPadUp()) reverse = false;
-		if(Controller1.dPadDown()) reverse = true;
+			
 
 	}
 
@@ -61,6 +57,7 @@ public class OI {
 			driveLeft = -oldRight;
 			driveRight = -oldLeft;
 		}
+		Robot.lightSwitch.set(reverse);
 		System.out.println(driveLeft + " " + driveRight);
 	}
 
@@ -71,6 +68,9 @@ public class OI {
 			Controller1.mode = Controller.Mode.ARCADE;
 		if(Controller1.RB.get())
 			Controller1.mode = Controller.Mode.TANK;
+		if(Controller1.dPadUp()) reverse = false;
+		if(Controller1.dPadDown()) reverse = true;
+		System.out.println(reverse);
 	}
 //Update Feeder Method
 	private void UpdateFeederValue() {

@@ -5,9 +5,11 @@ import org.usfirst.frc6442.Robot2018StartAgain.commands.AnalogDrive;
 
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class DriveTrain extends PIDSubsystem{
-	private final SpeedController ctlDriveRight = RobotMap.ctlDriveRight;
+//public class DriveTrain extends PIDSubsystem{
+public class DriveTrain extends Subsystem{
+private final SpeedController ctlDriveRight = RobotMap.ctlDriveRight;
     private final SpeedController ctlDriveLeft = RobotMap.ctlDriveLeft;
     private static final double Kp = 3;
     private static final double Ki = .2;
@@ -16,7 +18,8 @@ public class DriveTrain extends PIDSubsystem{
     private static double speed = .5;
 
     public DriveTrain() {
-        super("DriveTrain", Kp, Ki, Kd);
+       // super("DriveTrain", Kp, Ki, Kd);
+        //disable();
     }
 	public void initDefaultCommand() {	
 		setDefaultCommand(new AnalogDrive());
@@ -31,9 +34,9 @@ public class DriveTrain extends PIDSubsystem{
 	}
 	public void stop( ) {
         set(0);
-        PIDing = false;
-        disable();
-    }
+     //   PIDing = false;
+       // disable();
+    }/*
 	public void PIDset(double angle) {
     	double current = RobotMap.gyro.getAngle();
     	PIDing = true;
@@ -51,7 +54,7 @@ public class DriveTrain extends PIDSubsystem{
     public void driveTurnRight(double angle) {
     	speed=0;
     	PIDset(angle);
-    }
+    }*/
  protected double returnPIDInput() {
      return RobotMap.gyro.getAngle();
  }
@@ -59,4 +62,3 @@ public class DriveTrain extends PIDSubsystem{
      set(speed+output,speed-output);
  }
 }
-

@@ -15,7 +15,7 @@ public class DriveStraightTime extends TimedCommand {
 	}
 
 	protected void initialize() {
-		driveTrain.driveStraight(0.5);
+	//	driveTrain.driveStraight(0.5);
 	}
 
 	protected void end() {

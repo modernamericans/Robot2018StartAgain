@@ -32,10 +32,11 @@ public class TurnLeftGyro extends Command {
 	
 	protected void initialize() {
 		start = gyro.getAngle();
-		target = start + turn; 
+		target = start - turn;
+		count = 0;
 	}
 	protected void execute() {
-		System.out.println("Right Turn");
+		System.out.println("Left Turn");
 		current = gyro.getAngle();
 		double velocity = gyro.getRate();
 		error = target - current;
@@ -50,7 +51,7 @@ public class TurnLeftGyro extends Command {
 
 	}
 	protected boolean isFinished() {
-		if(distance<margin)
+		if(distance<target-margin&&distance>target+margin)
 			count++;
 		else count = 0;
 		return count > stableTarget;

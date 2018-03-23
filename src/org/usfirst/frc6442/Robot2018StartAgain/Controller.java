@@ -61,7 +61,6 @@ public class Controller extends Joystick {
 		if(angle == -1)
 			return (int)angle;
 		int direction = (int)Math.floor(((angle + 22.5) % 360)/45);
-		System.out.println(direction);
 		return direction;
 	}
 	public double deadZone(double distance) {

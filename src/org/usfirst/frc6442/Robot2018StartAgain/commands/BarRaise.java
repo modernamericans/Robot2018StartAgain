@@ -12,7 +12,7 @@ public class BarRaise extends Command{
 	}
 	
 	public void execute() {
-		bar.set(.5);
+		bar.set(-.4);
 	}
 	
 	public boolean isFinished() {

@@ -17,7 +17,7 @@ public class TurnRightGyro extends Command {
 	public int stableTarget = 10;
 	public double approachVelocity = 20;
 	public double fullVelocity = 90;
-	public double speed = .5;
+	public double speed = .3;
 	public double approachDistance = 50; 
 	public double error;
 	public double distance;
@@ -51,7 +51,7 @@ public class TurnRightGyro extends Command {
 	}
 
 		protected boolean isFinished() {
-			if(distance<margin)
+			if(distance<target-margin&&distance>target+margin)
 				count++;
 			else count = 0;
 			return count > stableTarget;

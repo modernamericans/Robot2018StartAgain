@@ -17,16 +17,16 @@ public class PIDLeft extends Command {
 	}
 	
 	protected void initialize() {
-		Robot.driveTrain.driveTurnLeft(angle);
+		//Robot.driveTrain.driveTurnLeft(angle);
 		count = 0;
 	}
 	protected void execute() {
-		if(Robot.driveTrain.onTarget()) {
-			count++;
-		}
-		else {
-			count = 0;
-		}
+//	//	if(Robot.driveTrain.onTarget()) {
+//			count++;
+//		}
+//		else {
+//			count = 0;
+//		}
 	}
 	protected boolean isFinished() {
 		return 	count >= countWanted;

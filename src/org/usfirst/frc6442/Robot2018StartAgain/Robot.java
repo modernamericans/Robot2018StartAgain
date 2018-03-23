@@ -1,6 +1,7 @@
 package org.usfirst.frc6442.Robot2018StartAgain;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -27,6 +28,7 @@ public class Robot extends TimedRobot {
     public static Feeder feeder;
     public static Grabber grabber;
     public static Bar bar;
+    public static DigitalOutput lightSwitch;
     
     public static String gameMessage;
     public static Command autonomousCommand;
@@ -48,6 +50,7 @@ public class Robot extends TimedRobot {
         grabber = new Grabber();
         feeder = new Feeder();
         bar = new Bar();
+        lightSwitch = new DigitalOutput(1);
         CameraServer.getInstance().startAutomaticCapture();
 
         oi = new OI();
