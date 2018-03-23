@@ -42,7 +42,7 @@ public class RobotDashboard {
     	SmartDashboard.putData(  "AutonomousLeftGoRight", new   AutonomousLeftGoRight());
     	SmartDashboard.putData(  "AutonomousRightGoLeft", new   AutonomousRightGoLeft());
     	SmartDashboard.putData( "AutonomousRightGoRight", new  AutonomousRightGoRight());
-    	SmartDashboard.putData(   "AutonomousLeftGoScaleLeft", new    AutonomousLeftGoLeft());   
+    	SmartDashboard.putData(   "AutonomousLeftGoScaleLeft", new    AutonomousLeftGoScaleLeft());   
     	SmartDashboard.putData("DriveForwardTime(.2)", new DriveForwardTime(.2));
     	SmartDashboard.putData("DriveForwardTime(.4)", new DriveForwardTime(.4));
     	SmartDashboard.putData("DriveForwardTime(.6)", new DriveForwardTime(.6));
@@ -65,6 +65,8 @@ public class RobotDashboard {
     	SmartDashboard.putData("Secure", new Secure());
     	SmartDashboard.putData("SecureCube", new SecureCube());
     	SmartDashboard.putData("TurnLeft(90)", new TurnLeftGyro(90.0));
+    	SmartDashboard.putData("TurnLeft2(90)", new TurnLeftGyro2(90.0));
+    	SmartDashboard.putData("TurnLeft3(90)", new TurnLeftGyro3(90.0));
     	SmartDashboard.putData("TurnRight(90)", new TurnRightGyro(90.0));
     	
     	// Position chooser

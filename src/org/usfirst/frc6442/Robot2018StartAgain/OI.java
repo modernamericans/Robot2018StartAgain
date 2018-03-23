@@ -28,15 +28,15 @@ public class OI {
 	}
 //Map buttons
 	public void defineButtons() {
-		Controller1.Y.whileHeld(new WiggleFeed());
+	//	Controller1.Y.whileHeld(newLaunchCubeHigh()());
 		Controller2.Y.whenPressed(new LaunchCubeHigh());
 		
 		//Controller1.X.whenPressed(new LauncherDown());
-		Controller1.B.whenPressed(new LauncherUp());
+		//Controller1.B.whenPressed(new LauncherUp());
 		Controller2.X.whenPressed(new LauncherDown());
 		Controller2.B.whenPressed(new LauncherUp());
 		
-		Controller1.A.whenPressed(new LaunchCubeLow());
+		//Controller1.A.whenPressed(new LaunchCubeLow());
 		Controller2.A.whenPressed(new LaunchCubeLow());
 		
 		Controller2.LB.whileHeld(new BarLower());
@@ -70,33 +70,20 @@ public class OI {
 			Controller1.mode = Controller.Mode.TANK;
 		if(Controller1.dPadUp()) reverse = false;
 		if(Controller1.dPadDown()) reverse = true;
-		System.out.println(reverse);
 	}
 //Update Feeder Method
 	private void UpdateFeederValue() {
 		double RT = Controller2.axisRT();
 		double LT = Controller2.axisLT();
 		feed = RT-LT;
-		grabLeft = RT-LT;
-		grabRight = RT-LT;
 		launch = -LT/2;
 	}
 //updater grabber method
 	private void UpdateGabberValue() {
 		double RT = Controller2.axisRT();
 		double LT = Controller2.axisLT();
-		double RY = Controller2.axisRY();
-		double LY = Controller2.axisLY();
-		boolean finesse = RT == 0 && LT == 0;
-		if(finesse) {
-			grabLeft = -LY;
-			grabRight = -RY;
-		}
-		
-		else {
 			grabLeft = RT-LT;
 			grabRight = RT-LT;
-		}
 	}
 //update drive method
 	private void UpdateDriverValue() {

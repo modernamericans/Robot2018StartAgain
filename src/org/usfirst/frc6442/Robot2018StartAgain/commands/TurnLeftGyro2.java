@@ -15,21 +15,20 @@ public class TurnLeftGyro2 extends Command {
 	public double target;
 	public int count;
 	public int stableTarget = 10;
-	public double approachVelocity = 20;
-	public double fullVelocity = 90;
-	public double fullSpeed = .5;
-	public double speed = .4;
-	public double approachSpeed = .3;
-	public double approachDistance = 50; 
+	public final double approachVelocity = 20;
+	public final double fullVelocity = 90;
+	public final double fullSpeed = .5;
+	public final double approachSpeed = .35;
+	public final double approachDistance = 50; 
 	public double error;
 	public double distance;
 	public double current;
-	public double margin = 5;
+	public final double margin = 10;
+	public boolean inMargin;
 	
 	public TurnLeftGyro2(double turnDegrees) {
-		super(turnDegrees); 
 		requires(Robot.driveTrain);
-		 turn = turnDegrees; //number to change with timing
+		 turn = turnDegrees;
 	}
 	
 	protected void initialize() {
@@ -38,25 +37,26 @@ public class TurnLeftGyro2 extends Command {
 		count = 0;
 	}
 	protected void execute() {
-		System.out.println("Left Turn");
 		current = gyro.getAngle();
-		double velocity = gyro.getRate();
+		//double velocity = gyro.getRate();
 		error = target - current;
 		distance = Math.abs(error);
-		double maxVelocity = fullVelocity;
+		//double maxVelocity = fullVelocity;
 		double speed = fullSpeed;
+		inMargin = distance<margin;
 		
 		if(distance < approachDistance) speed = approachSpeed;
 		
 		if(error>0) speed = -speed;
+		if(inMargin) speed = 0;
 		Robot.driveTrain.set(-speed, speed);
 
 	}
 	protected boolean isFinished() {
-		if(distance<target-margin && distance>target+margin)
+		if(inMargin)
 			count++;
 		else count = 0;
-		return count > stableTarget;
+		return count >= stableTarget;
 	}
 	
 	protected void end() {

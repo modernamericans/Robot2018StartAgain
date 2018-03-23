@@ -8,12 +8,7 @@ public class AutonomousCenterGoLeftSimple extends CommandGroup {
 	public AutonomousCenterGoLeftSimple() {
 	
 	addSequential(new DriveReverseTime(1));
-	addSequential(new TurnLeftGyro(90));
-	addSequential(new DriveReverseTime(1));
-	addSequential(new TurnRightGyro(90));
-	addSequential(new DriveReverseTime(2));
 	addSequential(new DriveStop(.5));
-	addSequential(new LaunchCubeLow());
 	
 	}
 

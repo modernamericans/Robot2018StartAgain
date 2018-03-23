@@ -82,7 +82,7 @@ public class Robot extends TimedRobot {
     	
     	
     	if (autonomousCommand != null) autonomousCommand.start();
-    	else (new DriveForwardTime(5)).start();
+    	else (new DriveReverseTime(5)).start();
     }    
     public void getGameData() {
     	gameMessage = DriverStation.getInstance().getGameSpecificMessage();
@@ -109,7 +109,7 @@ public class Robot extends TimedRobot {
 			}
 			if(startSide == Side.RIGHT) {
 				autonomousCommand = style == Style.ADVANCED ? new AutonomousRightGoLeft()
-															: new AutonomousLeftGoLeftSimple(); new AutonomousRightGoLeft();
+															: new AutonomousRightGoLeftSimple();
 			}
 		}
     	if(switchSide == Side.RIGHT) {

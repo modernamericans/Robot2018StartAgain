@@ -8,14 +8,14 @@ public class AutonomousLeftGoScaleLeft extends CommandGroup {
 	
 	public AutonomousLeftGoScaleLeft() {
 		//Gets around switch
-		addSequential(new DriveForwardTime(1));
-		addSequential(new TurnLeftGyro(90));
-		addSequential(new DriveForwardTime(1));
-		addSequential(new TurnRightGyro(90));
+//		addSequential(new DriveForwardTime(1));
+		//addSequential(new TurnLeftGyro(90));
+		//addSequential(new DriveForwardTime(1));
+//		addSequential(new TurnRightGyro(90));
 		//gets to Null zone
-		addSequential(new DriveForwardTime(6));
+		addSequential(new DriveReverseTime(6.5));
 		//Position
-		addSequential(new TurnLeftGyro(90));
+		addSequential(new TurnRightGyro(90));
 		addSequential(new DriveForwardTime(2));
 		//Attack
 		addSequential(new LaunchCubeHigh());
