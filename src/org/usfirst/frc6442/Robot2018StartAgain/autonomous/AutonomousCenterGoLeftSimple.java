@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutonomousCenterGoLeftSimple extends CommandGroup {
 	public AutonomousCenterGoLeftSimple() {
 	
-	addSequential(new DriveReverseTime(1));
+	addSequential(new DriveStraightReverseTime(1));
 	addSequential(new DriveStop(.5));
 	
 	}

@@ -52,6 +52,7 @@ public class Robot extends TimedRobot {
         bar = new Bar();
         lightSwitch = new DigitalOutput(1);
         CameraServer.getInstance().startAutomaticCapture();
+        pneumatics.up();
 
         oi = new OI();
 
@@ -82,7 +83,7 @@ public class Robot extends TimedRobot {
     	
     	
     	if (autonomousCommand != null) autonomousCommand.start();
-    	else (new DriveReverseTime(5)).start();
+    	else (new DriveStraightReverseTime(5)).start();
     }    
     public void getGameData() {
     	gameMessage = DriverStation.getInstance().getGameSpecificMessage();

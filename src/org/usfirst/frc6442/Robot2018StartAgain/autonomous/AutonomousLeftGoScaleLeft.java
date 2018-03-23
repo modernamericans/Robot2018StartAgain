@@ -13,10 +13,11 @@ public class AutonomousLeftGoScaleLeft extends CommandGroup {
 		//addSequential(new DriveForwardTime(1));
 //		addSequential(new TurnRightGyro(90));
 		//gets to Null zone
-		addSequential(new DriveReverseTime(6.5));
+		addSequential(new DriveStraightReverseTime(7));
 		//Position
+		
 		addSequential(new TurnRightGyro(90));
-		addSequential(new DriveForwardTime(2));
+		addSequential(new DriveStraightForwardTime(2));
 		//Attack
 		addSequential(new LaunchCubeHigh());
 	}

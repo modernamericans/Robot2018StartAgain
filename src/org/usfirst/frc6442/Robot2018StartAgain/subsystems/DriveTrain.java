@@ -7,19 +7,19 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-//public class DriveTrain extends PIDSubsystem{
-public class DriveTrain extends Subsystem{
+public class DriveTrain extends PIDSubsystem{
+//public class DriveTrain extends Subsystem{
 private final SpeedController ctlDriveRight = RobotMap.ctlDriveRight;
     private final SpeedController ctlDriveLeft = RobotMap.ctlDriveLeft;
-    private static final double Kp = 3;
-    private static final double Ki = .2;
-    private static final double Kd = .1;
+    private static final double Kp = 1;
+    private static final double Ki = .1;
+    private static final double Kd = 0;
     private static boolean PIDing=false;
     private static double speed = .5;
 
     public DriveTrain() {
-       // super("DriveTrain", Kp, Ki, Kd);
-        //disable();
+       super("DriveTrain", Kp, Ki, Kd);
+        disable();
     }
 	public void initDefaultCommand() {	
 		setDefaultCommand(new AnalogDrive());
@@ -34,17 +34,22 @@ private final SpeedController ctlDriveRight = RobotMap.ctlDriveRight;
 	}
 	public void stop( ) {
         set(0);
-     //   PIDing = false;
-       // disable();
-    }/*
+        PIDing = false;
+        disable();
+    }
 	public void PIDset(double angle) {
     	double current = RobotMap.gyro.getAngle();
     	PIDing = true;
     	setSetpoint(current + angle);
+    	setOutputRange(-.1, .1);
     	enable();
 	}
-    public void driveStraight(double speed){
+    public void driveStraightF(double speed){
         this.speed = speed;
+    	PIDset(0);
+    }
+    public void driveStraightR(double speed) {
+    	this.speed = speed;
     	PIDset(0);
     }
     public void driveTurnLeft(double angle) {
@@ -54,7 +59,7 @@ private final SpeedController ctlDriveRight = RobotMap.ctlDriveRight;
     public void driveTurnRight(double angle) {
     	speed=0;
     	PIDset(angle);
-    }*/
+    }
  protected double returnPIDInput() {
      return RobotMap.gyro.getAngle();
  }
