@@ -17,7 +17,7 @@ public class TurnLeftGyro extends Command {
 	public int stableTarget = 10;
 	public double approachVelocity = 20;
 	public double fullVelocity = 90;
-	public double speed = .5;
+	public double speed = .3;
 	public double approachDistance = 50; 
 	public double error;
 	public double distance;
