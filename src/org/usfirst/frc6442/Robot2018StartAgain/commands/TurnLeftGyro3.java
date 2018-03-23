@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc6442.Robot2018StartAgain.Robot;
 import org.usfirst.frc6442.Robot2018StartAgain.RobotMap;
 
-public class TurnLeftGyro extends Command {
+public class TurnLeftGyro3 extends Command {
 	
 	public ADXRS450_Gyro gyro = RobotMap.gyro;
 	public double turn;
@@ -17,14 +17,15 @@ public class TurnLeftGyro extends Command {
 	public int stableTarget = 10;
 	public double approachVelocity = 20;
 	public double fullVelocity = 90;
-	public double fullSpeed = .3;
-	public double approachDistance = 50; 
+	public double fullSpeed = .35;
+	public double approachSpeed = .3;
+	public double approachDistance = 20; 
 	public double error;
 	public double distance;
 	public double current;
 	public double margin = 5;
 	
-	public TurnLeftGyro(double turnDegrees) {
+	public TurnLeftGyro3(double turnDegrees) {
 		super(turnDegrees); 
 		requires(Robot.driveTrain);
 		 turn = turnDegrees; //number to change with timing
@@ -44,15 +45,12 @@ public class TurnLeftGyro extends Command {
 		double maxVelocity = fullVelocity;
 		double speed = fullSpeed;
 		if(error>0) speed = -speed;
-		
-		if(distance < approachDistance) maxVelocity = approachVelocity;
-		if(velocity > maxVelocity) speed = 0;
-		
-		Robot.driveTrain.set(-speed, speed);
+		if(distance < approachDistance) Robot.driveTrain.set(0,speed);
+		else Robot.driveTrain.set(-speed, speed);
 
 	}
 	protected boolean isFinished() {
-		if(distance<target-margin&&distance>target+margin)
+		if(distance<target-margin && distance>target+margin)
 			count++;
 		else count = 0;
 		return count > stableTarget;
