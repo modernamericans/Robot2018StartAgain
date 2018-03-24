@@ -34,7 +34,7 @@ public class Robot extends TimedRobot {
     public static Command autonomousCommand;
     public enum Side{ LEFT,CENTER,RIGHT }
     public enum Style{ ADVANCED, SIMPLE }
-    public enum Strategy{ SWITCH,SCALE }
+    public enum Strategy{ SWITCH,SCALE,FORWARD }
     public static Strategy strategy; 
     public static Style style;
     public static Side startSide;
@@ -68,13 +68,14 @@ public class Robot extends TimedRobot {
     	String stylePrefs = prefs.getString("style", "");
     	if(!prefs.containsKey("strategy")) prefs.putString("strategy", "");
     	String strategyPrefs = prefs.getString("strategy", "");
-    	if(sidePrefs.equals("L")) startSide = Side.LEFT;
-    	if(sidePrefs.equals("C")) startSide = Side.CENTER;
-    	if(sidePrefs.equals("R")) startSide = Side.RIGHT; 
-    	if(stylePrefs.equals("A")) style = Style.ADVANCED;
-    	if(stylePrefs.equals("S")) style = Style.SIMPLE;
-    	if(strategyPrefs.equals("F")) strategy = Strategy.SCALE;
-    	if(strategyPrefs.equals("N")) strategy = Strategy.SWITCH;
+    	if(sidePrefs.equals("Left")) startSide = Side.LEFT;
+    	if(sidePrefs.equals("Center")) startSide = Side.CENTER;
+    	if(sidePrefs.equals("Right")) startSide = Side.RIGHT; 
+    	if(stylePrefs.equals("Advanced")) style = Style.ADVANCED;
+    	if(stylePrefs.equals("Simple")) style = Style.SIMPLE;
+    	if(strategyPrefs.equals("Scale")) strategy = Strategy.SCALE;
+    	if(strategyPrefs.equals("Switch")) strategy = Strategy.SWITCH;
+		if(strategyPrefs.equals("Forward")) strategy = Strategy.FORWARD;
     }
     public void autonomousInit() {
     	getGameData();
@@ -99,34 +100,45 @@ public class Robot extends TimedRobot {
         
     }
 	public void setAutonomousCommand() {
-		if(switchSide == Side.LEFT){
-			if(startSide == Side.LEFT) {
-				autonomousCommand = style == Style.ADVANCED ? new AutonomousLeftGoLeft()
-															: new AutonomousLeftGoLeftSimple();
-			}
-			if(startSide == Side.CENTER) {
-				autonomousCommand = style == Style.ADVANCED ? new AutonomousCenterGoLeft()
-															: new AutonomousCenterGoLeftSimple();
-			}
-			if(startSide == Side.RIGHT) {
-				autonomousCommand = style == Style.ADVANCED ? new AutonomousRightGoLeft()
-															: new AutonomousRightGoLeftSimple();
-			}
-		}
-    	if(switchSide == Side.RIGHT) {
-			if(startSide == Side.LEFT) {
-				autonomousCommand = style == Style.ADVANCED ? new AutonomousLeftGoRight()
-															: new AutonomousLeftGoRightSimple();
-			}
-			if(startSide == Side.CENTER) {
-				autonomousCommand = style == Style.ADVANCED ? new AutonomousCenterGoRight()
-															: new AutonomousCenterGoRightSimple();
-			}
-			if(startSide == Side.RIGHT) {
-				autonomousCommand = style == Style.ADVANCED ? new AutonomousRightGoRight()
-															: new AutonomousRightGoRightSimple();			}
+		
+		if(strategy == Strategy.SWITCH) {
 			
+			if(switchSide == Side.LEFT){
+				if(startSide == Side.LEFT) {
+					autonomousCommand = style == Style.ADVANCED ? new AutonomousLeftGoLeft()
+															    : new AutonomousLeftGoLeftSimple();
+				}
+				if(startSide == Side.CENTER) {
+					autonomousCommand = style == Style.ADVANCED ? new AutonomousCenterGoLeft()
+																: new AutonomousCenterGoLeftSimple();
+				}
+				if(startSide == Side.RIGHT) {
+					autonomousCommand = style == Style.ADVANCED ? new AutonomousRightGoLeft()
+																: new AutonomousRightGoLeftSimple();
+				}
+			}
+			if(switchSide == Side.RIGHT) {
+				if(startSide == Side.LEFT) {
+					autonomousCommand = style == Style.ADVANCED ? new AutonomousLeftGoRight()
+																: new AutonomousLeftGoRightSimple();
+				}
+				if(startSide == Side.CENTER) {
+					autonomousCommand = style == Style.ADVANCED ? new AutonomousCenterGoRight()
+																: new AutonomousCenterGoRightSimple();
+				}
+				if(startSide == Side.RIGHT) {
+					autonomousCommand = style == Style.ADVANCED ? new AutonomousRightGoRight()
+																: new AutonomousRightGoRightSimple();			}
+			}
     	}
+		else if(strategy == Strategy.SCALE){
+			if(scaleSide == Side.LEFT && startSide == Side.LEFT) 
+				autonomousCommand = new AutonomousLeftGoScaleLeft(); 
+			if(scaleSide == Side.RIGHT && startSide == Side.RIGHT) 
+				autonomousCommand = new AutonomousRightGoScaleRight(); 
+			
+		}
+		else if(strategy == Strategy.FORWARD){autonomousCommand = new AutonomousDriveScale;}
 	}
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();

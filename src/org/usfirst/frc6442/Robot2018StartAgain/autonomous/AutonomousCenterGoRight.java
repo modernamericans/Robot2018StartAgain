@@ -7,13 +7,13 @@ public class AutonomousCenterGoRight extends CommandGroup {
 
 	public AutonomousCenterGoRight() {
 	
-		addSequential(new DriveForwardTime(2));
+		addSequential(new DriveStraightReverseTime(2));
+		addSequential(new TurnLeftGyro(90));
+		addSequential(new DriveStraightReverseTime(2.5));
 		addSequential(new TurnRightGyro(90));
-		addSequential(new DriveForwardTime(2.5));
-		addSequential(new TurnLeftGyro(90));
-		addSequential(new DriveForwardTime(2.2));
-		addSequential(new TurnLeftGyro(90));
-		addSequential(new DriveForwardTime(2));
+		addSequential(new DriveStraightReverseTime(2.2));
+		addSequential(new TurnRightGyro(90));
+		addSequential(new DriveStraightReverseTime(2));
 		addSequential(new LaunchCubeLow());
 		addSequential(new LaunchCubeLow());
 		
