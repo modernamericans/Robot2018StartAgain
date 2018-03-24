@@ -41,7 +41,6 @@ public class Robot extends TimedRobot {
     public static Side switchSide;
     public static Side scaleSide;
 
-    @Override
     public void robotInit() {
         RobotMap.init();
         pneumatics = new Pneumatics();
@@ -115,12 +114,16 @@ public class Robot extends TimedRobot {
 				if(startSide == Side.RIGHT) {
 					autonomousCommand = style == Style.ADVANCED ? new AutonomousRightGoLeft()
 																: new AutonomousRightGoLeftSimple();
+					if(scaleSide == Side.RIGHT && style == Style.SIMPLE)
+						autonomousCommand = new AutonomousRightGoScaleRight();
 				}
 			}
 			if(switchSide == Side.RIGHT) {
 				if(startSide == Side.LEFT) {
 					autonomousCommand = style == Style.ADVANCED ? new AutonomousLeftGoRight()
 																: new AutonomousLeftGoRightSimple();
+					if(scaleSide == Side.LEFT && style == Style.SIMPLE)
+						autonomousCommand = new AutonomousLeftGoScaleLeft();
 				}
 				if(startSide == Side.CENTER) {
 					autonomousCommand = style == Style.ADVANCED ? new AutonomousCenterGoRight()
@@ -128,7 +131,8 @@ public class Robot extends TimedRobot {
 				}
 				if(startSide == Side.RIGHT) {
 					autonomousCommand = style == Style.ADVANCED ? new AutonomousRightGoRight()
-																: new AutonomousRightGoRightSimple();			}
+																: new AutonomousRightGoRightSimple();
+					}
 			}
     	}
 		else if(strategy == Strategy.SCALE){
@@ -138,18 +142,16 @@ public class Robot extends TimedRobot {
 				autonomousCommand = new AutonomousRightGoScaleRight(); 
 			
 		}
-		else if(strategy == Strategy.FORWARD){autonomousCommand = new AutonomousDriveScale;}
+		else if(strategy == Strategy.FORWARD){autonomousCommand = new AutonomousDriveToScale();}
 	}
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
     }
 
-    @Override
     public void teleopInit() {
     	if (autonomousCommand != null) autonomousCommand.cancel();       
     }
 
-    @Override
     public void teleopPeriodic() {    
     	Robot.oi.Update();
     	Scheduler.getInstance().run();

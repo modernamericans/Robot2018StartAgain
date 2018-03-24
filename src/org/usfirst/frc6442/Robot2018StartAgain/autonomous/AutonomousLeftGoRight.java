@@ -7,6 +7,7 @@ public class AutonomousLeftGoRight extends CommandGroup {
 
 	public AutonomousLeftGoRight() {
 	
+		addSequential(new DriveForwardTime(.2));
 		addSequential(new DriveStraightReverseTime(2));
 		addSequential(new TurnLeftGyro(90));
 		addSequential(new DriveStraightReverseTime(4));
