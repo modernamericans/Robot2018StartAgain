@@ -4,13 +4,13 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.TimedRobot;
+//import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableInstance;
+//import edu.wpi.first.networktables.NetworkTable;
+//import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -86,7 +86,7 @@ public class Robot extends TimedRobot/*hi*/ {
     	else (new DriveStraightReverseTime(5)).start();
     }    
     public void getGameData() {
-    	gameMessage = DriverStation.getInstance().getGameSpecificMessage();
+    	gameMessage = DriverStation.getInstance().getGameSpecificMessage();//Something is up//
     	if(gameMessage.charAt(0) == 'L' ) {	
     		switchSide = Side.LEFT;	
     		System.out.println(switchSide);		
