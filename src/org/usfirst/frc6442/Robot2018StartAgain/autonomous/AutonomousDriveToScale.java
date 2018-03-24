@@ -8,6 +8,6 @@ public class AutonomousDriveToScale extends CommandGroup {
 	public AutonomousDriveToScale() {
 	
 		addSequential(new DriveForwardTime(.2));
-		addSequential(new DriveStraightReverse(5));
-}
+		addSequential(new DriveStraightReverseTime(5));
+	}
 }

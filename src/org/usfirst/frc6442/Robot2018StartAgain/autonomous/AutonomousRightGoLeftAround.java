@@ -3,9 +3,9 @@ package org.usfirst.frc6442.Robot2018StartAgain.autonomous;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import org.usfirst.frc6442.Robot2018StartAgain.commands.*;
 
-public class AutonomousRightGoLeft extends CommandGroup {
+public class AutonomousRightGoLeftAround extends CommandGroup {
 
-	public AutonomousRightGoLeft() {
+	public AutonomousRightGoLeftAround() {
 	
 		addSequential(new DriveStraightReverseTime(2));
 		addSequential(new TurnRightGyro(90));
