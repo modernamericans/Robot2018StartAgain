@@ -39,6 +39,7 @@ public class RobotDashboard {
     	SmartDashboard.putData("AutonomousCenterGoRight", new AutonomousCenterGoRight());
     	SmartDashboard.putData(      "AutonomousDisplay", new       AutonomousDisplay());
 		SmartDashboard.putData(      "AutonomousDance", new       AutonomousDance());
+		SmartDashboard.putData(      "AutonomousMacarena", new       AutonomousMacarena());
 		SmartDashboard.putData(      "AutonomousStanton", new       AutonomousStanton());
     	SmartDashboard.putData(   "AutonomousLeftGoLeft", new    AutonomousLeftGoLeft());
     	SmartDashboard.putData(  "AutonomousLeftGoRight", new   AutonomousLeftGoRight());
