@@ -7,8 +7,7 @@ public class AutonomousDisplay extends CommandGroup {
 
 	public AutonomousDisplay() {
 		
-		while(true){
-			addSequential(new DriveStraightForwardTime(3));
+			addSequential(new DriveStraightForwardTime(1));
 			addSequential(new DriveStop(1));
 			addSequential(new TurnRightGyro(90));
 			addSequential(new DriveStop(1));
@@ -16,13 +15,13 @@ public class AutonomousDisplay extends CommandGroup {
 			addSequential(new DriveStop(1));
 			addSequential(new TurnLeftGyro(90));
 			addSequential(new DriveStop(1));
-			addSequential(new DriveStraightReverseTime(3));
+			addSequential(new DriveStraightReverseTime(1));
 			addSequential(new DriveStop(1));
 			addSequential(new TurnRightGyro(90));
 			addSequential(new DriveStop(1));
 			addSequential(new DriveStraightReverseTime(.5));
 			addSequential(new DriveStop(1));
 			addSequential(new TurnLeftGyro(90));
-		}
+	
 	} 
 }
