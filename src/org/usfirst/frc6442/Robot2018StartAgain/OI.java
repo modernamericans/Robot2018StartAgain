@@ -39,8 +39,8 @@ public class OI {
 		Controller1.A.whenPressed(new LaunchCubeLow());
 		Controller2.A.whenPressed(new LaunchCubeLow());
 		
-		Controller1.LB.whileHeld(new BarLower());
-		Controller1.RB.whileHeld(new BarRaise());
+		Controller2.LB.whileHeld(new BarLower());
+		Controller2.RB.whileHeld(new BarRaise());
 			
 
 	}
@@ -70,6 +70,9 @@ public class OI {
 			Controller1.mode = Controller.Mode.TANK;
 		if(Controller1.dPadUp()) reverse = false;
 		if(Controller1.dPadDown()) reverse = true;
+		if(Controller1.dPadLeft()) new BarLower();
+		if(Controller1.dPadRight()) new BarRaise();
+		
 	}
 //Update Feeder Method
 	private void UpdateFeederValue() {
